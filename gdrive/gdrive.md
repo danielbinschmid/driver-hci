@@ -17,11 +17,7 @@ google drive account. <br>
 Make sure to rename the folder name of the team's google drive from 'Huawei Tech Challenge' to 'tc' or anything without spaces. This won't change anything 
 on the team's google drive, it is rather for convenience reasons when working with `rclone`. <br>
 ```shell
-mkdir gdrive
-```
-Create the folder gdrive as location for the google drive. Note that the folder is listed in `.gitignore`. 
-```shell
-rclone sync remote:tc ./gdrive
+rclone sync remote:tc .
 ```
 to clone the drive to the desired folder.
 
@@ -30,4 +26,5 @@ Sync via
 ```shell
 rclone sync remote:tc ./gdrive
 ```
+from the root. Make sure to not push gdrive files to the git repo.
 See [rclone.org/commands](https://rclone.org/commands/) for more.
