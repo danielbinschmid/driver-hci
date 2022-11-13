@@ -16,6 +16,10 @@ where 'remote' is the name of the created remote in 'rclone config'. The command
 google drive account. <br>
 Make sure to rename the folder name of the team's google drive from 'Huawei Tech Challenge' to 'tc' or anything without spaces. This won't change anything 
 on the team's google drive, it is rather for convenience reasons when working with `rclone`. <br>
+```shell
+mkdir gdrive
+```
+Use the `gdrive` folder if you want to have the google drive files in the git repo folder.
 
 ## Usage
 Sync via 
