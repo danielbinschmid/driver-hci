@@ -22,9 +22,29 @@ mkdir gdrive
 Use the `gdrive` folder if you want to have the google drive files in the git repo folder.
 
 ## Usage
-Sync via 
+
+### Live synchronization
+Read [mount_tutorial](https://rclone.org/commands/rclone_mount/).
+For Linux, workflow can be started with
+```shell
+rclone mount remote:tc ./gdrive/tc
+```
+and cancelled with CTRL+C and 
+```shell
+fusermount -u ./gdrive
+```
+
+### Offline synchronization 
+Download/sync gdrive via
 ```shell
 rclone sync remote:tc ./gdrive
 ```
-from the root. Make sure to not push gdrive files to the git repo.
+and upload-sync via
+```shell
+rclone sync ./gdrive remote:tc
+```
+Make sure to pay attention to commit conflicts when choosing 
+offline synchronization.
+
+### More
 See [rclone.org/commands](https://rclone.org/commands/) for more.
