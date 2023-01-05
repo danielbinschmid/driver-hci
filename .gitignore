@@ -1,3 +1,4 @@
 /gdrive/*
 !/gdrive/gdrive.md
 /local/*
+__pycache__*
