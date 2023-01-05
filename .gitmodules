@@ -1,0 +1,3 @@
+[submodule "handgesture/Real-time-GesRec"]
+	path = handgesture/Real-time-GesRec
+	url = https://github.com/danielbinschmid/Real-time-GesRec
