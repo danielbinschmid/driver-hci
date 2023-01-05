@@ -20,6 +20,9 @@ In [config.json](config.json) the execution can be configured.
 |use_cuda|Whether to uses cuda GPU|
 |camera_port|0 for local webcam, path to a .mp4 to debug with a mp4 video, and the IPv4 address for a camera on a port|
 
+### Weights
+Find the neural network weights on the team's [gdrive](https://drive.google.com/drive/folders/1uzgv-EMFVdMW7nBUrsOuizVDCauTjVbk?usp=share_link) 
+
 ### IP webcam
 To use the camera of an Android phone, download the app IPWebcam and use the functionality `Start server`. Then copy the IPv4 address to config`camera_port` in [config.json](.json).
 
