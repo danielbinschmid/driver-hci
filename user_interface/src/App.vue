@@ -1,14 +1,36 @@
 <script setup lang="ts">
 import { onMounted, reactive } from "vue";
+import { dummyHTTPSGet } from "./api";
 
+
+// reactive variables
 const counter = reactive({ value: 0 });
 
+let initPlanet: Planet = {
+    url: "-",
+    explanation: "-"
+}
+const planetInfo = reactive(initPlanet); 
+
+// called on mount
 onMounted(() => {
     setInterval(() => {
         counter.value ++;
     }, 1000); 
 });
 
+
+function getDummy(): void {
+    dummyHTTPSGet().then(value => {
+        initPlanet.url = value.url;
+        initPlanet.explanation = value.explanation;
+    });
+}
+
+function clearPlanetInfo(): void { 
+    initPlanet.url = "-";
+    initPlanet.explanation = "-";
+}
 
 </script>
 
@@ -24,6 +46,19 @@ onMounted(() => {
         <div> 
             Time since deployment: {{ counter.value }}
         </div>
+        <div>
+            Planet url: {{ planetInfo.url }}
+        </div>
+        <div>
+            {{ planetInfo.explanation }}
+        </div>
+
+        <button @click="getDummy()">
+            Click me to get planet information
+        </button>
+        <button @click="clearPlanetInfo()">
+            Clear planet information
+        </button>
 
     </main>
 </template>

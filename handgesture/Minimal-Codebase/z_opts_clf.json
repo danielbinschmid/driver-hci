@@ -89,7 +89,7 @@
     "clf_strategy": "median",
     "clf_queue_size": 32,
     "clf_threshold_pre": 1,
-    "clf_threshold_final": 0.01,
+    "clf_threshold_final": 0.001,
     "stride_len": 1,
     "ft_portion": "complete",
     "groups": 3,
