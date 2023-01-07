@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref } from "vue";
+import HudInterface from "./HudInterface.vue"
 
 const LOGO_RELATIVE_HEIGHT = 0.2;
-const SCENE_IMG_RELATIVE_SIZE = 0.7;
+const SCENE_IMG_RELATIVE_SIZE = 0.8;
 
-const scene = ref(null);
 const sceneImgGhost = ref(null);
 
 const logo = reactive({ height: 50 });
@@ -31,6 +31,7 @@ function computeSizes() {
     }
 
     logo.height = LOGO_RELATIVE_HEIGHT * sceneSizes.height;
+
 }
 
 window.onresize = () => { if (sceneImgGhost.value.complete) computeSizes(); }
@@ -59,13 +60,40 @@ window.onresize = () => { if (sceneImgGhost.value.complete) computeSizes(); }
             </div>
 
             <div class="container">
-                <img src='@/assets/road_scene.png' ref="scene" :width="sceneSizes.width" :height="sceneSizes.height" />
+                <div class="scene">
+                    <div class="interface" :style="{height: sceneSizes.height + 'px'}">
+                        <hud-interface 
+                                :style="{height: sceneSizes.height}" 
+                                :width="sceneSizes.width" 
+                                :height="sceneSizes.height"> 
+                        </hud-interface>
+                    </div>
+                    
+                    <div :style="{marginTop: -sceneSizes.height + 'px', height: sceneSizes.height + 'px'}">
+                        <img src='@/assets/road_scene.png' class="sceneImg" :width="sceneSizes.width" :height="sceneSizes.height" />
+
+                    </div>
+ 
+                </div>
+                
             </div>
         </div>
     </main>
 </template>
 
 <style scoped>
+
+.interface {
+    z-index: 100;
+}
+
+.scene {
+    
+}
+
+.sceneImg {
+
+}
 
 .ghost {
     position: fixed;
