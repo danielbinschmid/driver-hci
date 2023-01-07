@@ -19,11 +19,7 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 
-/public/music/private/*
-
-
 # Editor directories and files
-*.lock
 .vscode/*
 !.vscode/extensions.json
 .idea

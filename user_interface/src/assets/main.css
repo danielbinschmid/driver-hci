@@ -1,11 +1,11 @@
-@import "./base.css";
+@import './base.css';
 
 #app {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  font-weight: normal;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
 
+  font-weight: normal;
 }
 
 a,
@@ -21,17 +21,15 @@ a,
   }
 }
 
-@media (min-width: 0px) {
+@media (min-width: 1024px) {
   body {
     display: flex;
     place-items: center;
-    margin: 0px;
   }
 
   #app {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0 0;
-    background-color: rgb(217, 212, 208);
-
+    padding: 0 2rem;
   }
 }

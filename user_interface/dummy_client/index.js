@@ -1,5 +1,4 @@
-import axios from "axios"
-
+const axios = require("axios");
 
 /**
  * Dummy example http get request
@@ -8,18 +7,22 @@ import axios from "axios"
  * 
  * @returns Information about a planet
  */
-export async function dummyHTTPSGet(): Promise<Planet | undefined> {
+async function dummyHTTPSGet() {
 
     let response = await axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY').catch(err => { 
         console.error(err);
         return undefined;
     });
 
-    let planet: Planet = {
+    let planet = {
         url: response.data.url,
         explanation: response.data.explanation
     };
     
+
+    console.log(planet);
     return planet;
 }
+
+dummyHTTPSGet();
 

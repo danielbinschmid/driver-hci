@@ -1,4 +1,6 @@
-# User interface for TechChallenge, Coop-driving
+# coop-prototype-simulation
+
+This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
 
@@ -46,8 +48,17 @@ npm run test:unit
 ### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
 ```sh
+npm run test:e2e:dev
+```
+
+This runs the end-to-end tests against the Vite development server.
+It is much faster than the production build.
+
+But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+
+```sh
 npm run build
-npm run test:e2e # or `npm run test:e2e:ci` for headless testing
+npm run test:e2e
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
@@ -55,3 +66,9 @@ npm run test:e2e # or `npm run test:e2e:ci` for headless testing
 ```sh
 npm run lint
 ```
+
+
+## Electron
+[Electron_quick_start](https://www.electronjs.org/docs/latest/tutorial/quick-start)
+
+Setup is thanks to [Vue3-Electron-Typescript](https://vuejsexamples.com/vite-vue3-electron-typescript-template/)
