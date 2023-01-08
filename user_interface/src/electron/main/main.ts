@@ -2,8 +2,13 @@
 import { join } from 'path';
 import {
     app,
-    BrowserWindow
+    BrowserWindow,
+    Menu,
+    ipcMain
 } from 'electron';
+
+
+// https://www.electronjs.org/de/docs/latest/tutorial/ipc
 
 const isDev = process.env.npm_lifecycle_event === "app:dev" ? true : false;
 
@@ -16,6 +21,23 @@ function createWindow() {
             preload: join(__dirname, '../preload/preload.js'),
         },
     });
+
+    const menu = Menu.buildFromTemplate([
+            {
+                label: app.name,
+                submenu: [
+                {
+                click: () => mainWindow.webContents.send('update-counter', 1),
+                label: 'Increment',
+                },
+                {
+                click: () => mainWindow.webContents.send('update-counter', -1),
+                label: 'Decrement',
+                }]
+            }
+    ])
+    Menu.setApplicationMenu(menu);
+
 
     // and load the index.html of the app.
     mainWindow.loadURL(
@@ -33,6 +55,10 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+    ipcMain.on('counter-value', (_event, value) => {
+        console.log(value);
+    })
+
     createWindow()
     app.on('activate', function () {
         // On macOS it's common to re-create a window in the app when the

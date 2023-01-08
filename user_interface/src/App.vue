@@ -20,6 +20,9 @@ onMounted(() => {
       }
     } // TODO: set timeout if sceneImage is null and try again
     
+    window.electronAPI.handleCounter((event: any, value: any) => {
+        console.log("from inside: " + value);
+    })
 });
 
 function computeSizes() {
