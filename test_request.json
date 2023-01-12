@@ -1,0 +1,5 @@
+{
+    "type": "request",
+    "choices": ["left", "right"],
+    "time_remaining": 5
+}
