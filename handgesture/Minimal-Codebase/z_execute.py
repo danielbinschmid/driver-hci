@@ -24,6 +24,8 @@ import datetime
 from munch import DefaultMunch
 
 from web_connection import *
+import socket
+import threading
 
 def weighting_func(x):
     return (1 / (1 + np.exp(-0.2 * (x - 9))))
@@ -184,8 +186,12 @@ results = []
 active_index = 0
 fps = ""
 
+# init sockets
+REQUEST_PORT = 40003
+request_listener = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
+request_listener.bind(('', REQUEST_PORT))
 
-
+thread_1 = threading.Thread(target=)
 
 while cap.isOpened(): 
     t1 = time.time()
