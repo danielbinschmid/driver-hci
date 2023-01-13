@@ -19,7 +19,6 @@ onMounted(() => {
           computeSizes();
       }
     } // TODO: set timeout if sceneImage is null and try again
-    
     window.electronAPI.handleCounter((event: any, value: any) => {
         console.log("from inside: " + value);
     })
@@ -41,6 +40,7 @@ function computeSizes() {
     logo.height = LOGO_RELATIVE_HEIGHT * sceneSizes.height;
 
 }
+
 
 window.onresize = () => { 
   if (sceneImgGhost.value === null) return;

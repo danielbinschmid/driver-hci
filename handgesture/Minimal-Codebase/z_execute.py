@@ -15,6 +15,7 @@ from torch.nn import functional as F
 from model import generate_model
 from spatial_transforms import *
 from utils import Queue
+import sys
 
 import pdb
 import numpy as np
@@ -299,7 +300,7 @@ while cap.isOpened():
 
     prev_active = active
     elapsedTime = time.time() - t1
-    fps = "(Playback) {:.1f} FPS".format(1/elapsedTime)
+    fps = "(Playback) {:.1f} FPS".format(1/ (elapsedTime + sys.float_info.epsilon))
 
     if len(results) != 0:
         predicted = np.array(results)
@@ -310,8 +311,8 @@ while cap.isOpened():
     # cv2.putText(frame, fps, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (38, 0, 255), 1, cv2.LINE_AA)
     # cv2.imshow("Result", frame)
 
-    # if cv2.waitKey(1)&0xFF == ord('q'):
-    #     break
+    if cv2.waitKey(1)&0xFF == ord('q'):
+        break
 cv2.destroyAllWindows()
 
     

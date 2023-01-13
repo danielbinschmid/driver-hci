@@ -4,7 +4,8 @@ import {
     app,
     BrowserWindow,
     Menu,
-    ipcMain
+    ipcMain,
+    MenuItem
 } from 'electron';
 
 
@@ -22,21 +23,21 @@ function createWindow() {
         },
     });
 
-    const menu = Menu.buildFromTemplate([
-            {
-                label: app.name,
-                submenu: [
-                {
-                click: () => mainWindow.webContents.send('update-counter', 1),
-                label: 'Increment',
-                },
-                {
-                click: () => mainWindow.webContents.send('update-counter', -1),
-                label: 'Decrement',
-                }]
-            }
-    ])
-    Menu.setApplicationMenu(menu);
+    const menuItemOptions: Electron.MenuItemConstructorOptions = {}
+    menuItemOptions.label = app.name;
+    menuItemOptions.submenu = [
+        {
+        click: () => mainWindow.webContents.send('update-counter', 1),
+        label: 'Increment',
+        },
+        {
+        click: () => mainWindow.webContents.send('update-counter', -1),
+        label: 'Decrement',
+        }];
+    const menuItem = new MenuItem(menuItemOptions);
+    const defaultMenu = Menu.getApplicationMenu();
+    defaultMenu?.insert(0, menuItem);
+    Menu.setApplicationMenu(defaultMenu);
 
 
     // and load the index.html of the app.

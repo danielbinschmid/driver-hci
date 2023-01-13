@@ -2,7 +2,7 @@
 const { contextBridge, ipcRenderer} = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
-    handleCounter: (callback: any) => ipcRenderer.on('update-counter', callback)
+    handleCounter: (callback: any) => { ipcRenderer.on('update-counter', callback) }
 })
 
 // All of the Node.js APIs are available in the preload process.
