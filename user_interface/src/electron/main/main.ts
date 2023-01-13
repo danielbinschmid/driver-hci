@@ -43,7 +43,9 @@ function startListening() {
     router.post('/login', jsonParser, (req, res) => {
         console.log("post request incoming");
         console.log(req.body);
+        console.log(req.socket.remotePort);
         res.end("yes");
+        
         // var user_name = req.body.user;
         // var password = req.body.password;
         // console.log("User name = "+user_name+", password is "+password);
