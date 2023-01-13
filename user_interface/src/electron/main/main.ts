@@ -9,51 +9,40 @@ import {
 } from 'electron';
 
 import express from "express";
-import bodyParser from "body-parser"
+import bodyParser from "body-parser";
 
 function startListening() {
     
     
-    
+    const port = 40002;
     const router = express.Router();
     const app = express();
-
-
-    const port = 3001
-    console.log("here")
-    
-    app.get('/', (req, res) => {
-    res.send('Hello World!')
-    })
-
-    app.listen(port, () => {
-        console.log(`Example app listening on port ${port}`)
-    })
-
-    /**
-     * 
     
     // add router in express app
     app.use("/",router);
 
-    app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(bodyParser.json());
+    // app.use(bodyParser.urlencoded({ extended: false }));
+    // app.use(bodyParser.json());
+    var jsonParser = bodyParser.json();
 
-    router.get('/',(req, res) => {
-        res.sendFile("index.html");
+    router.get('/' ,(req, res) => {
+        res.send('Hello World!');
     });
 
-    router.post('/login',(req, res) => {
-        var user_name = req.body.user;
-        var password = req.body.password;
-        console.log("User name = "+user_name+", password is "+password);
+    router.post('/login', jsonParser, (req, res) => {
+        console.log("post request incoming");
+        console.log(req.body);
         res.end("yes");
+        // var user_name = req.body.user;
+        // var password = req.body.password;
+        // console.log("User name = "+user_name+", password is "+password);
+        // res.end("yes");
     });
 
-    app.listen(3000,() => {
-        console.log("now listening");
+    app.listen(port,() => {
+        console.log("now listening on port " + port);
     })
-     */
+
 
 
 }
