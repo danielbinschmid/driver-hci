@@ -3,7 +3,8 @@ import random
 import socket
 import json
 
-HOST = '10.181.114.228'
+# HOST = '10.181.114.228'
+HOST = ''
 PORT = 40001
 
 user_danger_threshold = 0.5   ## user's dangerous attribute as threshold (half of danger percentage to decide whether for AD system to take over)
