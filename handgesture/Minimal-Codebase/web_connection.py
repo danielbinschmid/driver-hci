@@ -1,5 +1,10 @@
 import random
-from z_execute import *
+
+import socket
+import json
+
+HOST = ''
+PORT = 40001
 
 user_danger_threshold = 0.5   ## user's dangerous attribute as threshold (half of danger percentage to decide whether for AD system to take over)
 
@@ -20,13 +25,27 @@ def dec_generator(prediction_det, prob_det, labels):
         if user_danger_threshold < user_danger_status: ## if dangerous threshold is over half percentage then
             dec_ = "No"
             dec_binray_flag = False
-            print(f'__system decision is {dec_} from user danger status, {user_danger_status}, with danger threshold {user_danger_threshold}')
+            print(f'sys decision: {dec_} from user danger status, {user_danger_status}, with danger threshold {user_danger_threshold}')
             # print(f'__system decision is {dec_} from {logging_information["event"]} with probability {logging_information["probability"]}')
-            return dec_binray_flag
-
         elif user_danger_threshold > user_danger_status:
             dec_ = "Yes"
             dec_binray_flag = True
             return dec_binray_flag
+        
+        data = {"type": "response", "decision": dec_}
+        json_data = json.load(data)
+        send_response(json_data)
+
+        return dec_binray_flag
     else:
-        print("__None detected, system cannot generate decision, return false")
+        print("__dec_sys fails cuz no detection input, system cannot generate decision.")
+
+def send_response(data):
+
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+        s.sendto(bytes(json.dumps(data), "utf-8"), (HOST, PORT))
+    
+    finally:
+        s.close()

@@ -24,8 +24,7 @@ import datetime
 from munch import DefaultMunch
 
 from web_connection import *
-import socket
-import threading
+
 
 def weighting_func(x):
     return (1 / (1 + np.exp(-0.2 * (x - 9))))
@@ -186,12 +185,6 @@ results = []
 active_index = 0
 fps = ""
 
-# init sockets
-REQUEST_PORT = 40003
-request_listener = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
-request_listener.bind(('', REQUEST_PORT))
-
-thread_1 = threading.Thread(target=)
 
 while cap.isOpened(): 
     t1 = time.time()
@@ -326,8 +319,8 @@ while cap.isOpened():
     # print('results: {}'.format(results))
     cv2.putText(frame, fps, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (38, 0, 255), 1, cv2.LINE_AA)
     ## bin_dec = socket(retrieve)   # binary decision retrieved via socket
-    dec_text = "AD system decision: {}".format(bin_dec)
-    cv2.putText(frame, bin_dec, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (38, 0, 255), 1, cv2.LINE_AA)
+    # dec_text = "AD system decision: {}".format(bin_dec)
+    # cv2.putText(frame, bin_dec, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (38, 0, 255), 1, cv2.LINE_AA)
 
     cv2.imshow("Result", frame)
 
