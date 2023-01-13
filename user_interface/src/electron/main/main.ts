@@ -8,6 +8,55 @@ import {
     MenuItem
 } from 'electron';
 
+import express from "express";
+import bodyParser from "body-parser"
+
+function startListening() {
+    
+    
+    
+    const router = express.Router();
+    const app = express();
+
+
+    const port = 3001
+    console.log("here")
+    
+    app.get('/', (req, res) => {
+    res.send('Hello World!')
+    })
+
+    app.listen(port, () => {
+        console.log(`Example app listening on port ${port}`)
+    })
+
+    /**
+     * 
+    
+    // add router in express app
+    app.use("/",router);
+
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.json());
+
+    router.get('/',(req, res) => {
+        res.sendFile("index.html");
+    });
+
+    router.post('/login',(req, res) => {
+        var user_name = req.body.user;
+        var password = req.body.password;
+        console.log("User name = "+user_name+", password is "+password);
+        res.end("yes");
+    });
+
+    app.listen(3000,() => {
+        console.log("now listening");
+    })
+     */
+
+
+}
 
 // https://www.electronjs.org/de/docs/latest/tutorial/ipc
 
@@ -50,6 +99,8 @@ function createWindow() {
     if (isDev) {
         mainWindow.webContents.openDevTools();
     }
+
+    
 }
 
 // This method will be called when Electron has finished
@@ -58,6 +109,7 @@ function createWindow() {
 app.whenReady().then(() => {
     ipcMain.on('counter-value', (_event, value) => {
         console.log(value);
+        console.log("working");
     })
 
     createWindow()
@@ -67,6 +119,9 @@ app.whenReady().then(() => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     });
 
+    
+    startListening();
+    
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common

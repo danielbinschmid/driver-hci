@@ -24,5 +24,21 @@ async function dummyHTTPSGet() {
     return planet;
 }
 
-dummyHTTPSGet();
+async function dummyPost() {
+    let payload = { user: 'John Doe', password: 'gardener' };
+    console.log("before");
+    let res = await axios.post('http://localhost:3000/login', payload, function(data){
+        if(data === 'yes') {
+            alert("login success");
+          }
+      });
 
+    console.log("after");
+
+    
+    // let data = res.data;
+    // console.log("yes");
+}
+
+// dummyHTTPSGet();
+dummyPost();
