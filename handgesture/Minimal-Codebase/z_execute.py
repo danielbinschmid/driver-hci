@@ -283,19 +283,19 @@ while cap.isOpened():
                 if best1 != prev_best1 and cum_sum[best1] > classifier_config.clf_threshold_final:
                     results.append(best1)
                     ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
-                    bin_dec = dec_generator(prediction_det, prob_det, labels) ##
+                    bin_dec = dec_generator(labels) ##
                     print('Early Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
             else:
                 if cum_sum[best1] > classifier_config.clf_threshold_final:
                     if best1 == prev_best1:
                         if cum_sum[best1] > 5:
                             ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
-                            bin_dec = dec_generator(prediction_det, prob_det, labels) ##
+                            bin_dec = dec_generator(labels) ##
                             results.append(best1)
                             print('Late Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
                     else:
-                            ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
-                        bin_dec = dec_generator(prediction_det, prob_det, labels) ##
+                        ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
+                        bin_dec = dec_generator(labels) ##
                         results.append(best1)
                         print('Late Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
 
