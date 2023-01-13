@@ -11,7 +11,7 @@ import {
 import express from "express";
 import bodyParser from "body-parser";
 
-function startListening() {
+function startListening(mainWindow: BrowserWindow) {
     
     
     const port = 40002;
@@ -43,7 +43,10 @@ function startListening() {
     router.post('/login', jsonParser, (req, res) => {
         console.log("post request incoming");
         console.log(req.body);
-        console.log(req.socket.remotePort);
+        const request: EventJSON = req.body;
+
+        mainWindow.webContents.send('fresh-event', request);
+
         res.end("yes");
         
         // var user_name = req.body.user;
@@ -102,6 +105,8 @@ function createWindow() {
         mainWindow.webContents.openDevTools();
     }
 
+    startListening(mainWindow);
+
     
 }
 
@@ -114,7 +119,7 @@ app.whenReady().then(() => {
         console.log("working");
     })
 
-    createWindow()
+    createWindow();
     app.on('activate', function () {
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.
@@ -122,7 +127,7 @@ app.whenReady().then(() => {
     });
 
     
-    startListening();
+    
     
 });
 

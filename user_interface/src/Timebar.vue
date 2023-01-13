@@ -1,34 +1,18 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref } from "vue";
-import type { Ref } from 'vue'
-const tbar: Ref<Element | null> = ref(null);
+import { reactive, watch } from "vue";
+
+function compStep(start: number, end: number, stepSize_: number = stepSize): number { return (end - start) * stepSize_; }
 
 const props = defineProps<{
-    foo: string
-    bar?: number
+    question: string,
+    timeRemaining: number,
+    switch_: boolean
 }>()
 
-const timerVal = reactive({ time: 100 });
-
-// rgb(55, 146, 55)
-const startColor = {
-    r: 55,
-    g: 146,
-    b: 55
-}
-
-const timeForEvent = 4;
-const stepSize = 0.01
-
-const endColor = {
-    r: 146,
-    g: 55,
-    b: 55
-}
-
-function compStep(start: number, end: number, stepSize_: number = stepSize): number {
-    return (end - start) * stepSize_;
-}
+// CONSTANTS
+const startColor = { r: 55, g: 146, b: 55 }
+const endColor = { r: 146, g: 55, b: 55 }
+const stepSize = 0.025;
 
 const colorStepVector = {
     r: compStep(startColor.r, endColor.r),
@@ -36,17 +20,16 @@ const colorStepVector = {
     b: compStep(startColor.b, endColor.b)
 }
 
-
+// REACTIVE VARS
+const timerVal = reactive({ time: 100 });
 const tBarColor = reactive({ r: startColor.r, g: startColor.g, b: startColor.b })
 
-const question = reactive({ text: "Take-over?" })
-
-
+// CONTROL VARS
 var isRunning = false;
-
 var interval: any = undefined;
-function onButton() {
-    console.log("button");
+
+// ANIMATION
+function startQuestion() {
     interval = setInterval(() => {
         if (isRunning) {
             // change colour
@@ -65,15 +48,14 @@ function onButton() {
                 clearInterval(interval)
                 isRunning = false;
             }
-
         } else {
             timerVal.time = 100;
             isRunning = true;
         }
-
-
-    }, timeForEvent * 1000 * stepSize);
+    }, props.timeRemaining * 1000 * stepSize);
 }
+
+watch(() => props.switch_, (switch_old, switch_new) => { if (!isRunning) startQuestion(); });
 
 </script>
 
@@ -82,15 +64,17 @@ function onButton() {
 
         <div class="wrapper">
             <div class="question-text">
-                {{ question.text }}
+                {{ props.question }}
             </div>
-            <v-progress-linear :color="'rgb(' + tBarColor.r + ', ' + tBarColor.g + ', ' + tBarColor.b + ')'" rounded
-                class="timebar" height="20" v-model="timerVal.time">
+            <v-progress-linear 
+                :color="'rgb(' + tBarColor.r + ', ' + tBarColor.g + ', ' + tBarColor.b + ')'" 
+                rounded
+                class="timebar" 
+                height="20" 
+                v-model="timerVal.time" 
+                stream>
             </v-progress-linear>
-            <v-btn @click="onButton" class="timebar" outlined> Trigger event</v-btn>
-
         </div>
-
     </div>
 </template>
 
@@ -99,6 +83,8 @@ function onButton() {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    font-size: large;
+    font-weight: 100;
 }
 
 .component-wrapper {
@@ -112,8 +98,6 @@ function onButton() {
     align-content: center;
     height: 100%;
 }
-
-
 
 .timebar {
     width: 80%;

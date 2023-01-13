@@ -6,4 +6,6 @@ declare type Planet = {
     explanation: string
 };
 
-
+declare type EventJSON = {
+    type: string
+}

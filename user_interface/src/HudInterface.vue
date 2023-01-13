@@ -1,9 +1,22 @@
 <script setup lang="ts">
 import Timebar from './Timebar.vue';
+import { reactive } from "vue";
 const props = defineProps<{
   width: number
   height: number
 }>();
+
+const switch_ = reactive({val: false});
+
+window.electronAPI.handleEvent((event, value) => {
+    if (value.type == "request") {
+        onButton();
+    }
+});
+
+function onButton() {
+    switch_.val = !switch_.val;
+}
 
 </script>
 
@@ -14,8 +27,7 @@ const props = defineProps<{
                 Invisible top indent
             </div>
             <div class="display">
-                
-                <timebar />
+                <timebar :question="'Turn around?'" :time-remaining="5" :switch_="switch_.val" />
             </div>
         </div>
     </div>
