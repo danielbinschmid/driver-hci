@@ -4,11 +4,14 @@ import time
 import threading
 import json
 import logging
+import requests
 
 HOST = '' # localhost
 
 REQUEST_PORT = 40000
 RESPONSE_PORT = 40001
+
+WEBSERVER_ADDRESS = 'http://10.181.92.108:40002/login'
 
 """
 TODO:
@@ -39,16 +42,21 @@ def setup():
     thr1.daemon = True
     thr1.start()
 
-    thr2 = threading.Thread(target=handle_decision_response)
+    thr2 = threading.Thread(target=handle_decision_response, args=['response_listener', response_listener])
     thr2.daemon = True
     thr2.start()
 
 """
 this function updates the webserver by sending 'data' to the server
+data should be a JSON object already
 """
-def update_webserver(data):
-    pass
+def update_webserver(json_data):
 
+    logging.info('Sending Update to Webserver at: {}'.format(WEBSERVER_ADDRESS))
+
+    webserver_response = requests.post(WEBSERVER_ADDRESS, data=json_data)
+
+    logging.info('Response from Webserver: {}'.format(webserver_response.text))
   
 """
 this function is called if the timer for the response ran out
@@ -57,7 +65,11 @@ def timer_exceeded():
 
     logging.warning('Response time exceeded')
 
-    # update_webserver()
+    response = {
+        'type': 'response_time_exceeded',
+        } 
+
+    update_webserver(json.dumps(response))
 
 """
 this function is the entry point for threads and
@@ -88,12 +100,19 @@ def handle_decision_request(name, sock):
                 timer = threading.Timer(time_remaining, timer_exceeded)
                 timer.start()
 
-
                 # TODO replace the response mechanism with hand gesture
                 decision = input('input decision: left=1, right=2\n')
 
                 if decision == '1' or decision == '2':
                     logging.info('Decision taken')
+
+                response = {
+                    'type': 'response_valid',
+                    'decision': decision
+                    }
+                
+                # send response_valid update webserver
+                update_webserver(json.dumps(response))
 
                 # stop timer if successful
                 timer.cancel()
@@ -106,8 +125,16 @@ def handle_decision_request(name, sock):
 """
 this function receives data from the hand-gesture and takes action accordingly
 """
-def handle_decision_response():
-    pass
+def handle_decision_response(name, sock):
+
+    logging.info('Starting {} on port {}'.format(name, sock.getsockname()[1]))
+
+    while sock.recv is not None:
+        data, addr = sock.recvfrom(1024)
+
+        logging.info('Received response from: {}'.format(addr))
+
+        logging.info(data.decode())
 
 
 def main():
