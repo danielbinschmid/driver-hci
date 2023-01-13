@@ -7,7 +7,7 @@ import {
     ipcMain,
     MenuItem
 } from 'electron';
-
+import { startListening } from './server';
 
 // https://www.electronjs.org/de/docs/latest/tutorial/ipc
 
@@ -50,6 +50,8 @@ function createWindow() {
     if (isDev) {
         mainWindow.webContents.openDevTools();
     }
+
+    
 }
 
 // This method will be called when Electron has finished
@@ -58,6 +60,7 @@ function createWindow() {
 app.whenReady().then(() => {
     ipcMain.on('counter-value', (_event, value) => {
         console.log(value);
+        console.log("working");
     })
 
     createWindow()
@@ -67,6 +70,9 @@ app.whenReady().then(() => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     });
 
+    
+    // startListening();
+    
 });
 
 // Quit when all windows are closed, except on macOS. There, it's common
