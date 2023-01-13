@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+import Timebar from './Timebar.vue';
 const props = defineProps<{
   width: number
   height: number
@@ -15,8 +15,12 @@ const props = defineProps<{
             </div>
             <div class="display">
                 <div class="display-text">
+                    Hello
                 </div>
                 
+                <timebar>
+
+                </timebar>
             </div>
         </div>
     </div>

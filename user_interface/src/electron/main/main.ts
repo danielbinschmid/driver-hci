@@ -23,7 +23,18 @@ function startListening() {
 
     // app.use(bodyParser.urlencoded({ extended: false }));
     // app.use(bodyParser.json());
-    var jsonParser = bodyParser.json();
+    var jsonParser = function(req: any, res: any, next: any){
+        var data = "";
+        req.on('data', function(chunk: any){ data += chunk})
+        req.on('end', function(){
+            req.body = JSON.parse(data);;
+            // req.jsonBody = JSON.parse(data);
+            next();
+        })
+     }
+    
+    
+    // bodyParser.json();
 
     router.get('/' ,(req, res) => {
         res.send('Hello World!');
