@@ -7,9 +7,14 @@ const props = defineProps<{
 }>();
 
 const switch_ = reactive({val: false});
+const request_data = reactive({text: "Question text", timeRemaining: 5, choices: ["left", "right"]});
 
+// { type: 'request', choices: [ 'left', 'right' ], time_remaining: 10 }
 window.electronAPI.handleEvent((event, value) => {
     if (value.type == "request") {
+        request_data.text = value.request_text;
+        request_data.choices = value.choices;
+        request_data.timeRemaining = value.time_remaining;
         onButton();
     }
 });
@@ -27,7 +32,7 @@ function onButton() {
                 Invisible top indent
             </div>
             <div class="display">
-                <timebar :question="'Turn around?'" :time-remaining="5" :switch_="switch_.val" />
+                <timebar :question="request_data.text" :choices="request_data.choices" :time-remaining="request_data.timeRemaining" :switch_="switch_.val" />
             </div>
         </div>
     </div>

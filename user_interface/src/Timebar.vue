@@ -5,6 +5,7 @@ function compStep(start: number, end: number, stepSize_: number = stepSize): num
 
 const props = defineProps<{
     question: string,
+    choices: string[],
     timeRemaining: number,
     switch_: boolean
 }>()
@@ -64,8 +65,17 @@ watch(() => props.switch_, (switch_old, switch_new) => { if (!isRunning) startQu
 
         <div class="wrapper">
             <div class="question-text">
-                {{ props.question }}
+                {{ props.question.toLocaleUpperCase() }}
             </div>
+            <div class="choices">
+                <div v-for="(item, i) in props.choices" class="choice">
+                    <div class="choice-text">
+                        {{ item.toLocaleUpperCase() }}
+                    </div>
+                    
+                </div>
+            </div>
+           
             <v-progress-linear 
                 :color="'rgb(' + tBarColor.r + ', ' + tBarColor.g + ', ' + tBarColor.b + ')'" 
                 rounded
@@ -79,13 +89,39 @@ watch(() => props.switch_, (switch_old, switch_new) => { if (!isRunning) startQu
 </template>
 
 <style scoped>
+
+.choice-text {
+    margin: 5%;
+    color: white;
+}
+
+.choice {
+    font-size: large;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    border: solid;
+    border-color: whitesmoke;
+    border-width: 0.05em;
+    border-radius: 25px;
+
+    background-color: rgba(140, 140, 140, 0.4);
+
+
+}
+
+.choices {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+}
 .question-text {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
     font-size: x-large;
-    font-weight: 500;
-    color: grey;
+    font-weight: 100;
+    color: black;
 }
 
 .component-wrapper {
