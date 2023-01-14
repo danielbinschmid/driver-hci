@@ -16,6 +16,7 @@ TODO:
     - implement logic to handle response
     + respect time left and fire TimeExceeded exception if necessary
     - parse json before calling updateWEbserver()
+    - implement type: clear_request
 """
 
 
@@ -40,12 +41,12 @@ def setup():
     global RESPONSE_PORT
     global WEBSERVER_ADDRESS
 
-    HOST = str(config['MAIN_SERVER']['HOST'])
+    HOST = str(config['MAIN_SERVER']['HOST_LOCAL'])
     REQUEST_PORT = int(config['MAIN_SERVER']['HOST_REQUEST_PORT'])
     RESPONSE_PORT = int(config['MAIN_SERVER']['HOST_RESPONSE_PORT'])
     WEBSERVER_ADDRESS = str(config['WEBSERVER']['WEBSERVER_ADDRESS'])
 
-    logging.info('Loaded configuration from config.ini\nHOST: {}\nREQUEST_PORT: {}\nRESPONSE_PORT: {}\nWEBSERVER: {}'.format(HOST, REQUEST_PORT, RESPONSE_PORT, WEBSERVER_ADDRESS))
+    logging.info('Loaded configuration from config.ini\nHOST_LOCAL: {}\nREQUEST_PORT: {}\nRESPONSE_PORT: {}\nWEBSERVER: {}'.format(HOST, REQUEST_PORT, RESPONSE_PORT, WEBSERVER_ADDRESS))
 
     # init sockets
     request_listener = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
@@ -116,28 +117,28 @@ def handle_decision_request(name, sock):
                 # for key, value in request.items():
                 #     logging.info('{}: {}'.format(key, value))
 
-                time_remaining = request.get('time_remaining')
+                # time_remaining = request.get('time_remaining')
 
-                global timer
-                timer = threading.Timer(time_remaining, timer_exceeded)
-                timer.start()
+                # global timer
+                # timer = threading.Timer(time_remaining, timer_exceeded)
+                # timer.start()
 
                 # TODO replace the response mechanism with hand gesture
-                decision = input('input decision: left=1, right=2\n')
+                # decision = input('input decision: left=1, right=2\n')
 
-                if decision == '1' or decision == '2':
-                    logging.info('Decision taken')
+                # if decision == '1' or decision == '2':
+                #     logging.info('Decision taken')
 
-                response = {
-                    'type': 'response_valid',
-                    'decision': decision
-                    }
+                # response = {
+                #     'type': 'response_valid',
+                #     'decision': decision
+                #     }
                 
-                # send response_valid update webserver
-                update_webserver(response)
+                # # send response_valid update webserver
+                # update_webserver(response)
 
-                # stop timer if successful
-                timer.cancel()
+                # # stop timer if successful
+                # timer.cancel()
 
             except: 
                 logging.warning('Invalid JSON object received')
@@ -158,10 +159,12 @@ def handle_decision_response(name, sock):
 
         logging.info(data.decode())
 
-        if not timer.isAlive():
+        # if not timer.isAlive():
 
-            # negative response
-            continue
+        #     # negative response
+        #     continue
+
+        update_webserver(data)
 
         # send valid response
 

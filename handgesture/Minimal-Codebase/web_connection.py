@@ -1,11 +1,19 @@
 import random
-
 import socket
 import json
+from configparser import ConfigParser
 
-# HOST = '10.181.114.228'
-HOST = ''
-PORT = 40001
+CONFIG_FILE_PATH = '../../config.ini'
+
+config = ConfigParser()
+config.read(CONFIG_FILE_PATH)
+
+if not config.items:
+    print('could not access config parameters')
+    exit(1)
+
+HOST = config['MAIN_SERVER']['HOST_REMOTE']
+PORT = config['MAIN_SERVER']['HOST_RESPONSE_PORT']
 
 user_danger_threshold = 0.5   ## user's dangerous attribute as threshold (half of danger percentage to decide whether for AD system to take over)
 
@@ -43,10 +51,13 @@ def dec_generator(labels):
     #     print("__dec_sys fails cuz no detection input, system cannot generate decision.")
 
 def send_response(data):
-    print("send_request called")
+    
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.sendto(bytes(json.dumps(data), "utf-8"), (HOST, PORT))
     
     finally:
+        print('Sent response to {}'.format(s.getsockname()[1]))
+        print('Data was: {}'.format(data))
+        
         s.close()
