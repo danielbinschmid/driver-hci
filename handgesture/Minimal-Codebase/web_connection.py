@@ -12,8 +12,8 @@ if not config.items:
     print('could not access config parameters')
     exit(1)
 
-HOST = config['MAIN_SERVER']['HOST_REMOTE']
-PORT = config['MAIN_SERVER']['HOST_RESPONSE_PORT']
+HOST = str(config['MAIN_SERVER']['HOST_REMOTE'])
+PORT = int(config['MAIN_SERVER']['HOST_RESPONSE_PORT'])
 
 user_danger_threshold = 0.5   ## user's dangerous attribute as threshold (half of danger percentage to decide whether for AD system to take over)
 
@@ -54,6 +54,7 @@ def send_response(data):
     
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(HOST, PORT)
         s.sendto(bytes(json.dumps(data), "utf-8"), (HOST, PORT))
     
     finally:
