@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { reactive, watch } from "vue";
-
+import { gsap } from "gsap";
 function compStep(start: number, end: number, stepSize_: number = stepSize): number { return (end - start) * stepSize_; }
 
 const props = defineProps<{
-    question: string,
-    choices: string[],
-    timeRemaining: number,
-    switch_: boolean
+    requestData: RequestData,
+    show: boolean,
+    switch_: boolean,
 }>()
 
 // CONSTANTS
@@ -24,13 +23,30 @@ const colorStepVector = {
 // REACTIVE VARS
 const timerVal = reactive({ time: 100 });
 const tBarColor = reactive({ r: startColor.r, g: startColor.g, b: startColor.b })
-
+const show = reactive({val: props.show});
+const decided = reactive({val: false});
+const localTimerExceeded = reactive({val: false});
 // CONTROL VARS
 var isRunning = false;
 var interval: any = undefined;
 
 // ANIMATION
+function resetTimer() {
+    tBarColor.r = startColor.r;
+    tBarColor.g = startColor.g;
+    tBarColor.b = startColor.b;
+
+    timerVal.time = 100;
+    clearInterval(interval)
+    isRunning = false;
+    
+    
+}
+
 function startQuestion() {
+    decided.val = false;
+    show.val = true;
+    localTimerExceeded.val = false;
     interval = setInterval(() => {
         if (isRunning) {
             // change colour
@@ -41,50 +57,85 @@ function startQuestion() {
             // change time
             timerVal.time -= 100 * stepSize;
             if (timerVal.time <= 0) {
-                tBarColor.r = startColor.r;
-                tBarColor.g = startColor.g;
-                tBarColor.b = startColor.b;
-
-                timerVal.time = 100;
-                clearInterval(interval)
-                isRunning = false;
+                localTimerExceeded.val = true;
             }
         } else {
             timerVal.time = 100;
             isRunning = true;
         }
-    }, props.timeRemaining * 1000 * stepSize);
+    }, props.requestData.event.time_remaining * 1000 * stepSize);
+}
+
+function responseReceived() {
+    // gsap.to()
 }
 
 watch(() => props.switch_, (switch_old, switch_new) => { if (!isRunning) startQuestion(); });
+watch(() => props.show, (show_old, show_new) => { show.val = show_new });
 
+watch(() => props.requestData.questionPending, (old, new_) => { 
+    if (isRunning && show.val) {
+        resetTimer();
+        decided.val = true;    
+        
+        localTimerExceeded.val = false;
+    }
+    
+    
+    
+});
 </script>
 
 <template>
     <div id="timebar" class="component-wrapper">
+        <v-expand-transition>
+                
+            
+            <div class="wrapper" v-show="show.val">
+                
 
-        <div class="wrapper">
-            <div class="question-text">
-                {{ props.question.toLocaleUpperCase() }}
-            </div>
-            <div class="choices">
-                <div v-for="(item, i) in props.choices" class="choice">
-                    <div class="choice-text">
-                        {{ item.toLocaleUpperCase() }}
-                    </div>
-                    
+                <div class="question-text">
+                    {{ props.requestData.event.request_text.toLocaleUpperCase() }}
                 </div>
+
+                <div class="choicesWrapper">
+                    <v-expand-transition>
+                        <div class="choices" v-show="props.requestData.questionPending">
+                            <div v-for="(item, i) in props.requestData.event.choices" class="choice">
+                                <div class="choice-text">
+                                    {{ item.toLocaleUpperCase() }}
+                                </div>
+                            </div>
+                        </div>
+                    </v-expand-transition>
+
+                    <v-expand-transition>
+                        <div class="choices" v-show="!props.requestData.questionPending">
+                            <div class="choice">
+                                <div class="choice-text">
+                                    {{ props.requestData.decision.toLocaleUpperCase() }}
+                                </div>
+                            </div>
+                        </div>
+                    </v-expand-transition>
+                </div>
+                
+                
+                <v-expand-transition>
+                    <v-progress-linear 
+                        v-show="!decided.val"
+                        :color="'rgb(' + tBarColor.r + ', ' + tBarColor.g + ', ' + tBarColor.b + ')'" 
+                        rounded
+                        class="timebar" 
+                        height="20" 
+                        v-model="timerVal.time" 
+                        :indeterminate="localTimerExceeded.val"
+                        stream>
+                    </v-progress-linear>
+                </v-expand-transition>
+                
             </div>
-           
-            <v-progress-linear 
-                :color="'rgb(' + tBarColor.r + ', ' + tBarColor.g + ', ' + tBarColor.b + ')'" 
-                rounded
-                class="timebar" 
-                height="20" 
-                v-model="timerVal.time" 
-                stream>
-            </v-progress-linear>
-        </div>
+        </v-expand-transition>
     </div>
 </template>
 

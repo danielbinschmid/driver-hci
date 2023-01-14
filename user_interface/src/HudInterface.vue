@@ -7,14 +7,27 @@ const props = defineProps<{
 }>();
 
 const switch_ = reactive({val: false});
-const request_data = reactive({text: "Question text", timeRemaining: 5, choices: ["left", "right"]});
+
+let requestData: RequestData = {
+    event: {
+        type: "idle",
+        choices: ["left", "right"],
+        time_remaining: 1,
+        request_text: "text"
+    },
+    decision: "left",
+    questionPending: false
+}
+const request_data = reactive(requestData);
+
+const showQuestion = reactive({val: true})
 
 // { type: 'request', choices: [ 'left', 'right' ], time_remaining: 10 }
 window.electronAPI.handleEvent((event, value) => {
+    console.log(value)
     if (value.type == "request") {
-        request_data.text = value.request_text;
-        request_data.choices = value.choices;
-        request_data.timeRemaining = value.time_remaining;
+        request_data.event = value
+        request_data.questionPending = true;
         onButton();
     }
 });
@@ -22,6 +35,14 @@ window.electronAPI.handleEvent((event, value) => {
 function onButton() {
     switch_.val = !switch_.val;
 }
+
+function decideQuestion() {
+    request_data.questionPending = !request_data.questionPending;
+}
+
+function clearQuestion() {
+    showQuestion.val = !showQuestion.val;
+} 
 
 </script>
 
@@ -32,9 +53,11 @@ function onButton() {
                 Invisible top indent
             </div>
             <div class="display">
-                <timebar :question="request_data.text" :choices="request_data.choices" :time-remaining="request_data.timeRemaining" :switch_="switch_.val" />
+                <timebar :request-data="request_data" :switch_="switch_.val" :show="showQuestion.val" />
             </div>
         </div>
+        <v-btn @click="decideQuestion()">Decide</v-btn>
+        <v-btn @click="clearQuestion()">Clear</v-btn>
     </div>
 </template>
 
