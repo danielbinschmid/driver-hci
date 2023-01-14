@@ -41,12 +41,12 @@ def setup():
     global RESPONSE_PORT
     global WEBSERVER_ADDRESS
 
-    HOST = str(config['MAIN_SERVER']['HOST_LOCAL'])
+    HOST = str(config['MAIN_SERVER']['HOST'])
     REQUEST_PORT = int(config['MAIN_SERVER']['HOST_REQUEST_PORT'])
     RESPONSE_PORT = int(config['MAIN_SERVER']['HOST_RESPONSE_PORT'])
     WEBSERVER_ADDRESS = str(config['WEBSERVER']['WEBSERVER_ADDRESS'])
 
-    logging.info('Loaded configuration from config.ini\nHOST_LOCAL: {}\nREQUEST_PORT: {}\nRESPONSE_PORT: {}\nWEBSERVER: {}'.format(HOST, REQUEST_PORT, RESPONSE_PORT, WEBSERVER_ADDRESS))
+    logging.info('Loaded configuration from config.ini\nHOST: {}\nREQUEST_PORT: {}\nRESPONSE_PORT: {}\nWEBSERVER: {}'.format(HOST, REQUEST_PORT, RESPONSE_PORT, WEBSERVER_ADDRESS))
 
     # init sockets
     request_listener = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
