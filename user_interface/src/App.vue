@@ -113,6 +113,7 @@ window.onresize = () => {
     display: flex;
     justify-content: center;
     flex-flow: column;
+    color: black;
 }
 
 h1 {
@@ -120,7 +121,7 @@ h1 {
     margin-top: auto;
     margin-bottom: auto;
     text-align: center;
-    font-weight: 100;
+    font-weight: 300;
 }
 
 .headerContainer {

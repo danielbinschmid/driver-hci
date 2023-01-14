@@ -83,8 +83,9 @@ watch(() => props.switch_, (switch_old, switch_new) => { if (!isRunning) startQu
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    font-size: large;
-    font-weight: 100;
+    font-size: x-large;
+    font-weight: 500;
+    color: grey;
 }
 
 .component-wrapper {
