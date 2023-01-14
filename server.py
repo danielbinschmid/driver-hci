@@ -5,21 +5,17 @@ import threading
 import json
 import logging
 import requests
+from configparser import ConfigParser
 
-HOST = '' # localhost
-
-REQUEST_PORT = 40000
-RESPONSE_PORT = 40001
-
-WEBSERVER_ADDRESS = 'http://10.181.92.108:40002/login'
+CONFIG_FILE_PATH = 'config.ini'
 
 """
 TODO:
     + try catch for json parsing
     - decide on action
-    - request action from controller
     - implement logic to handle response
     + respect time left and fire TimeExceeded exception if necessary
+    - parse json before calling updateWEbserver()
 """
 
 
@@ -28,7 +24,28 @@ this functions initializes sockets and configurations
 """
 def setup():
 
+    # setup logger
     logging.basicConfig(level=logging.INFO)
+
+    # import configs
+    config = ConfigParser()
+    config.read(CONFIG_FILE_PATH)
+
+    if not config.items:
+        logging.warning('Config could not be imported')
+        exit(1)
+
+    global HOST
+    global REQUEST_PORT
+    global RESPONSE_PORT
+    global WEBSERVER_ADDRESS
+
+    HOST = str(config['MAIN_SERVER']['HOST'])
+    REQUEST_PORT = int(config['MAIN_SERVER']['HOST_REQUEST_PORT'])
+    RESPONSE_PORT = int(config['MAIN_SERVER']['HOST_RESPONSE_PORT'])
+    WEBSERVER_ADDRESS = str(config['WEBSERVER']['WEBSERVER_ADDRESS'])
+
+    logging.info('Loaded configuration from config.ini\nHOST: {}\nREQUEST_PORT: {}\nRESPONSE_PORT: {}\nWEBSERVER: {}'.format(HOST, REQUEST_PORT, RESPONSE_PORT, WEBSERVER_ADDRESS))
 
     # init sockets
     request_listener = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
@@ -50,13 +67,17 @@ def setup():
 this function updates the webserver by sending 'data' to the server
 data should be a JSON object already
 """
-def update_webserver(json_data):
+def update_webserver(data):
 
     logging.info('Sending Update to Webserver at: {}'.format(WEBSERVER_ADDRESS))
 
-    webserver_response = requests.post(WEBSERVER_ADDRESS, data=json_data)
+    try:
+        webserver_response = requests.post(WEBSERVER_ADDRESS, data=json.dumps(data), timeout=2)
+        logging.info('Response from Webserver: {}'.format(webserver_response.text))
 
-    logging.info('Response from Webserver: {}'.format(webserver_response.text))
+    except:
+        logging.warning('Error updating Webserver')    
+
   
 """
 this function is called if the timer for the response ran out
@@ -69,7 +90,7 @@ def timer_exceeded():
         'type': 'response_time_exceeded',
         } 
 
-    update_webserver(json.dumps(response))
+    update_webserver(response)
 
 """
 this function is the entry point for threads and
@@ -97,6 +118,7 @@ def handle_decision_request(name, sock):
 
                 time_remaining = request.get('time_remaining')
 
+                global timer
                 timer = threading.Timer(time_remaining, timer_exceeded)
                 timer.start()
 
@@ -112,11 +134,11 @@ def handle_decision_request(name, sock):
                     }
                 
                 # send response_valid update webserver
-                update_webserver(json.dumps(response))
+                update_webserver(response)
 
                 # stop timer if successful
                 timer.cancel()
-            
+
             except: 
                 logging.warning('Invalid JSON object received')
                 continue
@@ -135,6 +157,14 @@ def handle_decision_response(name, sock):
         logging.info('Received response from: {}'.format(addr))
 
         logging.info(data.decode())
+
+        if not timer.isAlive():
+
+            # negative response
+            continue
+
+        # send valid response
+
 
 
 def main():
