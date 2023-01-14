@@ -1,63 +1,108 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref } from "vue";
-import type { Ref } from 'vue'
-const tbar: Ref<Element | null> = ref(null);
+import { reactive, watch } from "vue";
 
-onMounted(() => {
+function compStep(start: number, end: number, stepSize_: number = stepSize): number { return (end - start) * stepSize_; }
 
-})
+const props = defineProps<{
+    question: string,
+    timeRemaining: number,
+    switch_: boolean
+}>()
 
+// CONSTANTS
+const startColor = { r: 55, g: 146, b: 55 }
+const endColor = { r: 146, g: 55, b: 55 }
+const stepSize = 0.025;
 
-function onButton() {
-    tbar?.value?.classList.remove("round-time-bar");
-    tbar?.value?.classList.add("round-time-bar");
+const colorStepVector = {
+    r: compStep(startColor.r, endColor.r),
+    g: compStep(startColor.g, endColor.g),
+    b: compStep(startColor.b, endColor.b)
 }
+
+// REACTIVE VARS
+const timerVal = reactive({ time: 100 });
+const tBarColor = reactive({ r: startColor.r, g: startColor.g, b: startColor.b })
+
+// CONTROL VARS
+var isRunning = false;
+var interval: any = undefined;
+
+// ANIMATION
+function startQuestion() {
+    interval = setInterval(() => {
+        if (isRunning) {
+            // change colour
+            tBarColor.r += colorStepVector.r
+            tBarColor.g += colorStepVector.g
+            tBarColor.b += colorStepVector.b
+
+            // change time
+            timerVal.time -= 100 * stepSize;
+            if (timerVal.time <= 0) {
+                tBarColor.r = startColor.r;
+                tBarColor.g = startColor.g;
+                tBarColor.b = startColor.b;
+
+                timerVal.time = 100;
+                clearInterval(interval)
+                isRunning = false;
+            }
+        } else {
+            timerVal.time = 100;
+            isRunning = true;
+        }
+    }, props.timeRemaining * 1000 * stepSize);
+}
+
+watch(() => props.switch_, (switch_old, switch_new) => { if (!isRunning) startQuestion(); });
 
 </script>
 
 <template>
-    <div id="timebar">
+    <div id="timebar" class="component-wrapper">
 
-
-        <div ref="tbar" class="round-time-bar" data-style="smooth" style="--duration: 5;">
-        <div></div>
+        <div class="wrapper">
+            <div class="question-text">
+                {{ props.question }}
+            </div>
+            <v-progress-linear 
+                :color="'rgb(' + tBarColor.r + ', ' + tBarColor.g + ', ' + tBarColor.b + ')'" 
+                rounded
+                class="timebar" 
+                height="20" 
+                v-model="timerVal.time" 
+                stream>
+            </v-progress-linear>
         </div>
-
-        <button @click="onButton()">
-            click me
-        </button>
     </div>
 </template>
 
 <style scoped>
-.round-time-bar {
-  margin: 1rem;
-  overflow: hidden;
-}
-.round-time-bar div {
-  height: 5px;
-  animation: roundtime calc(var(--duration) * 1s) steps(var(--duration))
-    forwards;
-  transform-origin: left center;
-  background: linear-gradient(to bottom, red, #900);
+.question-text {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: x-large;
+    font-weight: 500;
+    color: grey;
 }
 
-.round-time-bar[data-style="smooth"] div {
-  animation: roundtime calc(var(--duration) * 1s) linear forwards;
+.component-wrapper {
+    width: 100%;
 }
 
-.round-time-bar[data-style="fixed"] div {
-  width: calc(var(--duration) * 5%);
+.wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-content: center;
+    height: 100%;
 }
 
-.round-time-bar[data-color="blue"] div {
-  background: linear-gradient(to bottom, #64b5f6, #1565c0);
-}
-
-@keyframes roundtime {
-  to {
-    /* More performant than `width` */
-    transform: scaleX(0);
-  }
+.timebar {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>
