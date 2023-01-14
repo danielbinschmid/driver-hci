@@ -57,7 +57,7 @@ def send_response(data):
         s.sendto(bytes(json.dumps(data), "utf-8"), (HOST, PORT))
     
     finally:
-        print('Sent response to {}'.format(s.getsockname()[1]))
+        print('Sent response to {}:{}'.format(HOST, PORT))
         print('Data was: {}'.format(data))
         
         s.close()
