@@ -24,8 +24,7 @@ import datetime
 from munch import DefaultMunch
 
 from web_connection import *
-import socket
-import threading
+
 
 def weighting_func(x):
     return (1 / (1 + np.exp(-0.2 * (x - 9))))
@@ -186,12 +185,6 @@ results = []
 active_index = 0
 fps = ""
 
-# init sockets
-REQUEST_PORT = 40003
-request_listener = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
-request_listener.bind(('', REQUEST_PORT))
-
-thread_1 = threading.Thread(target=)
 
 while cap.isOpened(): 
     t1 = time.time()
@@ -290,19 +283,19 @@ while cap.isOpened():
                 if best1 != prev_best1 and cum_sum[best1] > classifier_config.clf_threshold_final:
                     results.append(best1)
                     ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
-                    bin_dec = dec_generator(prediction_det, prob_det, labels) ##
+                    bin_dec = dec_generator(labels) ##
                     print('Early Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
             else:
                 if cum_sum[best1] > classifier_config.clf_threshold_final:
                     if best1 == prev_best1:
                         if cum_sum[best1] > 5:
                             ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
-                            bin_dec = dec_generator(prediction_det, prob_det, labels) ##
+                            bin_dec = dec_generator(labels) ##
                             results.append(best1)
                             print('Late Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
                     else:
-                            ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
-                        bin_dec = dec_generator(prediction_det, prob_det, labels) ##
+                        ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
+                        bin_dec = dec_generator(labels) ##
                         results.append(best1)
                         print('Late Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
 
@@ -326,8 +319,8 @@ while cap.isOpened():
     # print('results: {}'.format(results))
     cv2.putText(frame, fps, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (38, 0, 255), 1, cv2.LINE_AA)
     ## bin_dec = socket(retrieve)   # binary decision retrieved via socket
-    dec_text = "AD system decision: {}".format(bin_dec)
-    cv2.putText(frame, bin_dec, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (38, 0, 255), 1, cv2.LINE_AA)
+    # dec_text = "AD system decision: {}".format(bin_dec)
+    # cv2.putText(frame, bin_dec, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (38, 0, 255), 1, cv2.LINE_AA)
 
     cv2.imshow("Result", frame)
 
