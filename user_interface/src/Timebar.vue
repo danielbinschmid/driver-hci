@@ -12,7 +12,7 @@ const props = defineProps<{
 // CONSTANTS
 const startColor = { r: 55, g: 146, b: 55 }
 const endColor = { r: 146, g: 55, b: 55 }
-const stepSize = 0.025;
+const stepSize = 0.05;
 
 const colorStepVector = {
     r: compStep(startColor.r, endColor.r),
