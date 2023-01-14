@@ -1,8 +1,11 @@
-import gsap from "gsap";
+
+declare type ElectronAPI = {
+    handleCounter: (callback: (event, value) => void) => void;
+}
 
 declare global {
     interface Window {
-        mainCanvas: HTMLCanvasElement;
-        mainAudio: HTMLAudioElement;
+        electronAPI: ElectronAPI;
     }
-}
+};
+export {}

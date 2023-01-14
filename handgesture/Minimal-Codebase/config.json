@@ -1,8 +1,8 @@
 {
-    "root_path": "/shared/d/master/ws22/tc/driver-hci/handgesture/Minimal-Codebase",
+    "root_path": "/media/hkh/SharedVolum/TC/driver-hci/handgesture/Minimal-Codebase",
     "weights_det": "weights/egogesture_resnetl_10_RGB_8.pth",
     "weights_clf": "weights/egogesture_resnext_101_RGB_32.pth",
-    "use_cuda": true,
-    "camera_port": "https://192.168.178.69:8080/video",
+    "use_cuda": false,
+    "camera_port": "test_video/rgb.mp4",
     "comments": "'https://192.168.178.69:8080/video' # 'test_video/rgb.mp4', 0"
 }

@@ -15,12 +15,16 @@ from torch.nn import functional as F
 from model import generate_model
 from spatial_transforms import *
 from utils import Queue
+import sys
 
 import pdb
 import numpy as np
 import datetime
 
 from munch import DefaultMunch
+
+from web_connection import *
+
 
 def weighting_func(x):
     return (1 / (1 + np.exp(-0.2 * (x - 9))))
@@ -54,7 +58,8 @@ def get_det_prediction(inputs, detector_config, detector):
 
 
 # ------------------------------ INIT -----------------------------------
-
+## decision making binary flag
+bin_dec = False
 # xxxxx prepare the configuration dictionaries xxxxxx
 logging_information = {}
 labels = {}
@@ -94,7 +99,7 @@ detector, detector_params = generate_model(detector_config)
 if detector_config.resume_path:
     detector_config.resume_path = os.path.join(detector_config.root_path, detector_config.resume_path)
     print('loading checkpoint {}'.format(detector_config.resume_path))
-    checkpoint = torch.load(detector_config.resume_path)
+    checkpoint = torch.load(detector_config.resume_path, map_location=torch.device('cpu'))
 
     if detector_config.no_cuda:
         new_state_dict = OrderedDict()
@@ -115,7 +120,7 @@ classifier, classifier_params = generate_model(classifier_config)
 
 if classifier_config.resume_path:
     print('loading checkpoint {}'.format(classifier_config.resume_path))
-    checkpoint = torch.load(classifier_config.resume_path)
+    checkpoint = torch.load(classifier_config.resume_path, map_location=torch.device('cpu'))
 
     if classifier_config.no_cuda:
         new_state_dict = OrderedDict()
@@ -181,12 +186,11 @@ active_index = 0
 fps = ""
 
 
-
-
 while cap.isOpened(): 
     t1 = time.time()
     ret, frame = cap.read()
     if frame is None:
+        print("__No vid detected")
         break
 
     # transform frame for input into model
@@ -278,14 +282,20 @@ while cap.isOpened():
             if pre_predict:
                 if best1 != prev_best1 and cum_sum[best1] > classifier_config.clf_threshold_final:
                     results.append(best1)
+                    ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
+                    bin_dec = dec_generator(labels) ##
                     print('Early Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
             else:
                 if cum_sum[best1] > classifier_config.clf_threshold_final:
                     if best1 == prev_best1:
                         if cum_sum[best1] > 5:
+                            ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
+                            bin_dec = dec_generator(labels) ##
                             results.append(best1)
                             print('Late Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
                     else:
+                        ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
+                        bin_dec = dec_generator(labels) ##
                         results.append(best1)
                         print('Late Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
 
@@ -299,7 +309,7 @@ while cap.isOpened():
 
     prev_active = active
     elapsedTime = time.time() - t1
-    fps = "(Playback) {:.1f} FPS".format(1/elapsedTime)
+    fps = "(Playback) {:.1f} FPS".format(1/ (elapsedTime + sys.float_info.epsilon))
 
     if len(results) != 0:
         predicted = np.array(results)
@@ -307,11 +317,13 @@ while cap.isOpened():
     else:
         predicted = []
     # print('results: {}'.format(results))
-    # cv2.putText(frame, fps, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (38, 0, 255), 1, cv2.LINE_AA)
-    # cv2.imshow("Result", frame)
+    cv2.putText(frame, fps, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (38, 0, 255), 1, cv2.LINE_AA)
+    ## bin_dec = socket(retrieve)   # binary decision retrieved via socket
+    # dec_text = "AD system decision: {}".format(bin_dec)
+    # cv2.putText(frame, bin_dec, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (38, 0, 255), 1, cv2.LINE_AA)
 
-    # if cv2.waitKey(1)&0xFF == ord('q'):
-    #     break
+    cv2.imshow("Result", frame)
+
+    if cv2.waitKey(1)&0xFF == ord('q'):
+        break
 cv2.destroyAllWindows()
-
-    
