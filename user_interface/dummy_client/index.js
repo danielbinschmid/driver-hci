@@ -60,7 +60,7 @@ async function dummyHTTPSGet() {
  * 
  */
 async function dummyPost() {
-    let payload = { type: 'request', request_text: "Attempt to take over in next possible situation?", choices: ["yes", "no"], time_remaining: 1, default_choice: 0 };
+    let payload = { type: 'request', request_text: "Attempt to take over in next possible situation?", choices: ["yes", "no"], time_remaining: 5, default_choice: 0 };
     console.log("before");
     let res = await axios.post('http://localhost:40002/login', payload, function(data){
         if(data === 'yes') {
