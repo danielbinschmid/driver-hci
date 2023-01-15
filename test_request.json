@@ -1,6 +1,6 @@
 {
     "type": "request",
-    "request_text": "turn",
+    "request_text": "overtake",
     "choices": ["no", "yes"],
     "default_choice": 0, 
     "time_remaining": 5

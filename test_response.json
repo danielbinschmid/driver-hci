@@ -1,4 +1,4 @@
 {
-    "type": "response",
-    "decision": "yes"
+    "type": "user_response",
+    "decision": 1
 }

@@ -52,6 +52,9 @@ def setup():
     logging.info('RESPONSE_PORT: {}'.format(RESPONSE_PORT))
     logging.info('WEBSERVER: {}'.format(WEBSERVER_ADDRESS))
 
+    # global timer for action decision
+    global TIMER
+
     # init sockets
     request_listener = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
     request_listener.bind((HOST, REQUEST_PORT))
@@ -91,9 +94,20 @@ def timer_exceeded():
 
     logging.warning('Response time exceeded')
 
+    global open_request
+    open_request = False
+
     response = {
-        'type': 'response_time_exceeded',
+        "type": "time_exceeded",
         } 
+
+    update_webserver(response)
+
+    time.sleep(3)
+
+    response = {
+        "type": "clear"
+    }
 
     update_webserver(response)
 
@@ -104,7 +118,11 @@ triggers the necessary logic
 """
 def handle_decision_request(name, sock):
 
-    logging.info('Starting {} on port {}'.format(name, sock.getsockname()[1]))
+    logging.info('Starting {} on port {}'.format(name, REQUEST_PORT))
+
+    # to track if a request was not yet answered
+    global open_request
+    open_request = False
 
     while sock.recv is not None:
             data, addr = sock.recvfrom(1024)
@@ -113,48 +131,40 @@ def handle_decision_request(name, sock):
             logging.info(data.decode())
 
             try:
-                request = json.loads(data)
+                json_data = json.loads(data.decode())
 
-                # TODO handle decision logic here
+                request_type = json_data.get('type')
+                time_remaining = json_data.get('time_remaining')
 
-                # logging.info('JSON object:')
-                # for key, value in request.items():
-                #     logging.info('{}: {}'.format(key, value))
-
-                # time_remaining = request.get('time_remaining')
-
-                # global timer
-                # timer = threading.Timer(time_remaining, timer_exceeded)
-                # timer.start()
-
-                # TODO replace the response mechanism with hand gesture
-                # decision = input('input decision: left=1, right=2\n')
-
-                # if decision == '1' or decision == '2':
-                #     logging.info('Decision taken')
-
-                # response = {
-                #     'type': 'response_valid',
-                #     'decision': decision
-                #     }
-                
-                # # send response_valid update webserver
-                # update_webserver(response)
-
-                # # stop timer if successful
-                # timer.cancel()
+                if request_type == 'request' and time_remaining:
+                    open_request = True
 
             except: 
-                logging.warning('Invalid JSON object received')
+                logging.warning('Invalid JSON Request-object received')
+                open_request = False
                 continue
 
+            # send request to the webserver to notify the user to take action
+            request = json_data
+            update_webserver(request)
+
+            # timer starts here, and gets cancelled by response thread
+            # open_request gets reset if timer_exceeded is called
+            global TIMER
+            TIMER = threading.Timer(time_remaining, timer_exceeded)
+            TIMER.start()
+
+            logging.info('Started Timer: {}sec'.format(time_remaining))
 
 """
 this function receives data from the hand-gesture and takes action accordingly
 """
 def handle_decision_response(name, sock):
 
-    logging.info('Starting {} on port {}'.format(name, sock.getsockname()[1]))
+    logging.info('Starting {} on port {}'.format(name, RESPONSE_PORT))
+
+    # to check if a request was not yet answered
+    global open_request
 
     while sock.recv is not None:
         data, addr = sock.recvfrom(1024)
@@ -163,31 +173,41 @@ def handle_decision_response(name, sock):
         logging.info(data.decode())
 
         try:
-            json_data = json.loads(data)
-
-            # TODO 
-            # compare response type with request type
-            # and if there is an open request (timer >0)
-
-            update_webserver(json_data)
-
-            # TODO 
-            # after response, wait some time, then fire clear_request to reset
-
+            json_data = json.loads(data.decode())
 
         except:
-            pass
+            logging.warning('Invalid JSON Response-object received')
+            continue
 
-        # if not timer.isAlive():
+        # TODO 
+        # compare response type with request type
 
-        #     # negative response
-        #     continue
+        if open_request:
 
+            logging.info('An open request got answered')
 
-        # send valid response
+            # the user succesfully answered an open request
 
+            # stop the timer as response was valid and in time
+            TIMER.cancel()
+            open_request = False
 
+            response = json_data
+            update_webserver(response)
 
+            # after response, wait some time, then fire clear-request to reset
+            time.sleep(2)
+            response = {"type": "clear"}
+            update_webserver(response)
+        
+        else:
+
+            logging.warning('The user took action without needing to')
+
+            # the user took action without needing to
+            response = {"type": "invalid_action", "text": "No open request to be answered!"}
+            update_webserver(response)
+            
 def main():
 
     setup()

@@ -7,6 +7,7 @@ import socket
 import json
 import logging
 from configparser import ConfigParser
+import time
 
 CONFIG_FILE_PATH = 'config.ini'
 
@@ -55,7 +56,10 @@ def main():
     request = load_json('test_request.json')
     response = load_json('test_response.json')
 
-    # send_data(HOST, REQUEST_PORT, request)
+    send_data(HOST, REQUEST_PORT, request)
+
+    time.sleep(2)
+
     send_data(HOST, RESPONSE_PORT, response)
 
 
