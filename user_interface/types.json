@@ -22,5 +22,11 @@
     {
         "type": "time_exceeded",
         "fields": []
+    },
+    {
+        "type": "invalid_action",
+        "fields": [
+            "text"
+        ]
     }
 ]
