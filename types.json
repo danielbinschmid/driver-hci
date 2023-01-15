@@ -1,0 +1,26 @@
+
+[
+    {
+        "type": "request",
+        "fields": [
+            "request_text",
+            "choices",
+            "default_choice",
+            "time_remaining"
+        ]
+    },
+    {
+        "type": "user_response",
+        "fields": [
+            "decision"
+        ]
+    },
+    {
+        "type": "clear",
+        "fields": []
+    },
+    {
+        "type": "time_exceeded",
+        "fields": []
+    }
+]

@@ -42,7 +42,7 @@ def dec_generator(labels):
     
     print(f'decision: {dec_} from user danger status, {user_danger_status}, with danger threshold {user_danger_threshold}')
     
-    data = {"type": "hg_decision", "decision": dec_}
+    data = {"type": "user_response", "decision": dec_}
     # json_data = json.load(data)
     send_response(data)
 
