@@ -66,32 +66,41 @@ function startQuestion() {
     }, props.requestData.event.time_remaining * 1000 * stepSize);
 }
 
-function responseReceived() {
-    // gsap.to()
-}
+
 
 watch(() => props.switch_, (switch_old, switch_new) => { if (!isRunning) startQuestion(); });
-watch(() => props.show, (show_old, show_new) => { show.val = show_new });
+watch(() => props.show, (show_new, show_old) => { 
+    show.val = show_new 
+    if (!show.val) resetTimer();
+});
 
 watch(() => props.requestData.questionPending, (old, new_) => { 
     if (isRunning && show.val) {
         resetTimer();
-        decided.val = true;    
-        
+        decided.val = true;        
         localTimerExceeded.val = false;
     }
-    
-    
     
 });
 </script>
 
 <template>
     <div id="timebar" class="component-wrapper">
+        
         <v-expand-transition>
-                
-            
+            <div v-show="requestData.invalid_action" class="wrapper-invalid">
+                <div  class="invalid-text">
+                    {{ "action attempted".toLocaleUpperCase() }}
+                </div>
+                <div  class="invalid-text-small">
+                    {{ "(no action available)".toLocaleUpperCase() }}
+                </div>
+            </div>
+        </v-expand-transition>
+    
+        <v-expand-transition>
             <div class="wrapper" v-show="show.val">
+                
                 
 
                 <div class="question-text">
@@ -127,7 +136,7 @@ watch(() => props.requestData.questionPending, (old, new_) => {
                         :color="'rgb(' + tBarColor.r + ', ' + tBarColor.g + ', ' + tBarColor.b + ')'" 
                         rounded
                         class="timebar" 
-                        height="20" 
+                        height="10" 
                         v-model="timerVal.time" 
                         :indeterminate="localTimerExceeded.val"
                         stream>
@@ -144,10 +153,32 @@ watch(() => props.requestData.questionPending, (old, new_) => {
 .choice-text {
     margin: 5%;
     color: white;
+    text-align: center;
 }
 
+.invalid-text {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: medium;
+    font-weight: 100;
+    color: red;
+    text-align: center;
+}
+
+.invalid-text-small {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size:small;
+    font-weight: 100;
+    color: red;
+    text-align: center;
+}
+
+
 .choice {
-    font-size: large;
+    font-size: medium;
     width: 30%;
     display: flex;
     justify-content: center;
@@ -170,9 +201,10 @@ watch(() => props.requestData.questionPending, (old, new_) => {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    font-size: x-large;
+    font-size: medium;
     font-weight: 100;
     color: black;
+    text-align: center;
 }
 
 .component-wrapper {
@@ -182,6 +214,14 @@ watch(() => props.requestData.questionPending, (old, new_) => {
 .wrapper {
     display: flex;
     justify-content: space-evenly;
+    flex-direction: column;
+    align-content: center;
+    height: 100%;
+}
+
+.wrapper-invalid {
+    display: flex;
+    justify-content: center;
     flex-direction: column;
     align-content: center;
     height: 100%;

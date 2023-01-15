@@ -44,8 +44,16 @@ function startListening(mainWindow: BrowserWindow) {
         console.log("post request incoming");
         console.log(req.body);
         const request: EventJSON = req.body;
-
-        mainWindow.webContents.send('fresh-event', request);
+        
+        const parsedRequest: EventJSONParsed = {
+            type: request.type,
+            choices:            request.choices             !== undefined? request.choices: [],
+            time_remaining:     request.time_remaining      !== undefined? request.time_remaining: 0,
+            request_text:       request.request_text        !== undefined? request.request_text: "",
+            decision:           request.decision            !== undefined? request.decision: -1,
+            default_decision:   request.default_decision    !== undefined? request.default_decision: 0
+        }
+        mainWindow.webContents.send('fresh-event', parsedRequest);
 
         res.end("yes");
         

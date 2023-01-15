@@ -10,11 +10,14 @@ declare type EventJSON = {
     type: string,
     choices: string[],
     time_remaining: number,
-    request_text: string
+    request_text: string,
+    decision: number,
+    default_decision: number,
 }
 
 declare type RequestData = {
     event: EventJSON,
     decision: string,
-    questionPending: boolean
+    questionPending: boolean,
+    invalid_action?: boolean
 }

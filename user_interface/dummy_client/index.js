@@ -26,7 +26,7 @@ async function dummyHTTPSGet() {
 }
 
 async function dummyPost() {
-    let payload = { type: 'request', request_text: "Take over?", choices: ["yes", "no"], time_remaining: 1 };
+    let payload = { type: 'request', request_text: "Attempt to take over in next possible situation?", choices: ["yes", "no"], time_remaining: 1 };
     console.log("before");
     let res = await axios.post('http://localhost:40002/login', payload, function(data){
         if(data === 'yes') {
@@ -41,12 +41,62 @@ async function dummyPost() {
     // console.log("yes");
 }
 
-// dummyHTTPSGet();
-
-if (process.argv[2]) {
-    console.log(`index ${2} argument -> ${process.argv[2]}`);
-} else {
-
+async function dummyDecide() {
+    let payload = { type: 'decision_taken', decision: 0 };
+    console.log("before");
+    let res = await axios.post('http://localhost:40002/login', payload, function(data){
+        if(data === 'yes') {
+            alert("login success");
+          }
+      });
+    console.log("after");
 }
 
-dummyPost();
+async function dummyTimeExceeded() {
+    let payload = { type: 'time_exceeded'};
+    console.log("before");
+    let res = await axios.post('http://localhost:40002/login', payload, function(data){
+        if(data === 'yes') {
+            alert("login success");
+          }
+      });
+    console.log("after");
+}
+
+async function dummyClear() {
+    let payload = { type: 'clear'};
+    console.log("before");
+    let res = await axios.post('http://localhost:40002/login', payload, function(data){
+        if(data === 'yes') {
+            alert("login success");
+          }
+      });
+    console.log("after");
+}
+
+async function dummyInvalidAction() {
+    let payload = { type: 'invalid_action'};
+    console.log("before");
+    let res = await axios.post('http://localhost:40002/login', payload, function(data){
+        if(data === 'yes') {
+            alert("login success");
+          }
+      });
+    console.log("after");
+}
+
+// dummyHTTPSGet();
+const mode = process.argv[2]; 
+if (mode == "question") {
+    dummyPost();
+} else if (mode == "decide"){
+    dummyDecide();
+} else if(mode == "idle"){
+    dummyTimeExceeded();
+} else if(mode == "clear"){
+    dummyClear();
+} else if(mode == "invalid"){
+    dummyInvalidAction()
+} else {
+    dummyPost();
+}
