@@ -15,7 +15,7 @@ TODO:
     - decide on action
     - implement logic to handle response
     + respect time left and fire TimeExceeded exception if necessary
-    - parse json before calling updateWEbserver()
+    + parse json before calling updateWEbserver()
     - implement type: clear_request
 """
 
@@ -46,7 +46,11 @@ def setup():
     RESPONSE_PORT = int(config['MAIN_SERVER']['HOST_RESPONSE_PORT'])
     WEBSERVER_ADDRESS = str(config['WEBSERVER']['WEBSERVER_ADDRESS'])
 
-    logging.info('Loaded configuration from config.ini\nHOST: {}\nREQUEST_PORT: {}\nRESPONSE_PORT: {}\nWEBSERVER: {}'.format(HOST, REQUEST_PORT, RESPONSE_PORT, WEBSERVER_ADDRESS))
+    logging.info('Loaded Configuration from config file: {}'.format(CONFIG_FILE_PATH))
+    logging.info('HOST: {}'.format(HOST))
+    logging.info('REQUEST_PORT: {}'.format(REQUEST_PORT))
+    logging.info('RESPONSE_PORT: {}'.format(RESPONSE_PORT))
+    logging.info('WEBSERVER: {}'.format(WEBSERVER_ADDRESS))
 
     # init sockets
     request_listener = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
@@ -106,12 +110,12 @@ def handle_decision_request(name, sock):
             data, addr = sock.recvfrom(1024)
 
             logging.info('Request from: {}'.format(addr))
+            logging.info(data.decode())
 
             try:
-                request = json.loads(data.decode())
+                request = json.loads(data)
 
                 # TODO handle decision logic here
-                # logging.info('type of request: {}'.format(type(request)))
 
                 # logging.info('JSON object:')
                 # for key, value in request.items():
@@ -155,16 +159,30 @@ def handle_decision_response(name, sock):
     while sock.recv is not None:
         data, addr = sock.recvfrom(1024)
 
-        logging.info('Received response from: {}'.format(addr))
-
+        logging.info('Response from: {}'.format(addr))
         logging.info(data.decode())
+
+        try:
+            json_data = json.loads(data)
+
+            # TODO 
+            # compare response type with request type
+            # and if there is an open request (timer >0)
+
+            update_webserver(json_data)
+
+            # TODO 
+            # after response, wait some time, then fire clear_request to reset
+
+
+        except:
+            pass
 
         # if not timer.isAlive():
 
         #     # negative response
         #     continue
 
-        update_webserver(data)
 
         # send valid response
 

@@ -1,5 +1,7 @@
 {
     "type": "request",
-    "choices": ["left", "right"],
+    "request_text": "turn",
+    "choices": ["no", "yes"],
+    "default_choice": 0, 
     "time_remaining": 5
 }

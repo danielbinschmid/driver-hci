@@ -6,15 +6,23 @@ the client here should act as the simulator sending requests for now.
 import socket
 import json
 import logging
+from configparser import ConfigParser
 
-TEST_HOST = '127.0.0.1'
-TEST_PORT = 40000
+CONFIG_FILE_PATH = 'config.ini'
+
+config = ConfigParser()
+config.read(CONFIG_FILE_PATH)
+
+if not config.items:
+    print('could not access config parameters')
+    exit(1)
+
+HOST = str(config['MAIN_SERVER']['HOST'])
+REQUEST_PORT = int(config['MAIN_SERVER']['HOST_REQUEST_PORT'])
+RESPONSE_PORT = int(config['MAIN_SERVER']['HOST_RESPONSE_PORT'])
 
 
-def build_request(type, *choices, time_remaining=10):
-    pass
-
-def load_request(filename):
+def load_json(filename):
 
     data = {}
 
@@ -23,15 +31,16 @@ def load_request(filename):
 
     return data
 
-def send_request(host, port, request):
+def send_data(host, port, data):
 
     logging.info('Sending to: {}:{}'.format(host, port))
-    logging.info(request)
+    logging.info(data)
     
     try: 
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
 
-        data = json.dumps(request)
+        # serialize json
+        data = json.dumps(data)
 
         s.sendto(bytes(data, "utf-8"), (host, port))
 
@@ -43,9 +52,12 @@ def main():
 
     logging.basicConfig(level=logging.INFO)
 
-    request = load_request('test_request.json')
+    request = load_json('test_request.json')
+    response = load_json('test_response.json')
 
-    send_request(TEST_HOST, TEST_PORT, request)
+    # send_data(HOST, REQUEST_PORT, request)
+    send_data(HOST, RESPONSE_PORT, response)
+
 
 if __name__ == '__main__':
     main()
