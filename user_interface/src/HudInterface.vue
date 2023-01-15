@@ -15,10 +15,11 @@ let requestData: RequestData = {
         choices: ["left", "right"],
         time_remaining: 1,
         request_text: "text",
-        decision: -1,
+        decision: 0,
         default_choice: 0,
-        text: ""
+        text: "",
     },
+    decisionWarningText: "",
     decision: "left",
     questionPending: false
 }
@@ -28,22 +29,25 @@ const showQuestion = reactive({val: true})
 
 // { type: 'request', choices: [ 'left', 'right' ], time_remaining: 10 }
 window.electronAPI.handleEvent((event, value) => {
-    
+    request_data.invalid_action = value.type == "invalid_action" && !showQuestion.val;
+    requestData.decisionWarningText = "";
     if (value.type == "request") {
         showQuestion.val = true;
         request_data.event = value;
         request_data.questionPending = true;
         switch_.val = !switch_.val;
     } else if (value.type == "user_response") {
-        request_data.event.decision = value.decision;
+        request_data.decision = request_data.event.choices[value.decision];
+
         request_data.questionPending = false;
     } else if (value.type == "time_exceeded") {
-        request_data.event.decision = value.default_choice;
+        requestData.decisionWarningText = "Took too long to take action. Used default choice";
+        request_data.decision = request_data.event.choices[value.default_choice];
         request_data.questionPending = false;
     } else if (value.type == "clear") {
         showQuestion.val = false;
     } else if (value.type == "invalid_action") {
-        request_data.invalid_action = value.type == "invalid_action" && !showQuestion.val;
+        
         request_data.event.text = value.text;
     }
 });

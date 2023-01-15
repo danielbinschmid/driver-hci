@@ -47,6 +47,7 @@ function startQuestion() {
     decided.val = false;
     show.val = true;
     localTimerExceeded.val = false;
+    timerVal.time = 100;
     interval = setInterval(() => {
         if (isRunning) {
             // change colour
@@ -117,11 +118,18 @@ watch(() => props.requestData.questionPending, (old, new_) => {
 
                     <v-expand-transition>
                         <div class="choices" v-show="!props.requestData.questionPending">
-                            <div class="choice">
+                            <div v-if="props.requestData.decisionWarningText != ''">
+                                <div class="choice-warning-text">
+                                        {{ props.requestData.decisionWarningText.toLocaleUpperCase() + " '''" + props.requestData.decision.toLocaleUpperCase() + "''" }}
+                                    </div>
+                            </div>
+                            <div v-else class="choice">
+                                    
                                 <div class="choice-text">
                                     {{ props.requestData.decision.toLocaleUpperCase() }}
                                 </div>
                             </div>
+                            
                         </div>
                     </v-expand-transition>
                 </div>
@@ -147,10 +155,18 @@ watch(() => props.requestData.questionPending, (old, new_) => {
 
 <style scoped>
 
+.choice
 .choice-text {
     margin: 5%;
     color: white;
     text-align: center;
+}
+
+.choice-warning-text {
+    margin: 5%;
+    color: orangered;
+    text-align: center;
+    font-size: medium;
 }
 
 .invalid-text {

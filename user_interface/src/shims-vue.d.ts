@@ -19,6 +19,7 @@ declare type EventJSON = {
 declare type RequestData = {
     event: EventJSON,
     decision: string,
+    decisionWarningText: string,
     questionPending: boolean,
     invalid_action?: boolean
 }
