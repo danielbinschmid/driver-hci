@@ -283,19 +283,19 @@ while cap.isOpened():
                 if best1 != prev_best1 and cum_sum[best1] > classifier_config.clf_threshold_final:
                     results.append(best1)
                     ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
-                    bin_dec = dec_generator(labels) ##
+                    bin_dec = dec_generator(best1) ##
                     print('Early Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
             else:
                 if cum_sum[best1] > classifier_config.clf_threshold_final:
                     if best1 == prev_best1:
                         if cum_sum[best1] > 5:
                             ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
-                            bin_dec = dec_generator(labels) ##
+                            bin_dec = dec_generator(best1) ##
                             results.append(best1)
                             print('Late Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
                     else:
                         ## ff ped: socket(sending event_occured_binray_flag to prediciton_generated function)
-                        bin_dec = dec_generator(labels) ##
+                        bin_dec = dec_generator(best1) ##
                         results.append(best1)
                         print('Late Detected - class : {} with prob : {}'.format(labels[best1], cum_sum[best1]))
 
@@ -322,7 +322,7 @@ while cap.isOpened():
     # dec_text = "AD system decision: {}".format(bin_dec)
     # cv2.putText(frame, bin_dec, (0, 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (38, 0, 255), 1, cv2.LINE_AA)
 
-    cv2.imshow("Result", frame)
+    # cv2.imshow("Result", frame)
 
     if cv2.waitKey(1)&0xFF == ord('q'):
         break

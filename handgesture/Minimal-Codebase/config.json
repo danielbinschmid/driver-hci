@@ -3,7 +3,7 @@
     "weights_det": "weights/egogesture_resnetl_10_RGB_8.pth",
     "weights_clf": "weights/egogesture_resnext_101_RGB_32.pth",
     "use_cuda": true,
-    "camera_port": "test_video/rgb.mp4",
+    "camera_port": "https://192.168.178.29:8080/video",
     "comments": "'https://192.168.178.69:8080/video' # 'test_video/rgb.mp4', 0"
 }
 
