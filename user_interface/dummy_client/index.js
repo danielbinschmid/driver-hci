@@ -24,9 +24,43 @@ async function dummyHTTPSGet() {
     // console.log(planet);
     // return planet;
 }
-
+/**
+ * const types_ = [
+    {
+        "type": "request",
+        "fields": [
+            "request_text",
+            "choices",
+            "default_choice",
+            "time_remaining"
+        ]
+    },
+    {
+        "type": "user_response",
+        "fields": [
+            "decision"
+        ]
+    },
+    {
+        "type": "clear",
+        "fields": []
+    },
+    {
+        "type": "time_exceeded",
+        "fields": []
+    },
+    {
+        "type": "invalid_action",
+        "fields": [
+            "text"
+        ]
+    }
+]
+ * 
+ * 
+ */
 async function dummyPost() {
-    let payload = { type: 'request', request_text: "Attempt to take over in next possible situation?", choices: ["yes", "no"], time_remaining: 1 };
+    let payload = { type: 'request', request_text: "Attempt to take over in next possible situation?", choices: ["yes", "no"], time_remaining: 1, default_choice: 0 };
     console.log("before");
     let res = await axios.post('http://localhost:40002/login', payload, function(data){
         if(data === 'yes') {
@@ -42,7 +76,7 @@ async function dummyPost() {
 }
 
 async function dummyDecide() {
-    let payload = { type: 'decision_taken', decision: 0 };
+    let payload = { type: 'user_response', decision: 0 };
     console.log("before");
     let res = await axios.post('http://localhost:40002/login', payload, function(data){
         if(data === 'yes') {
@@ -75,7 +109,7 @@ async function dummyClear() {
 }
 
 async function dummyInvalidAction() {
-    let payload = { type: 'invalid_action'};
+    let payload = { type: 'invalid_action', text: "invalid action taken"};
     console.log("before");
     let res = await axios.post('http://localhost:40002/login', payload, function(data){
         if(data === 'yes') {

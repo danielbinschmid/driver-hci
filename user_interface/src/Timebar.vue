@@ -90,10 +90,7 @@ watch(() => props.requestData.questionPending, (old, new_) => {
         <v-expand-transition>
             <div v-show="requestData.invalid_action" class="wrapper-invalid">
                 <div  class="invalid-text">
-                    {{ "action attempted".toLocaleUpperCase() }}
-                </div>
-                <div  class="invalid-text-small">
-                    {{ "(no action available)".toLocaleUpperCase() }}
+                    {{ requestData.event.text.toLocaleUpperCase() }}
                 </div>
             </div>
         </v-expand-transition>

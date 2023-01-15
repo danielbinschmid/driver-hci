@@ -27,5 +27,5 @@
     "skipLibCheck": true,
     "outDir": "dist/electron"
   },
-  "include": ["src/electron/**/*"]
+  "include": ["src/electron/**/*", "*.json"]
 }

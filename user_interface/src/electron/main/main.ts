@@ -11,6 +11,53 @@ import {
 import express from "express";
 import bodyParser from "body-parser";
 
+
+const types_ = [
+    {
+        "type": "request",
+        "fields": [
+            "request_text",
+            "choices",
+            "default_choice",
+            "time_remaining"
+        ]
+    },
+    {
+        "type": "user_response",
+        "fields": [
+            "decision"
+        ]
+    },
+    {
+        "type": "clear",
+        "fields": []
+    },
+    {
+        "type": "time_exceeded",
+        "fields": []
+    },
+    {
+        "type": "invalid_action",
+        "fields": [
+            "text"
+        ]
+    }
+]
+
+function checkIncomingJson(incoming: EventJSON): boolean {
+    var nValid = 0;
+    for (const entry of types_) {
+        if (incoming.type == entry.type) {
+            var shouldBreak = false;
+            for (const field of entry.fields) {
+                if (incoming[field] === undefined) shouldBreak = true;
+            }
+            if (!shouldBreak) nValid ++;
+        }
+    }
+    return nValid > 0;
+}
+
 function startListening(mainWindow: BrowserWindow) {
     
     
@@ -44,18 +91,24 @@ function startListening(mainWindow: BrowserWindow) {
         console.log("post request incoming");
         console.log(req.body);
         const request: EventJSON = req.body;
-        
-        const parsedRequest: EventJSONParsed = {
-            type: request.type,
-            choices:            request.choices             !== undefined? request.choices: [],
-            time_remaining:     request.time_remaining      !== undefined? request.time_remaining: 0,
-            request_text:       request.request_text        !== undefined? request.request_text: "",
-            decision:           request.decision            !== undefined? request.decision: -1,
-            default_decision:   request.default_decision    !== undefined? request.default_decision: 0
+        const response = checkIncomingJson(request);
+        if (!response) {
+            res.end("no");
+        } else {
+            const parsedRequest: EventJSONParsed = {
+                type: request.type,
+                choices:            request.choices             !== undefined? request.choices: [],
+                time_remaining:     request.time_remaining      !== undefined? request.time_remaining: 0,
+                request_text:       request.request_text        !== undefined? request.request_text: "",
+                decision:           request.decision            !== undefined? request.decision: -1,
+                default_choice:     request.default_choice      !== undefined? request.default_choice: 0,
+                text:               request.text                !== undefined? request.text: ""
+            }
+            mainWindow.webContents.send('fresh-event', parsedRequest);
+    
+            res.end("yes");
         }
-        mainWindow.webContents.send('fresh-event', parsedRequest);
-
-        res.end("yes");
+        
         
         // var user_name = req.body.user;
         // var password = req.body.password;

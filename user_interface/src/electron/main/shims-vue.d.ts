@@ -1,11 +1,7 @@
 
 declare type EventJSON = {
     type: string,
-    choices?: string[],
-    time_remaining?: number,
-    request_text?: string,
-    decision?: number,
-    default_decision?: number
+    [field: string]: any;
 }
 
 declare type EventJSONParsed = {
@@ -14,5 +10,6 @@ declare type EventJSONParsed = {
     time_remaining: number,
     request_text: string,
     decision: number,
-    default_decision: number
+    default_choice: number,
+    text: string
 }
