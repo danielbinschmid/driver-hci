@@ -23,3 +23,10 @@ declare type RequestData = {
     questionPending: boolean,
     invalid_action?: boolean
 }
+
+declare type SceneOptions3D = {
+    rotateDesign?: boolean,
+    canvasID: string,
+    width: number,
+    height: number
+}

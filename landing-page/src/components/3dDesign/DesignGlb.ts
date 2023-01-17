@@ -22,6 +22,11 @@ export class DesignGlb extends GltfHandler {
             this._material = material;
         }
     }
+
+    reset() {
+        for (const mesh of this._meshes) {
+        }
+    }
     /**
      * 
      * @returns 231, 229, 225
@@ -36,7 +41,7 @@ export class DesignGlb extends GltfHandler {
 
 
         const depthParams:  THREE.MeshPhysicalMaterialParameters = {}
-        depthParams.wireframe = true;
+        depthParams.wireframe = false;
         depthParams.color = new THREE.Color(0.3, 0.3, 0.3);
         const depthMaterial = new THREE.MeshPhysicalMaterial(depthParams);
         // console.error("no material initialized for glb");
@@ -56,6 +61,10 @@ export class DesignGlb extends GltfHandler {
     }
 
     updateFrame() {
+        for (const mesh of this._meshes) {
+            // mesh.position.x -= 1
+            mesh.rotation.z += 0.01
+        }
     }
 
     _meshCallback(res: SkinnedMesh, vm: DesignGlb) {
@@ -69,16 +78,17 @@ export class DesignGlb extends GltfHandler {
             const mesh = new THREE.Mesh(res.geometry, vm._material);
             
             // const mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), this._material);
-            const constantScale = 3;
+            const constantScale = 4;
+            
+            mesh.position.x = this._position.x;
+            mesh.position.y = this._position.y;
+            mesh.position.z = this._position.z;
             res.geometry.scale(
                 constantScale,
                 constantScale,
                 constantScale
             );
-            mesh.position.x = this._position.x;
-            mesh.position.y = this._position.y;
-            mesh.position.z = this._position.z;
-            console.log(res.geometry);
+            this._meshes.push(mesh);
             if (vm._scene) vm._scene.add(mesh);
         }
         

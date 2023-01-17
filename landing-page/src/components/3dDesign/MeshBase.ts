@@ -10,6 +10,9 @@ export abstract class MeshBase {
 
     abstract updateFrame(): void;
 
+    reset() {
+        
+    }
 
     abstract addToScene(scene: Scene): void;
 }

@@ -17,16 +17,18 @@ import { MeshBase } from "./MeshBase";
 
 
 export class SceneRenderer {
-    _renderer: WebGLRenderer;
-    _scene: Scene;
-    _camera: PerspectiveCamera;
+    private _renderer: WebGLRenderer;
+    private _scene: Scene;
+    private _camera: PerspectiveCamera;
     _canvas: HTMLCanvasElement;
-    private _meshes: MeshBase[];
-
+    private _meshes: {[name: string]: MeshBase | DesignGlb};
+    private initialCameraPos: Vector3 | undefined;
+    options: SceneOptions3D;
     
-    constructor() {
+    constructor(options: SceneOptions3D) {
         // initialize
-        this._meshes = [];
+        this.options = options;
+        this._meshes = {};
         this._scene = new THREE.Scene();
         this._camera = new THREE.PerspectiveCamera(
             50,
@@ -45,15 +47,15 @@ export class SceneRenderer {
             antialias: true
         }
         this._renderer = new THREE.WebGLRenderer(webglParams);
-        this._renderer.setSize(window.innerWidth, window.innerHeight);
+        this._renderer.setSize(options.width, options.height);
 
         
         window.addEventListener(
             "resize",
             () => {
-                if (this._camera) this._camera.aspect = window.innerWidth / window.innerHeight;
+                if (this._camera) this._camera.aspect = this.options.width / this.options.height;
                 if (this._camera) this._camera.updateProjectionMatrix();
-                if (this._renderer) this._renderer.setSize(window.innerWidth, window.innerHeight);
+                if (this._renderer) this._renderer.setSize(this.options.width, this.options.height);
             },
             false
         );
@@ -110,21 +112,34 @@ export class SceneRenderer {
 
         // ------------------- MESHES ---------------------
 
-        const designGlb = new DesignGlb(designCenter, undefined);
-        this._addMesh(designGlb);
+        const designGlb = new DesignGlb(new Vector3(designCenter.x - 30, designCenter.y + 0, designCenter.z - 100), undefined);
+        this._addMesh(designGlb, "design");
 
 
         // CAMERA MOVEMENTS
         this._camera.position.x = cameraPos.x;
         this._camera.position.y = cameraPos.y;
         this._camera.position.z = cameraPos.z;
+        this.initialCameraPos = cameraPos;
 
         this._camera.lookAt(designCenter);
     }
 
-    _addMesh(mesh: MeshBase) {
-        this._meshes.push(mesh);
+    _addMesh(mesh: MeshBase, name: string) {
+        this._meshes[name] = mesh;
         mesh.addToScene(this._scene);
+    }
+
+    resetScene() {
+        if (this.initialCameraPos) {
+            this._camera.position.x = this.initialCameraPos.x;
+            this._camera.position.y = this.initialCameraPos.y;
+            this._camera.position.z = this.initialCameraPos.z;
+            this._camera.lookAt(new Vector3(0, 0, 0));
+
+        }
+
+        
     }
 
     
@@ -132,6 +147,9 @@ export class SceneRenderer {
         requestAnimationFrame(() => {
             this.animate(vm);
         });
+
+        if (this.options.rotateDesign) this._meshes["design"].updateFrame();
+
         this._renderer.render(this._scene, this._camera);
     }
 }
