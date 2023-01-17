@@ -1,153 +1,237 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref } from "vue";
-import type { Ref } from 'vue'
-import HudInterface from "./HudInterface.vue"
+import Scene from './Scene.vue';
+import { reactive, onMounted, ref } from 'vue';
+import type { Ref } from "vue";
+const sceneMetadata = reactive({ width: 0.6 * window.innerWidth });
 
-const LOGO_RELATIVE_HEIGHT = 0.2;
-const SCENE_IMG_RELATIVE_SIZE = 0.8;
+const handgestVid: Ref<null | HTMLVideoElement> = ref(null);
 
-const sceneImgGhost: Ref<HTMLImageElement | null> = ref(null);
-
-const logo = reactive({ height: 50 });
-const windowSizes = reactive({ width: window.innerWidth, height: window.innerHeight });
-const sceneSizes = reactive({ width: window.innerWidth, height: window.innerHeight });
+const handgestVidMetadata = reactive({ width: window.innerWidth / 4 })
 
 onMounted(() => {
-    let sceneImage: HTMLImageElement | null = sceneImgGhost.value;
-    if (sceneImage != null) {
-      sceneImage.onload = () => {
-          computeSizes();
-      }
-    } // TODO: set timeout if sceneImage is null and try again
+    sceneMetadata.width = 0.6 * window.innerWidth;
+    handgest()
+})
 
-});
 
-function computeSizes() {
-    if (sceneImgGhost.value === null) return;
-    let ratioScene = sceneImgGhost.value.width / sceneImgGhost.value.height;
-    let ratioWindow = window.innerWidth / (window.innerHeight * 0.95);
+function handgest() {
+    if (handgestVid.value !== null) {
+        console.log("pause video")
+        handgestVid.value.pause();
 
-    if (ratioScene > ratioWindow) {
-        sceneSizes.width = window.innerWidth * SCENE_IMG_RELATIVE_SIZE;
-        sceneSizes.height = Math.floor(sceneSizes.width / ratioScene);
-    } else {
-        sceneSizes.height = (window.innerHeight * 0.95) * SCENE_IMG_RELATIVE_SIZE;
-        sceneSizes.width = Math.floor(ratioScene * sceneSizes.height);
     }
-
-    logo.height = LOGO_RELATIVE_HEIGHT * sceneSizes.height;
-
-}
-
-
-window.onresize = () => { 
-  if (sceneImgGhost.value === null) return;
-  if (sceneImgGhost.value.complete) computeSizes(); 
 }
 
 </script>
 
 <template>
-    <div id="simulation">
-
-        <div class="ghost">
-            <img src='@/assets/road_scene.png' ref="sceneImgGhost" />
-        </div>
-        <div class="globalContainer" :style="{ width: windowSizes.width, height: windowSizes.height }">
-            <div class="headerContainer" :style="{ width: sceneSizes.width + 'px' }">
-                <h1 class="headerItem">
-                    PROTOTYPE SIMULATION
+    <div id="simulation" class="simulation">
+        <div class="paragraphs">
+            <div class="paragraph-1">
+                <h1>
+                    HEADING 1
                 </h1>
-                <div class="headerItem">
-                    <div class="logoWrapper">
-                        <img src='@/assets/coop-logo.png' :height="logo.height" />
-                    </div>
-                </div>
-                <h1 class="headerItem">
-                    HCI FOR AUTONOMOUS DRIVING
-                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                </p>
             </div>
 
-            <div class="container">
-                <div class="scene">
-                    <div class="interface" :style="{height: sceneSizes.height + 'px'}">
-                        <hud-interface 
-                                :style="{height: sceneSizes.height}" 
-                                :width="sceneSizes.width" 
-                                :height="sceneSizes.height"> 
-                        </hud-interface>
-                    </div>
-                    
-                    <div :style="{marginTop: -sceneSizes.height + 'px', height: sceneSizes.height + 'px'}">
-                        <img src='@/assets/road_scene.png' class="sceneImg" :width="sceneSizes.width" :height="sceneSizes.height" />
-
-                    </div>
- 
-                </div>
-                
+            <div class="paragraph-2">
+                <h1>
+                    HEADING 2
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                    labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+                    et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                </p>
             </div>
         </div>
+
+
+
+
+        <div class="videos">
+
+            <div class="scene">
+
+                <scene :width="sceneMetadata.width" />
+                <!--<div class="canvas-configure-container">
+mdiMovieOpenPlayOutline
+                    </div>  -->
+
+            </div>
+            <div class="controls-container">
+                <div class="controls">
+
+                    <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="">
+                        <v-icon color="white">mdi-reload</v-icon>
+                        <div class="canvas-configure-btn-text">Load videos</div>
+                    </v-btn>
+
+                    <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="">
+                        <v-icon color="white">mdi-movie-open-play-outline</v-icon>
+                        <div class="canvas-configure-btn-text">Play simulation</div>
+                    </v-btn>
+
+                    <v-card elevation="0" class="canvas-card-video" shaped outlined color="rgba(118, 113, 113, 0)">
+
+                        <video :width="handgestVidMetadata.width" autoplay muted ref="handgestVid"
+                            class="hand-gest-video">
+                            <source src="@/assets/handgesture.mp4" type="video/mp4">
+                            <!-- source src="movie.ogg" type="video/ogg"> -->
+                            Your browser does not support the video tag.
+                        </video>
+
+                    </v-card>
+                    <div class="caption">
+                        {{ "(Replayed hand-gestures for control)" }}
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
     </div>
 </template>
 
+
 <style scoped>
-
-.interface {
-    z-index: 100;
-}
-
-.ghost {
-    position: fixed;
-    visibility: hidden;
-}
-
-.logoWrapper {
+.controls-container {
+    width: 40vw;
     display: flex;
-    justify-content: center;
 }
 
-.headerItem {
-    
-    flex-basis: 33%;
-    display: flex;
-    justify-content: center;
-    flex-flow: column;
-    color: black;
+.caption {
+    text-align: center;
+    font-size: small;
+    font-weight: 300;
+    margin-top: 2%;
+    margin-bottom: 3%;
 }
 
-h1 {
-    font-size: medium;
+.paragraph-1 {
+    margin-right: 2%;
+}
+.paragraph-2 {
+    margin-right: 2%;
+}
+
+.hand-gest-video {
     margin-top: auto;
     margin-bottom: auto;
-    text-align: center;
-    font-weight: 300;
 }
 
-.headerContainer {
-    margin-top: 5vh;
+.paragraphs {
     display: flex;
-    justify-content: space-around;
-    flex-flow: row;
-    align-content: center;
+
 }
 
-.globalContainer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.controls {
+
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    border: none;
+    border-radius: 2rem;
+
+    background-color: rgba(118, 113, 113, 0.2);
     display: flex;
     flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(231, 229, 225);
 }
 
-.container {
-    display: flex;
+.control-panel {
+    width: 100vw;
     align-content: center;
-    justify-content: center;
+    display: flex;
+    justify-content: space-evenly;
 }
 
+.videos {
+    display: flex;
+    flex-flow: row;
+    ;
+    justify-content: space-between;
+    width: 100vw;
+}
+
+.canvas-card-video {
+
+    height: fit-content;
+
+
+
+
+}
+
+.canvas-configure-btn-text {
+    color: white;
+    font-size: xx-small;
+    margin-left: 5%;
+    text-align: center;
+}
+
+.canvas-configure-btn {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.canvas-configure-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.simulation {
+    background-color: rgb(231, 229, 225);
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    height: 100%;
+    margin-left: 2%;
+    margin-right: 2%;
+
+}
+
+.hand-gest-video {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.info {
+    width: 40vw;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+}
+
+.scene {}
+
+.canvas-card {
+    width: fit-content;
+    height: fit-content;
+    padding-top: 2%;
+
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 2rem;
+
+
+}
 </style>
