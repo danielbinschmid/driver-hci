@@ -25,6 +25,8 @@ export class DesignGlb extends GltfHandler {
 
     reset() {
         for (const mesh of this._meshes) {
+            mesh.rotation.x = 0;
+            mesh.rotation.y = 0;
         }
     }
     /**

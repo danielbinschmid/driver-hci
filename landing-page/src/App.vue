@@ -76,6 +76,7 @@ window.addEventListener(
 
 
 <style scoped>
+
 section {
     width: 100vw;
     height: 80vh;
