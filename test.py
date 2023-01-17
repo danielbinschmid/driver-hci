@@ -58,7 +58,7 @@ def main():
 
     send_data(HOST, REQUEST_PORT, request)
 
-    time.sleep(2)
+    time.sleep(3)
 
     send_data(HOST, RESPONSE_PORT, response)
 

@@ -207,6 +207,13 @@ def handle_decision_response(name, sock):
             # the user took action without needing to
             response = {"type": "invalid_action", "text": "No open request to be answered!"}
             update_webserver(response)
+
+            # after response, wait some time, then fire clear-request to reset
+            time.sleep(3)
+
+            response = {"type": "clear"}
+            update_webserver(response)
+ 
             
 def main():
 
