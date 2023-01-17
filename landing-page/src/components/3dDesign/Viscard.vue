@@ -13,6 +13,19 @@ onMounted(() => {
     console.log("letsgo")
 })
 
+window.addEventListener(
+    "resize",
+    () => {
+        if (renderer) {
+            renderer.options.width = window.innerWidth / 3;
+            renderer.options.height = window.innerHeight / 3;
+            renderer.resize(window.innerWidth, window.innerHeight);
+        }
+        
+    },
+    false
+);
+
 
 function rotate() {
     console.log("rotiere bitte")

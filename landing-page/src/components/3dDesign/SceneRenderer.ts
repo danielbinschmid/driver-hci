@@ -70,7 +70,11 @@ export class SceneRenderer {
 
     }
 
-
+    resize(width: number, height: number) {
+        if (this._camera) this._camera.aspect = this.options.width / this.options.height;
+        if (this._camera) this._camera.updateProjectionMatrix();
+        if (this._renderer) this._renderer.setSize(this.options.width, this.options.height);
+    }
 
     _initScene() {
         // ----------- STATIC FIXED POSITIONS ------------

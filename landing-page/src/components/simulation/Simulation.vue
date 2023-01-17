@@ -2,16 +2,26 @@
 import Scene from './Scene.vue';
 import { reactive, onMounted, ref } from 'vue';
 import type { Ref } from "vue";
-const sceneMetadata = reactive({ width: 0.6 * window.innerWidth });
+const sceneMetadata = reactive({ width: 0.5 * window.innerWidth });
 
 const handgestVid: Ref<null | HTMLVideoElement> = ref(null);
 
 const handgestVidMetadata = reactive({ width: window.innerWidth / 4 })
 
 onMounted(() => {
-    sceneMetadata.width = 0.6 * window.innerWidth;
+    sceneMetadata.width = 0.5 * window.innerWidth;
     handgest()
 })
+
+window.addEventListener(
+    "resize",
+    () => {
+        sceneMetadata.width = 0.5 * window.innerWidth;
+        handgestVidMetadata.width = window.innerWidth / 4;
+    },
+    false
+);
+
 
 
 function handgest() {
@@ -29,27 +39,10 @@ function handgest() {
         <div class="paragraphs">
             <div class="paragraph-1">
                 <h1>
-                    What is COOP-Driving? 
+                    Live demo
                 </h1>
                 <p>
-                    COOP-Driving was created by a team of students at the Technical University of Munich (TUM).
-                    Our vision is to improve the usability of AD level2/3 by implementing interaction between the user and the Autonomous-Driving-System (ADS). 
-                    Especially in situations where the ADS has to deal with a high level of uncertainty, the system often struggles to make a decision and gives back control to the user. 
-                    We therefore want to incorporate human decision making in order to extend the duration of an autonomous driving phase. 
-                </p>
-            </div>
-
-            <div class="paragraph-2">
-                <h1>
-                    Working Prototype
-                </h1>
-                <p>
-                    We implemented a working prototype which shows how our solution may be integrated and used in a real world scenario. 
-                    In the live-demo example below you can see the cockpit-view of a car equipped with our product. 
-                    The HUD on the left displays information about map data and the ADS world view. On the right you see the view of the camera, which is mounted on the bottom of the rearview mirror and scans for handgesture input of the user. 
-                    You can see that the driver approaches a slow driving car. The ADS wants to attempt a take-over maneuver in the near future, but asks the user for confirmation first.
-                    It appears that the vehicle in front can not be trusted, as it drives in unpredictable wavy lines. Therefore, the ADS asks the user if it is safe to overtake now. The user declines the request and waits for a safe situation.
-                    When it is safe to do so, the ADS asks the user again, if the take-over maneuver should be executed. The user confirms the action and takes over the car in front.
+                    Below you can find a pre-recorded run of our prototype.
                 </p>
             </div>
         </div>
@@ -82,12 +75,18 @@ mdiMovieOpenPlayOutline
 
                     <v-card elevation="0" class="canvas-card-video" shaped outlined color="rgba(118, 113, 113, 0)">
 
-                        <video :width="handgestVidMetadata.width" autoplay muted ref="handgestVid"
-                            class="hand-gest-video">
-                            <source src="@/assets/handgesture.mp4" type="video/mp4">
-                            <!-- source src="movie.ogg" type="video/ogg"> -->
-                            Your browser does not support the video tag.
-                        </video>
+                        <div v-if="false">
+                            <video :width="handgestVidMetadata.width" autoplay muted ref="handgestVid"
+                                class="hand-gest-video">
+                                <source src="" type="video/mp4">
+                                <!-- source src="movie.ogg" type="video/ogg">  @/assets/handgesture.mp4"-->
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div v-else>
+                            <canvas class="placeholder-video" ></canvas>
+                        </div>
+                        
 
                     </v-card>
                     <div class="caption">
@@ -106,6 +105,14 @@ mdiMovieOpenPlayOutline
 
 
 <style scoped>
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
 .controls-container {
     width: 40vw;
     display: flex;
@@ -119,7 +126,9 @@ mdiMovieOpenPlayOutline
     margin-bottom: 3%;
 }
 
+
 .paragraph-1 {
+    width: 100%;
     margin-right: 2%;
 }
 .paragraph-2 {

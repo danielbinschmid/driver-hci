@@ -34,6 +34,14 @@ function computeSizes() {
 
 }
 
+window.addEventListener(
+    "resize",
+    () => {
+        if (sceneImgGhost.value === null) return;
+        if (sceneImgGhost.value.complete) computeSizes();
+    },
+    false
+);
 
 window.onresize = () => { 
   if (sceneImgGhost.value === null) return;

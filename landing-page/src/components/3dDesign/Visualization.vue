@@ -9,11 +9,12 @@ const props = defineProps<{
 }>()
 
 const descriptionMetadata = reactive({
-    height: window.innerHeight * (4 / 5)
+    height: window.innerHeight * (3 / 5)
 })
 
 window.onresize = () => { 
-  descriptionMetadata.height = window.innerHeight * (4 / 5)
+
+  descriptionMetadata.height = window.innerHeight * (3 / 5)
 }
 
 onMounted(() => {
@@ -38,12 +39,21 @@ const benched = 0
                 <v-virtual-scroll :items="items" :height="descriptionMetadata.height">
 
                     <template v-slot:default="{ item }">
-                        <h1>
-                            {{ item.heading.toLocaleUpperCase() }}
-                        </h1>
-                        <p>
-                            {{ item.paragraph }}
-                        </p>
+                        <div v-if="item.type == 'Image'" >
+
+                            <v-img src="../../assets/3DModelDescription.png" width="500" />
+
+                            
+                        </div>
+                        <div v-else>
+                            <h1>
+                                {{ item.heading.toLocaleUpperCase() }}
+                            </h1>
+                            <p>
+                                {{ item.paragraph }}
+                            </p>
+                        </div>
+                        
                     </template>
                 </v-virtual-scroll>
             </div>
@@ -54,11 +64,16 @@ const benched = 0
 
 
 <style scoped>
+
+.image {
+    margin-left: auto;
+    margin-right: auto;
+}
 .component-container {
     display: flex;
     justify-content: center;
     flex-flow: column;
-    height: 100%;
+    height: 95%;
 }
 
 .explanation-text {

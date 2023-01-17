@@ -7,7 +7,7 @@
     {
         "heading": "Image", 
         "type": "Image",
-        "source": "../assets",
+        "source": "../../assets/3DModelDescription.png",
         "paragraph": ""
     },
     {

@@ -4,7 +4,7 @@ import type { Ref } from 'vue';
 import Simulation from './components/simulation/Simulation.vue';
 import Slideshow from './components/slideshow/Slideshow.vue';
 import Visualization from "./components/3dDesign/Visualization.vue"
-const tabs = ["Simulation", "3D-prototyping", "Slideshow"]
+const tabs = ["Project", "3D-prototyping", "Simulation"]
 
 const model_ = reactive({val: undefined});
 const sectionData = reactive({height: 80, heightSuffix: 'vh'});
@@ -69,7 +69,7 @@ window.addEventListener(
 
       
         <section v-show="model_.val == 0" :style="{height: sectionData.height + sectionData.heightSuffix}">
-            <Simulation />
+            <Slideshow />
         </section>
 
         <section v-show="model_.val == 1" :style="{height: sectionData.height + sectionData.heightSuffix}">
@@ -77,7 +77,8 @@ window.addEventListener(
         </section>
 
         <section v-show="model_.val == 2" :style="{height: sectionData.height + sectionData.heightSuffix}">
-            <Slideshow />
+            
+            <Simulation />
         </section>
 
 
