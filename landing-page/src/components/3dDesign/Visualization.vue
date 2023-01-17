@@ -1,93 +1,50 @@
 <script setup lang="ts">
 import { SceneRenderer, } from './SceneRenderer';
-import { onMounted, defineProps } from 'vue';
-
+import { onMounted, defineProps,reactive } from 'vue';
+import viscard from './Viscard.vue';
+import explanation from "./explanation.json"
 
 const props = defineProps<{
     height: number
 }>()
 
-var renderer: undefined | SceneRenderer = undefined
+const descriptionMetadata = reactive({
+    height: window.innerHeight * (4 / 5)
+})
 
 onMounted(() => {
-    console.log(props.height)
-    renderer = new SceneRenderer({rotateDesign: false, canvasID: "canvas", width: window.innerWidth / 2, height: window.innerHeight / 2});
+
 })
 
 
-function rotate() {
-    if (renderer) {
-        renderer.options.rotateDesign = true;
-    }
+const items: ParagraphItem[] = explanation
 
-}
-
-function pauseRotation() {
-    if (renderer) {
-        renderer.options.rotateDesign = false;
-    }
-}
-
-function resetScene() {
-    if (renderer) {
-        renderer.resetScene();
-    }
-}
-
+const benched = 0
 </script>
 
 <template>
     <div id="visualization" class="component-container">
-        <div class="canvas-container">  
-            <v-card
-                elevation="10"
-                class="canvas-card"
-                shaped
-                outlined
-                color="rgb(118, 113, 113)" 
-            >
-                <canvas id="canvas"></canvas>
-                <div class="canvas-configure-container">
-                        <v-tooltip bottom>
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-btn outlined
-                                    rounded
-                                    class="canvas-configure-btn"
-                                    color="rgb(207, 10, 44)"
-                                    @click="rotate()"
-                                >
-                                    <v-icon color="white">mdi-rotate-3d</v-icon>
-                                    <div class="canvas-configure-btn-text">Rotate</div>
-                                </v-btn>
-                            </template>
-                            <span ></span>
-                        </v-tooltip>
 
-                       
-                        <v-btn outlined
-                            rounded
-                            class="canvas-configure-btn"
-                            color="rgb(207, 10, 44)"
-                            @click="pauseRotation()"
-                        >
-                            <v-icon color="white">mdi-pause</v-icon>
-                            <div class="canvas-configure-btn-text">Pause</div>
-                        </v-btn>
-
-                        <v-btn outlined
-                            rounded
-                            class="canvas-configure-btn"
-                            color="rgb(207, 10, 44)"
-                            @click="resetScene()"
-                        >
-                            <v-icon color="white">mdi-backup-restore</v-icon>
-                            <div class="canvas-configure-btn-text">Reset cam</div>
-                        </v-btn>
-
-                </div>                
-            </v-card>
-        </div>
         
+
+        <div class="container">
+            <viscard />
+            
+            <div class="explanation-text">
+                <v-virtual-scroll :items="items" :height="descriptionMetadata.height">
+                    
+                    <template v-slot:default="{ item }">
+                        <h1>
+                            {{ item.heading.toLocaleUpperCase() }}
+                        </h1>
+                        <p>
+                            {{ item.paragraph }}
+                        </p>
+                    </template>
+                </v-virtual-scroll>
+            </div>
+            
+        </div>
         
     </div>
 </template>
@@ -95,49 +52,25 @@ function resetScene() {
 
 <style scoped>
 
-.canvas-configure-container-single {
-    display: flex;
-    justify-content: center;
-}
-.canvas-configure-container {
-    display: flex;
-    justify-content: space-evenly;
-    margin-bottom: 2%;
-}
-
-.canvas-configure-btn-text {
-    color: white;
-    font-size: xx-small;
-    margin-left: 5%;
-    text-align: center;
-}
-
-.canvas-configure-btn {
-    margin-top: auto;
-    margin-bottom: auto;
-}
 
 .component-container {
     display: flex;
     justify-content: center;
     flex-flow: column;
     height: 100%;
-
 }
-.canvas-container {
+
+.explanation-text {
+    width: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.container {
     display: flex;
-    justify-content: center;
+    flex-flow: row;
+    justify-content:space-evenly;
 }
 
-.canvas-card {
-    width: fit-content;
-    padding-left: 2%;
-    padding-right: 2%;
-    padding-top: 2%;
-}
-
-canvas {
-
-}
 
 </style>

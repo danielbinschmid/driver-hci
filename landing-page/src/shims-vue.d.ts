@@ -30,3 +30,9 @@ declare type SceneOptions3D = {
     width: number,
     height: number
 }
+
+
+declare type ParagraphItem = {
+    heading: string,
+    paragraph: string
+}

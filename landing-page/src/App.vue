@@ -19,7 +19,7 @@ watch(() => model_.val, (switch_old, switch_new) => {
 onMounted(() => {
     if (topbar.value) {
         let topBarHeight = topbar.value.clientHeight;
-        sectionData.height = window.innerHeight - topBarHeight - 1;
+        sectionData.height = window.innerHeight - topBarHeight -2;
         sectionData.heightSuffix = "px";
     }
 })
@@ -29,7 +29,7 @@ window.addEventListener(
         if (topbar.value) {
 
         let topBarHeight = topbar.value.clientHeight;
-        sectionData.height = window.innerHeight - topBarHeight - 1;
+        sectionData.height = window.innerHeight - topBarHeight;
         sectionData.heightSuffix = "px";
     }
     },
