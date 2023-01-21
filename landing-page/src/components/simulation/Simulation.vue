@@ -99,6 +99,22 @@ mdiMovieOpenPlayOutline
         </div>
 
 
+        <div class="paragraphs">
+            <div class="paragraph-1">
+                <h1>
+                    Explanation
+                </h1>
+                <p>
+                    In the live-demo example above you can see the cockpit-view of a car equipped with our product. 
+                    The HUD on the left displays information about map data and the ADS world view. On the right you see the view of the camera, which is mounted on the bottom of the rearview mirror and scans for handgesture input of the user. 
+                    You can see that the driver approaches a slow driving car. The ADS wants to attempt a take-over maneuver in the near future, but asks the user for confirmation first.
+                    It appears that the vehicle in front can not be trusted, as it drives in unpredictable wavy lines. Therefore, the ADS asks the user if it is safe to overtake now. The user declines the request and waits for a safe situation.
+                    When it is safe to do so, the ADS asks the user again, if the take-over maneuver should be executed. The user confirms the action and takes over the car in front.
+                </p>
+            </div>
+        </div>
+
+
 
     </div>
 </template>
