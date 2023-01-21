@@ -12,12 +12,24 @@ export declare type SvgDotOptions = {
     onload: (svgMesh: SvgDot) => void
 }
 
+function getOpacityFromRGBA(rgba: string): number {
+    const splits = rgba.split(",");
+    if (splits.length == 4) {
+        // a value is there
+        return parseFloat(splits[3]);
+    } {
+        // only rgb
+        return 1;
+    }
+
+}
+
 export class SvgDot extends MeshBase {
     options: SvgDotOptions;
     _mesh?: Group;
     constructor(options: SvgDotOptions) {
         super();
-        
+        this._mesh = undefined;
         this.options = options;
 
 
@@ -42,7 +54,8 @@ export class SvgDot extends MeshBase {
                             if (path.userData["style"]["fill"] == "none") {
                                 opacity = 0;
                             } else {
-                                opacity = path.userData.style.strokeOpacity;
+                                opacity =  getOpacityFromRGBA(path.userData.style.fill);
+                               
                             }
                         }
                         
@@ -98,7 +111,7 @@ export class SvgDot extends MeshBase {
                 
                 group.scale.x = 0.5
                 group.scale.y = 0.5
-                console.log("we here bro")
+      
                 vm._mesh = group;
                 vm.updatePos(vm);
     

@@ -10,21 +10,24 @@ export declare type RoadConfig = {
 
 export class CustomSinCurve extends THREE.Curve<THREE.Vector3> {
     scaleX: number;
-    scaleY: number
-    center: Vector3
+    scaleY: number;
+    center: Vector3;
+    offsetStep: number;
 
-	constructor( scaleX = 1, scaleY = 1 , center: Vector3) {
+	constructor( scaleX = 1, scaleY = 1 , center: Vector3, offsetStep: number) {
 		super();
 		this.scaleX = scaleX;
-        this.scaleY = scaleY
+        this.scaleY = scaleY;
         this.center = center;
+        this.offsetStep = offsetStep;
 	}
 
 	getPoint(t: number, optionalTarget: THREE.Vector3 = new THREE.Vector3() ) {
         var tx = 0;
         var ty = 0;
         var tz = 0;
-
+        t = t.toString() == "NaN"? 0: t 
+        t = t + this.offsetStep;
 
         const FIRST_THRESHHOLD = 0.2;
         const SCND_THRESHHOLD = 0.8
@@ -35,7 +38,7 @@ export class CustomSinCurve extends THREE.Curve<THREE.Vector3> {
             ty = (t - FIRST_THRESHHOLD) * (0.5 / FIRST_THRESHHOLD) ;
 
         } else if (t < SCND_THRESHHOLD) {
-            let t_ = ((t - 0.2) / 0.6)
+            let t_ = ((t - FIRST_THRESHHOLD) / (SCND_THRESHHOLD - FIRST_THRESHHOLD))
 
             tx = t_ - 0.5;
             ty = Math.sin( 2 * Math.PI * t_ ) * SIN_HEIGHT;
@@ -56,6 +59,7 @@ export class CustomSinCurve extends THREE.Curve<THREE.Vector3> {
 
 export class Pipe extends MeshBase {
     private mesh: THREE.Mesh;
+
     options: RoadConfig;
 
 
@@ -69,6 +73,8 @@ export class Pipe extends MeshBase {
         const material = new THREE.MeshToonMaterial(  );
 
         const mesh = new THREE.Mesh( geometry, material );
+
+
 
         this.mesh = mesh;
 
