@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { SceneRenderer } from "./SceneRenderer"
 
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import type { Ref } from "vue";
+import { MapAnimationState } from "./MapAnimationStates";
 // "../assets/map//edited/transparent_background_3.svg"
 const mapWrapper: Ref<HTMLElement | null> = ref(null)
 const props = defineProps<{
     width: number,
-    height: number
+    height: number,
+    animationState: MapAnimationState
 }>()
 
 let renderer: SceneRenderer | undefined = undefined;
@@ -40,7 +42,30 @@ onMounted(() => {
     
 })
 
+watch(() => props.animationState, (_new, _old) => { 
+    switch (props.animationState) {
+        case MapAnimationState.PAUSE:
+            if (renderer) {
+                renderer.stopAnimation();
+            }
+            break;
 
+        case MapAnimationState.RESET:
+            if (renderer) {
+                renderer.stopAnimation();
+                renderer.resetAnimation();
+            }
+            break;
+        case MapAnimationState.START:
+            if (renderer) {
+                renderer.stopAnimation();
+                renderer.startAnimation();
+            }
+            break;
+        default:
+            break;
+    }
+});
  
 </script>
 

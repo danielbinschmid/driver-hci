@@ -2,15 +2,15 @@
 import Scene from './Scene.vue';
 import { reactive, onMounted, ref } from 'vue';
 import type { Ref } from "vue";
-
+import { MapAnimationState } from './map/MapAnimationStates';
 const LAYOUT_DATA = {relSceneWidth: 0.6, relControlWidth: 0.35}
 
 
 const sceneMetadata = reactive({ width: LAYOUT_DATA.relSceneWidth * window.innerWidth });
 const handgestVid: Ref<null | HTMLVideoElement> = ref(null);
 const handgestVidMetadata = reactive({ width: window.innerWidth / 4, downloaded: false })
-const sceneData = reactive({playVid: false});
-
+const sceneData = reactive({playVid: false, animationState: MapAnimationState.RESET});
+const tabs = ["Simulation"]
 
 onMounted(() => {
     computeSizes()
@@ -35,26 +35,34 @@ function handgest() {
     }
 }
 
-function playVid() {
+function playAnimation() {
     handgestVid.value?.play();
-    sceneData.playVid = true;
+    sceneData.animationState = MapAnimationState.START;
+
 } 
 
-function pauseVid() {
+function pauseAnimation() {
     handgestVid.value?.pause();
+    sceneData.animationState = MapAnimationState.PAUSE;
 }
 
-function loadVids() {
-    handgestVidMetadata.downloaded = true;
+function resetAnimation() {
+    if (handgestVid.value) {
+        handgestVid.value.pause();
+        handgestVid.value.currentTime = 0;
+    }
+    sceneData.animationState = MapAnimationState.RESET;
+    
+
     // if (handgestVid.value) handgestVid.value.play();
 }
 </script>
 <template>
     <div id="simulation" class="simulation">
-       
+        
         <div class="videos">
             <div class="scene">
-                <scene :width="sceneMetadata.width" :play-video-scene="sceneData.playVid"/>
+                <scene :width="sceneMetadata.width" :play-video-scene="sceneData.playVid" :animation-state="sceneData.animationState"/>
                 <!--
                     <div class="canvas-configure-container">
                         mdiMovieOpenPlayOutline
@@ -71,10 +79,16 @@ function loadVids() {
                             </div>
                         </div>
                     </div>
-
-                    <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="playVid()">
-                        <div class="canvas-configure-btn-text">Load videos</div>
+                    <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="playAnimation()">
+                        <div class="canvas-configure-btn-text">Play</div>
                     </v-btn>
+                    <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="pauseAnimation()">
+                        <div class="canvas-configure-btn-text">Pause</div>
+                    </v-btn>
+                    <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="resetAnimation()">
+                        <div class="canvas-configure-btn-text">Reset</div>
+                    </v-btn>
+                    
 
 
 

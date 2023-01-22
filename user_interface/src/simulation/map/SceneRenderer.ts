@@ -38,9 +38,11 @@ export class SceneRenderer {
     private step: number;
     private path?: CustomSinCurve
     private cameraPos: Vector3;
+    private intervals: NodeJS.Timer[];
 
     constructor(options: SceneOptions3D) {
         // initialize
+        this.intervals = [];
         this.step = 0;
         this.cameraPos = new Vector3(0, 0, 0);
         this.options = options;
@@ -81,7 +83,7 @@ export class SceneRenderer {
 
     }
 
-    _translateCoordinates(coords: Coords): Coords {
+    private _translateCoordinates(coords: Coords): Coords {
         
         return {
             x: coords.x * (this.options.width / 100),
@@ -89,7 +91,73 @@ export class SceneRenderer {
         }
     }
 
-    _initScene() {
+    startAnimation() {
+        if (this._meshes["own_car"] === undefined || this._meshes["other_car"] === undefined) {
+            console.error("meshes not defined yet");
+        }  
+
+        const ownCarMesh: SvgDot | MeshBase = this._meshes["own_car"];
+        const otherCarMesh = this._meshes["other_car"];
+
+        const ownCarInterval = setInterval(() => {
+                
+            
+            if (ownCarMesh.options.step >= 0.1) {
+                ownCarMesh.options.step -= 0.0008
+            } else if (ownCarMesh.options.step >= -0.35) {
+                ownCarMesh.options.step -= 0.0004
+            } else if(ownCarMesh.options.step >= -0.85){
+                ownCarMesh.options.step -= 0.0008
+            } else {
+                clearInterval(ownCarInterval);
+            }
+
+            if (this.path) {
+                const pos = this.path.getPoint(ownCarMesh.options.step);
+                this.cameraPos.set(pos.x, pos.y, pos.z);
+            } else {
+                console.error("road-path not defined");
+            }
+    
+        }, 10);
+        
+        const otherCarInterval = setInterval(() => {
+            // speed of front car is (0.05714 steps / second) 71428
+            if (otherCarMesh.options.step >= -0.6) otherCarMesh.options.step -= 0.0004
+
+        }, 10);
+        
+        this.intervals = []
+        this.intervals.push(ownCarInterval);
+        this.intervals.push(otherCarInterval);
+
+    }
+
+    stopAnimation() {
+        for (const interval of this.intervals) {
+            clearInterval(interval);
+        }
+        this.intervals = [];
+    }
+
+    resetAnimation() {
+        for (const interval of this.intervals) {
+            clearInterval(interval);
+        }
+        this.intervals = [];
+
+        if (this._meshes["own_car"] === undefined || this._meshes["other_car"] === undefined) {
+            console.error("meshes not defined yet");
+        }  
+
+        const ownCarMesh: SvgDot | MeshBase = this._meshes["own_car"];
+        const otherCarMesh = this._meshes["other_car"];
+
+        ownCarMesh.reset();
+        otherCarMesh.reset();
+    }
+ 
+    private _initScene() {
         // ----------- STATIC FIXED POSITIONS ------------
         // camera
         // camera
@@ -144,6 +212,9 @@ export class SceneRenderer {
         this._addMesh(new Pipe({
             path: new CustomSinCurve( this.options.width / 2, this.options.height, new Vector3(roadPos.x, roadPos.y, 0), 1)
         }), "road_after");
+        this._addMesh(new Pipe({
+            path: new CustomSinCurve( this.options.width / 2, this.options.height, new Vector3(roadPos.x, roadPos.y, 0), -2)
+        }), "road_after_2");
         //const dotOptions: DotOptions = {
         //    path: path,
         //    step: 1
@@ -153,16 +224,14 @@ export class SceneRenderer {
 
         const selfCarOpts: SvgDotOptions = {
             path: path,
-            step: 0.8, 
+            step: 0.52, 
+            startStep: 0.52,
             src: "/other_transparent_2.svg", // "/loc_transparent.svg",
             svgOffset: new Vector3(0, 0, 0),// new Vector3(200, -260, 0),
             onload: (svgMesh) => {
                 
                 this._addMesh(svgMesh, "other_car");
-                setInterval(() => {
-                    
-                    if (svgMesh.options.step >= -0.1) svgMesh.options.step -= 0.0005
-                }, 10);
+                
             }
         }
         const selfCar = new SvgDot(selfCarOpts);
@@ -171,18 +240,14 @@ export class SceneRenderer {
         
         const otherCarOpts: SvgDotOptions = {
             path: path,
-            step: 0.9, 
+            step: 1, 
+            startStep: 1,
             src: "/loc_transparent.svg", // "/loc_transparent.svg",
             svgOffset: new Vector3(0, 0, 0),// new Vector3(200, -260, 0),
             onload: (svgMesh) => {
                 
                 this._addMesh(svgMesh, "own_car");
-                setInterval(() => {
-                    
-                    if (svgMesh.options.step >= -0.1) svgMesh.options.step -= 0.0008
-                    const pos = path.getPoint(svgMesh.options.step);
-                    if (pos.x.toString() != "NaN" && pos.y.toString() != "NaN" && pos.z.toString() != "NaN") this.cameraPos.set(pos.x, pos.y, pos.z);
-                }, 10);
+                
             }
         }
         const otherCar = new SvgDot(otherCarOpts);
@@ -213,25 +278,13 @@ export class SceneRenderer {
         this._camera.lookAt(designCenter);
     }
 
-    _addMesh(mesh: MeshBase, name: string) {
+    private _addMesh(mesh: MeshBase, name: string) {
         this._meshes[name] = mesh;
         mesh.addToScene(this._scene);
     }
 
-    resetScene() {
-        if (this.initialCameraPos) {
-            this._camera.position.x = this.initialCameraPos.x;
-            this._camera.position.y = this.initialCameraPos.y;
-            this._camera.position.z = this.initialCameraPos.z;
-            this._camera.lookAt(new Vector3(0, 0, 0));
 
-        }
-
-        
-    }
-
-
-    _moveCamera() {
+    private _moveCamera() {
 
         this._camera.position.x = this.cameraPos.x - this.options.width / 2;
         this._camera.position.y = this.cameraPos.y - this.options.height / 2;

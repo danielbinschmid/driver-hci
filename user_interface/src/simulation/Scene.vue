@@ -2,10 +2,11 @@
 import { onMounted, reactive, ref, watch } from "vue";
 import type { Ref } from 'vue'
 import HudInterface from "./HudInterface.vue"
-
+import { MapAnimationState } from "./map/MapAnimationStates";
 const props = defineProps<{
     width: number,
-    playVideoScene: boolean
+    playVideoScene: boolean,
+    animationState: MapAnimationState
 }>();
 
 
@@ -14,6 +15,8 @@ const props = defineProps<{
 const sceneImgGhost: Ref<HTMLImageElement | null> = ref(null);
 const sceneVid: Ref<HTMLVideoElement | null> = ref(null);
 const sceneSizes = reactive({ width: 0, height: 0});
+const animationData = reactive({state: MapAnimationState.RESET});
+
 
 onMounted(() => {
     let sceneImage: HTMLImageElement | null = sceneImgGhost.value;
@@ -51,9 +54,27 @@ window.onresize = () => {
 }
 
 
-watch(() => props.playVideoScene, (_new, _old) => { 
-    if (_new && sceneVid.value !== null) {
-        sceneVid.value.play()
+watch(() => props.animationState, (_new, _old) => { 
+    if (sceneVid.value !== null) {
+
+        switch(props.animationState) {
+            case MapAnimationState.START:
+                sceneVid.value.play();
+                animationData.state = MapAnimationState.START;
+                break;
+            case MapAnimationState.PAUSE:
+                sceneVid.value.pause();
+                animationData.state = MapAnimationState.PAUSE;
+                break;
+            case MapAnimationState.RESET:
+                sceneVid.value.pause();
+                sceneVid.value.currentTime = 0;
+                animationData.state = MapAnimationState.RESET;
+                break;
+            default: 
+                break;
+        }
+        
     } 
 });
 </script>
@@ -69,7 +90,8 @@ watch(() => props.playVideoScene, (_new, _old) => {
                 <hud-interface 
                         :style="{height: sceneSizes.height}" 
                         :width="sceneSizes.width" 
-                        :height="sceneSizes.height"> 
+                        :height="sceneSizes.height"
+                        :animation-state="animationData.state"> 
                 </hud-interface>
             </div>
             

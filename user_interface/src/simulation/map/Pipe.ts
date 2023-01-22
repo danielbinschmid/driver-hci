@@ -52,6 +52,8 @@ export class CustomSinCurve extends THREE.Curve<THREE.Vector3> {
 
 	}
 
+
+
 }
 
 

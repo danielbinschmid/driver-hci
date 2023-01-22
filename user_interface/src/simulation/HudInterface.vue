@@ -2,9 +2,12 @@
 import Timebar from './Timebar.vue';
 import MapInfo from "./map/MapInfo.vue"
 import { reactive, onMounted } from "vue";
+import type { MapAnimationState } from './map/MapAnimationStates';
+
 const props = defineProps<{
-  width: number
-  height: number
+  width: number,
+  height: number,
+  animationState: MapAnimationState
 }>();
 
 const switch_ = reactive({val: false});
@@ -25,7 +28,7 @@ let requestData: RequestData = {
 }
 const request_data = reactive(requestData);
 const mapData = reactive({show: true});
-const showQuestion = reactive({val: true})
+const showQuestion = reactive({val: true});
 
 onMounted(() => {
     setTimeout(() => {
@@ -93,6 +96,7 @@ function mapBtn() {
 }
 
 
+
 </script>
 
 <template>
@@ -104,7 +108,7 @@ function mapBtn() {
             <div class="display">
                 <timebar :request-data="request_data" :switch_="switch_.val" :show="showQuestion.val" />
                 <v-expand-x-transition>
-                    <map-info v-show="mapData.show" :width="100" :height="100"/>
+                    <map-info v-show="mapData.show" :width="100" :height="100" :animation-state="props.animationState"/>
                 </v-expand-x-transition>
                  
                 

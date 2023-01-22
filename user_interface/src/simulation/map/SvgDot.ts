@@ -9,6 +9,7 @@ export declare type SvgDotOptions = {
     step: number,
     src: string,
     svgOffset: Vector3,
+    startStep: number,
     onload: (svgMesh: SvgDot) => void
 }
 
@@ -140,8 +141,8 @@ export class SvgDot extends MeshBase {
        
     }
 
-    updatePos(vm: SvgDot): void {
-        const updatedPos = this.options.path.getPointAt(this.options.step);
+    private updatePos(vm: SvgDot): void {
+        const updatedPos = this.options.path.getPoint(this.options.step);
 
         if (vm._mesh) {
 
@@ -149,6 +150,11 @@ export class SvgDot extends MeshBase {
             vm._mesh.position.y = updatedPos.y - 50;
             vm._mesh.position.z = 1
         }
+    }
+
+    reset() {
+        this.options.step = this.options.startStep;
+        this.updatePos(this);
     }
 
     updateFrame(): void {
