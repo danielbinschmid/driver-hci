@@ -32,7 +32,4 @@ declare type SceneOptions3D = {
 }
 
 
-declare type ParagraphItem = {
-    heading: string,
-    paragraph: string
-}
+declare type ParagraphItem = { heading: string; type: string; paragraph: string; source?: undefined; } | { heading: string; type: string; source: string; paragraph: string; } | { heading: string; paragraph: string; type?: undefined; source?: undefined; }

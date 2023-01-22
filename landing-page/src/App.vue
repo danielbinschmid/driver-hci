@@ -41,7 +41,7 @@ window.addEventListener(
 
 <template>
   <v-app>
-    <v-main>
+    <v-main class="main">
 
         <div class="top-bar" ref="topbar">
             <div class="headerContainer">
@@ -49,9 +49,8 @@ window.addEventListener(
                     PROTOTYPE SIMULATION
                 </h2>
                 <div class="headerItem">
-                    <div class="logoWrapper">
-                        <img src='./assets/coop-logo.png' :height="100" />
-                    </div>
+                    <v-img src='./assets/coop-logo.png' :height="100" ></v-img>
+
                 </div>
                 <h2 class="headerItem">
                     HCI FOR AUTONOMOUS DRIVING
@@ -67,18 +66,45 @@ window.addEventListener(
             
         </div>
 
+
+            <div class="top-bar-ghost">
+            <div class="headerContainer">
+                <h2 class="headerItem">
+                    PROTOTYPE SIMULATION
+                </h2>
+                <div class="headerItem">
+                    <v-img src='./assets/coop-logo.png' :height="100" ></v-img>
+
+                </div>
+                <h2 class="headerItem">
+                    HCI FOR AUTONOMOUS DRIVING
+                </h2>
+            </div>
+            <div class="tabs">
+                <v-tabs v-model="model_.val" >   
+                    <div v-for="tab in tabs" :key="tab">
+                        <v-tab class="tab">{{ tab }}</v-tab>
+                    </div>
+                </v-tabs>
+            </div>
+            
+        </div>
+        
+        
+
       
-        <section v-show="model_.val == 0" :style="{height: sectionData.height + sectionData.heightSuffix}">
+        <section v-show="model_.val == 0">
             <Slideshow />
         </section>
 
-        <section v-show="model_.val == 1" :style="{height: sectionData.height + sectionData.heightSuffix}">
-           <Visualization :height="sectionData.height" />
+        <section v-show="model_.val == 1" >
+            <Visualization :height="sectionData.height" />
+           
         </section>
 
-        <section v-show="model_.val == 2" :style="{height: sectionData.height + sectionData.heightSuffix}">
+        <section v-show="model_.val == 2" >
+            <Simulation /> 
             
-            <Simulation />
         </section>
 
 
@@ -89,6 +115,10 @@ window.addEventListener(
 
 
 <style scoped>
+.main {
+    background-color: rgb(231, 229, 225);
+}
+
 .headerContainer {
     display: flex;
     justify-content: space-around;
@@ -114,7 +144,7 @@ h2{
 }
 section {
     width: 100vw;
-    height: 80vh;
+    height: fit-content;
     background-color: rgb(231, 229, 225);
 }
 
@@ -124,7 +154,7 @@ section {
 }
 
 .tab {
-    width: 20vw;
+    width: 33vw;
     font-weight: 300;
 }
 
@@ -134,18 +164,21 @@ section {
 }
 
 .top-bar {
-    display: flex;
-    flex-flow: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     width: 100vw;
-    height: fit-content;
     background-color: rgb(231, 229, 225);
-    z-index: 5;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    border-bottom: groove;
-    border-color: gray;
-    border-width: 0.0001rem;
+    z-index: 10;
+
+}
+
+.top-bar-ghost {
+
+    width: 100vw;
+    background-color: rgb(231, 229, 225);
+    z-index: 1;
 
 }
 </style>

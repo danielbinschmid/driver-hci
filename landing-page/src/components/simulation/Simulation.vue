@@ -2,6 +2,8 @@
 import Scene from './Scene.vue';
 import { reactive, onMounted, ref } from 'vue';
 import type { Ref } from "vue";
+import VideoPlayer from './VideoPlayer.vue';
+
 const sceneMetadata = reactive({ width: 0.5 * window.innerWidth });
 
 const handgestVid: Ref<null | HTMLVideoElement> = ref(null);
@@ -46,57 +48,18 @@ function handgest() {
                 </p>
             </div>
         </div>
+        <div>
 
+            <video-player
+                id="a"
+                :is-shadow="false"
+                :is-vertical="false">
+                <video src="../../assets/demo_coop.mp4" width="100px"> </video>
 
-
-
-        <div class="videos">
-
-            <div class="scene">
-
-                <scene :width="sceneMetadata.width" />
-                <!--<div class="canvas-configure-container">
-mdiMovieOpenPlayOutline
-                    </div>  -->
-
-            </div>
-            <div class="controls-container">
-                <div class="controls">
-
-                    <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="">
-                        <v-icon color="white">mdi-reload</v-icon>
-                        <div class="canvas-configure-btn-text">Load videos</div>
-                    </v-btn>
-
-                    <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="">
-                        <v-icon color="white">mdi-movie-open-play-outline</v-icon>
-                        <div class="canvas-configure-btn-text">Play simulation</div>
-                    </v-btn>
-
-                    <v-card elevation="0" class="canvas-card-video" shaped outlined color="rgba(118, 113, 113, 0)">
-
-                        <div v-if="false">
-                            <video :width="handgestVidMetadata.width" autoplay muted ref="handgestVid"
-                                class="hand-gest-video">
-                                <source src="" type="video/mp4">
-                                <!-- source src="movie.ogg" type="video/ogg">  @/assets/handgesture.mp4"-->
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                        <div v-else>
-                            <canvas class="placeholder-video" ></canvas>
-                        </div>
-                        
-
-                    </v-card>
-                    <div class="caption">
-                        {{ "(Replayed hand-gestures for control)" }}
-                    </div>
-                </div>
-            </div>
-
+            </video-player>
 
         </div>
+        
 
 
         <div class="paragraphs">
@@ -121,6 +84,21 @@ mdiMovieOpenPlayOutline
 
 
 <style scoped>
+
+figure {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    max-width: 500px;
+}
+
+figcaption {
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: rgb(231, 229, 225);
+}
+
 h1 {
     text-align: center;
 }

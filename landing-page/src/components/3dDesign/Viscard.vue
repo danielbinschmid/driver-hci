@@ -2,14 +2,17 @@
 import { SceneRenderer, } from './SceneRenderer';
 import { onMounted, defineProps } from 'vue';
 
-
-
+const props = defineProps<{
+    id: string,
+    isShadow: boolean,
+    isVertical: boolean
+}>()
 
 var renderer: undefined | SceneRenderer = undefined
 
 onMounted(() => {
 
-    renderer = new SceneRenderer({rotateDesign: false, canvasID: "canvas", width: window.innerWidth / 3, height: window.innerHeight / 3});
+    renderer = new SceneRenderer({rotateDesign: false, canvasID: props.id, width: props.isVertical? window.innerWidth * (5/ 6) : window.innerWidth / 3, height: window.innerHeight / 3});
     console.log("letsgo")
 })
 
@@ -17,7 +20,7 @@ window.addEventListener(
     "resize",
     () => {
         if (renderer) {
-            renderer.options.width = window.innerWidth / 3;
+            renderer.options.width = props.isVertical? window.innerWidth * (5/ 6) : window.innerWidth / 3;
             renderer.options.height = window.innerHeight / 3;
             renderer.resize(window.innerWidth, window.innerHeight);
         }
@@ -52,16 +55,17 @@ function resetScene() {
 </script>
 
 <template>
-    <div id="viscard" class="canvas-container">
+    <div id="viscard" class="canvas-container" :style="{marginTop: props.isVertical? '' : 'auto', marginBottom: props.isVertical? '': 'auto'}">
 
             <v-card
                 elevation="10"
                 class="canvas-card"
                 shaped
                 outlined
+                
                 color="rgb(118, 113, 113)" 
             >
-                <canvas id="canvas"></canvas>
+                <canvas :id="props.id"></canvas>
                 <div class="canvas-configure-container">
                         <v-tooltip bottom>
                             <template v-slot:activator="{ on, attrs }">
@@ -143,8 +147,9 @@ function resetScene() {
 .canvas-container {
     display: flex;
     justify-content: center;
-    margin-top: auto;
-    margin-bottom: auto;
+
+    
+
 
 }
 
@@ -152,6 +157,9 @@ function resetScene() {
     width: fit-content;
     height: fit-content;
     padding-top: 2%;
+    margin-right: auto;
+    margin-left: auto;
+    
 }
 
 canvas {

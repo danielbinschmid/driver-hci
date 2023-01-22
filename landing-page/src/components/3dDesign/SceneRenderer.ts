@@ -32,11 +32,11 @@ export class SceneRenderer {
         this._scene = new THREE.Scene();
         this._camera = new THREE.PerspectiveCamera(
             50,
-            window.innerWidth / window.innerHeight,
+            options.width / options.height,
             0.1,
             1000
         );
-        const canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById("canvas");
+        const canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById(options.canvasID);
         this._canvas = canvas;
         console.log(canvas);
         

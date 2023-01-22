@@ -30,10 +30,20 @@
 
                     <br><br>
                     
-                    <figure>
-                        <v-img src="../../assets/control_diagram.png" width='100%'/>
-                        <figcaption>TODO Add caption here</figcaption>
-                    </figure>
+                    <v-card
+                        elevation="10"
+                        class="canvas-card"
+                        shaped
+                        outlined
+                        color="rgb(118, 113, 113)" 
+                    >
+                        <figure>
+                            <v-img src="../../assets/control_diagram.png" width='90vw'/>
+                            <figcaption>TODO Add caption here</figcaption>
+                        </figure>
+                       
+                    </v-card>
+                    
 
                     <br><br>
 
@@ -76,10 +86,30 @@
 </template>
 
 <style scoped>
+.canvas-card {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+figure {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    max-width: 500px;
+}
+
+figcaption {
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: rgb(231, 229, 225);
+}
 
 .project {
     padding-left: 4%;
     padding-right: 4%;
+    margin-bottom: 10%;
 }
 
 h1 {
