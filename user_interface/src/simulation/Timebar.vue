@@ -10,8 +10,8 @@ const props = defineProps<{
 }>()
 
 // CONSTANTS
-const startColor = { r: 55, g: 146, b: 55 }
-const endColor = { r: 146, g: 55, b: 55 }
+const startColor = { r: 10, g: 255, b: 10 }
+const endColor = { r: 200, g: 10, b: 10 }
 const stepSize = 0.05;
 
 const colorStepVector = {
@@ -141,7 +141,7 @@ watch(() => props.requestData.questionPending, (old, new_) => {
                         :color="'rgb(' + tBarColor.r + ', ' + tBarColor.g + ', ' + tBarColor.b + ')'" 
                         rounded
                         class="timebar" 
-                        height="20" 
+                        height="10" 
                         v-model="timerVal.time" 
                         :indeterminate="localTimerExceeded.val"
                         stream>
@@ -160,6 +160,7 @@ watch(() => props.requestData.questionPending, (old, new_) => {
     margin: 5%;
     color: white;
     text-align: center;
+    font-size: small;
 }
 
 .choice-warning-text {
@@ -215,7 +216,7 @@ watch(() => props.requestData.questionPending, (old, new_) => {
     margin-left: auto;
     margin-right: auto;
     font-size: medium;
-    font-weight: 500;
+    font-weight: 700;
     color: black;
     text-align: center;
 }

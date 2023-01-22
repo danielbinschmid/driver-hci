@@ -3,7 +3,7 @@ import Scene from './Scene.vue';
 import { reactive, onMounted, ref } from 'vue';
 import type { Ref } from "vue";
 import { MapAnimationState } from './map/MapAnimationStates';
-const LAYOUT_DATA = {relSceneWidth: 0.6, relControlWidth: 0.35}
+const LAYOUT_DATA = {relSceneWidth: 0.7, relControlWidth: 0.25}
 
 
 const sceneMetadata = reactive({ width: LAYOUT_DATA.relSceneWidth * window.innerWidth });
@@ -11,7 +11,6 @@ const handgestVid: Ref<null | HTMLVideoElement> = ref(null);
 const handgestVidMetadata = reactive({ width: window.innerWidth / 4, downloaded: false })
 const sceneData = reactive({playVid: false, animationState: MapAnimationState.RESET});
 const tabs = ["Simulation"]
-
 onMounted(() => {
     computeSizes()
     handgest()
@@ -34,10 +33,16 @@ function handgest() {
         handgestVid.value.pause();
     }
 }
-
+var timeout: any = undefined;
 function playAnimation() {
-    handgestVid.value?.play();
-    sceneData.animationState = MapAnimationState.START;
+    if (handgestVid.value !== null) {
+        handgestVid.value.play();
+        sceneData.animationState = MapAnimationState.START;
+        timeout = setTimeout(() => {
+            pauseAnimation();
+        }, 20000);
+    }
+    
 
 } 
 
@@ -71,50 +76,97 @@ function resetAnimation() {
             </div>
             <div class="controls-container" :style="{width: LAYOUT_DATA.relControlWidth * 100 + 'vw'}">
                 <div class="controls">
+                    
+                    <div class="control-btns">
+                        <v-btn 
+                            outlined 
+                            rounded 
+                            class="canvas-configure-btn" 
+                            :color="sceneData.animationState == MapAnimationState.START || sceneData.animationState == MapAnimationState.PAUSE ? 'rgb(118, 113, 113)' : 'rgb(207, 10, 44)'" 
+                            @click="playAnimation()" 
+                            :disabled="sceneData.animationState == MapAnimationState.START || sceneData.animationState == MapAnimationState.PAUSE"
+                        >
+                            <div class="canvas-configure-btn-text">Play</div>
+                        </v-btn>
+                        <v-btn 
+                            outlined 
+                            rounded 
+                            class="canvas-configure-btn" 
+                            :color="sceneData.animationState == MapAnimationState.START? 'rgb(207, 10, 44)': 'rgb(118, 113, 113)'" 
+                            @click="pauseAnimation()"
+                            :disabled="sceneData.animationState != MapAnimationState.START"
+                        >
+                            <div class="canvas-configure-btn-text">Pause</div>
+                        </v-btn>
+                        <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="resetAnimation()">
+                            <div class="canvas-configure-btn-text">Reset</div>
+                        </v-btn>
+                    </div>
+                    <v-divider> </v-divider>
+                    <div class="context-info">
+                        <v-btn 
+                            outlined 
+                            rounded 
+                            class="canvas-info-btn" 
+                            :color="'rgba(100, 100, 100, 0.2)'" 
+                            @click="pauseAnimation()"
+                            :disabled="true"
+                        >
+                            <div class="canvas-configure-btn-text">Detected <br>  handgesture:</div>
+                        </v-btn>
+                        <v-btn 
+                            outlined 
+                            rounded 
+                            class="canvas-info-btn" 
+                            :color="'rgb(118, 113, 113)'" 
+                            @click="pauseAnimation()"
+                            :disabled="true"
+                        >
+                            <div class="canvas-configure-btn-text"> {{ "Left " }} </div>
+                        </v-btn>
+
+                    </div>
+
+
+
                     <div>
-                        <div>
-                            <div>
-                                <!-- Detected gesture: -->
-                                
-                            </div>
+                        <v-card elevation="0" class="canvas-card-video" shaped outlined color="rgba(118, 113, 113, 0)">
+        
+                            <video :width="handgestVidMetadata.width" muted ref="handgestVid"
+                                class="hand-gest-video">  
+                                <source src="../assets/handgesture.mp4" type="video/mp4">
+                                <!-- source src="movie.ogg" type="video/ogg">  @/assets/handgesture.mp4"-->
+                                Your browser does not support the video tag.
+                            </video>
+
+                        
+                        </v-card>
+
+
+                        <div class="caption">
+                            {{ "(Replayed hand-gestures for control)" }}
                         </div>
                     </div>
-                    <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="playAnimation()">
-                        <div class="canvas-configure-btn-text">Play</div>
-                    </v-btn>
-                    <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="pauseAnimation()">
-                        <div class="canvas-configure-btn-text">Pause</div>
-                    </v-btn>
-                    <v-btn outlined rounded class="canvas-configure-btn" color="rgb(207, 10, 44)" @click="resetAnimation()">
-                        <div class="canvas-configure-btn-text">Reset</div>
-                    </v-btn>
                     
-
-
-
-
-                    <v-card elevation="0" class="canvas-card-video" shaped outlined color="rgba(118, 113, 113, 0)">
-        
-                        <video :width="handgestVidMetadata.width" muted ref="handgestVid"
-                            class="hand-gest-video">  
-                            <source src="../assets/handgesture.mp4" type="video/mp4">
-                            <!-- source src="movie.ogg" type="video/ogg">  @/assets/handgesture.mp4"-->
-                            Your browser does not support the video tag.
-                        </video>
-    
-                      
-                    </v-card>
-
-
-                    <div class="caption">
-                        {{ "(Replayed hand-gestures for control)" }}
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <style scoped>
+
+.context-info {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+h3 {
+    text-align: center;
+}
+
+.control-btns {
+    display: flex;
+}
 
 h1 {
     text-align: center;
@@ -161,6 +213,7 @@ p {
     background-color: rgba(118, 113, 113, 0.2);
     display: flex;
     flex-flow: column;
+    justify-content: space-evenly;
 }
 .videos {
     display: flex;
@@ -181,6 +234,10 @@ p {
 .canvas-configure-btn {
     margin-left: auto;
     margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.canvas-info-btn {
     margin-top: auto;
     margin-bottom: auto;
 }

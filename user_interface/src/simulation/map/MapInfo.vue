@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { SceneRenderer } from "./SceneRenderer"
 
-import { onMounted, ref, watch } from "vue";
+import { onMounted, ref, watch, reactive } from "vue";
 import type { Ref } from "vue";
 import { MapAnimationState } from "./MapAnimationStates";
 // "../assets/map//edited/transparent_background_3.svg"
@@ -11,6 +11,8 @@ const props = defineProps<{
     height: number,
     animationState: MapAnimationState
 }>()
+
+const currentState = reactive({state: MapAnimationState.RESET});
 
 let renderer: SceneRenderer | undefined = undefined;
 onMounted(() => {
@@ -47,6 +49,7 @@ watch(() => props.animationState, (_new, _old) => {
         case MapAnimationState.PAUSE:
             if (renderer) {
                 renderer.stopAnimation();
+                currentState.state = props.animationState;
             }
             break;
 
@@ -54,12 +57,14 @@ watch(() => props.animationState, (_new, _old) => {
             if (renderer) {
                 renderer.stopAnimation();
                 renderer.resetAnimation();
+                currentState.state = props.animationState;
             }
             break;
         case MapAnimationState.START:
             if (renderer) {
-                renderer.stopAnimation();
+                console.log("start");
                 renderer.startAnimation();
+                currentState.state = props.animationState;
             }
             break;
         default:

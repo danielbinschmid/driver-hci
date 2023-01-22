@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Timebar from './Timebar.vue';
 import MapInfo from "./map/MapInfo.vue"
-import { reactive, onMounted } from "vue";
-import type { MapAnimationState } from './map/MapAnimationStates';
+import { reactive, onMounted, watch } from "vue";
+import { MapAnimationState } from './map/MapAnimationStates';
 
 const props = defineProps<{
   width: number,
@@ -14,10 +14,10 @@ const switch_ = reactive({val: false});
 
 let requestData: RequestData = {
     event: {
-        type: "idle",
-        choices: ["left", "right"],
+        type: "",
+        choices: ["", ""],
         time_remaining: 1,
-        request_text: "text",
+        request_text: "",
         decision: 0,
         default_choice: 0,
         text: "",
@@ -28,12 +28,12 @@ let requestData: RequestData = {
 }
 const request_data = reactive(requestData);
 const mapData = reactive({show: true});
-const showQuestion = reactive({val: true});
+const showQuestion = reactive({val: false});
 
 onMounted(() => {
     setTimeout(() => {
         let payload: EventJSON = { type: 'request', request_text: "Risk of animals crossing. Drive slower?", choices: ["yes", "no"], time_remaining: 30, default_choice: 0, decision: 0, text: "" };
-        doEvent(payload);
+        // doEvent(payload);
 
     }, )
 })
@@ -62,6 +62,127 @@ function doEvent(value: EventJSON) {
         request_data.event.text = value.text;
     }
 }
+
+const clear_: EventJSON = {
+        type: "clear",
+        decision: 1,
+        choices: [],
+        default_choice: 0,
+        time_remaining: 0,
+        text: "",
+        request_text: ""
+    }
+var timeout: any = undefined;
+/**
+ * 
+ */
+function startSimulation() {
+    const START_REQUEST: EventJSON = {
+        type: "request",
+        request_text: "Car in front is slow. Overtake when ready?",
+        choices: ["no", "yes"],
+        default_choice: 0, 
+        time_remaining: 5,
+        decision: 0,
+        text: ""
+    }
+
+    const request_2: EventJSON = {
+        type: "request",
+        request_text: "I feel safe to take-over. Overtake now?",
+        choices: ["no", "yes"],
+        default_choice: 0, 
+        time_remaining: 3,
+        decision: 0,
+        text: ""
+    }
+
+    const request_3: EventJSON = {
+        type: "request",
+        request_text: "Overtake now?",
+        choices: ["no", "yes"],
+        default_choice: 0, 
+        time_remaining: 5,
+        decision: 0,
+        text: ""
+    }
+
+    const response_1: EventJSON = {
+        type: "user_response",
+        decision: 1,
+        choices: [],
+        default_choice: 0,
+        time_remaining: 0,
+        text: "",
+        request_text: ""
+    }
+
+    
+
+    const response_2: EventJSON = {
+        type: "user_response",
+        decision: 0,
+        choices: [],
+        default_choice: 0,
+        time_remaining: 0,
+        text: "",
+        request_text: ""
+    }
+
+    const response_3: EventJSON = {
+        type: "user_response",
+        decision: 1,
+        choices: [],
+        default_choice: 0,
+        time_remaining: 0,
+        text: "",
+        request_text: ""
+    }
+
+    timeout = setTimeout(() => {
+        doEvent(START_REQUEST);
+
+        timeout = setTimeout(() => {
+            doEvent(response_1);
+
+            timeout = setTimeout(() => {
+                doEvent(clear_);
+
+                timeout = setTimeout(() => {
+                    doEvent(request_2);
+
+                    timeout = setTimeout(() => {
+                        doEvent(response_2);
+
+                        timeout = setTimeout(() => {
+                            doEvent(clear_);
+                        }, 1500);
+                    }, 3000)
+                }, 4500); // i feel safe to take over
+            }, 1500)
+        }, 3000);
+    }, 2000);
+}
+
+
+watch(() => props.animationState, (_new, _old) => { 
+    switch (props.animationState) {
+        case MapAnimationState.PAUSE:
+            clearTimeout(timeout);
+            doEvent(clear_);
+            break;
+
+        case MapAnimationState.RESET:
+            clearTimeout(timeout);
+            doEvent(clear_);
+            break;
+        case MapAnimationState.START:
+            startSimulation();
+            break;
+        default:
+            break;
+    }
+});
 /**
  * 
 
