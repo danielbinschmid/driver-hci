@@ -1,90 +1,62 @@
 <script setup lang="ts">
 
-import { onMounted, defineProps } from 'vue';
-
-const props = defineProps<{
-    id: string,
-    isShadow: boolean,
-    isVertical: boolean
+import { onMounted, defineProps, reactive, ref } from 'vue';
+import type { Ref } from "vue"
+const vid: Ref<HTMLVideoElement | null> = ref(null)
+    const props = defineProps<{
+    height: number
 }>()
 
-
+window.addEventListener(
+    "resize",
+    () => {
+        ytVidData.width = window.innerWidth * (9 / 10)
+    },
+    false
+);
 
 onMounted(() => {
 
 })
 
+function showOverlay() {
+
+}
 
 
-
+const ytVidData =reactive({width: window.innerWidth * (9 / 10)});
 
 
 </script>
 
 <template>
-    <div id="video-player" class="canvas-container" :style="{marginTop: props.isVertical? '' : 'auto', marginBottom: props.isVertical? '': 'auto'}">
+    <div id="video-player" class="video-player">
+ 
+        <video src="../../assets/demo_coop.mp4" :width="ytVidData.width" ref="vid" class="vid" @click="showOverlay()" controls>
 
-            <v-card
-                elevation="10"
-                class="canvas-card"
-                shaped
-                outlined
-                
-                color="rgb(118, 113, 113)" 
-            >   
-                <slot>
+        </video>
 
-                </slot>
-                <!-- <canvas :id="props.id"></canvas> -->
-                
-                <div class="canvas-configure-container">
-                        <v-tooltip bottom>
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-btn outlined
-                                    rounded
-                                    class="canvas-configure-btn"
-                                    color="rgb(207, 10, 44)"
-                                    @click=""
-                                >
-                                    <v-icon color="white">mdi-rotate-3d</v-icon>
-                                    <div class="canvas-configure-btn-text">Rotate</div>
-                                </v-btn>
-                            </template>
-                            <span ></span>
-                        </v-tooltip>
-
-                       
-                        <v-btn outlined
-                            rounded
-                            class="canvas-configure-btn"
-                            color="rgb(207, 10, 44)"
-                            @click=""
-                        >
-                            <v-icon color="white">mdi-pause</v-icon>
-                            <div class="canvas-configure-btn-text">Pause</div>
-                        </v-btn>
-
-                        <v-btn outlined
-                            rounded
-                            class="canvas-configure-btn"
-                            color="rgb(207, 10, 44)"
-                            @click=""
-                        >
-                            <v-icon color="white">mdi-backup-restore</v-icon>
-                            <div class="canvas-configure-btn-text">Reset cam</div>
-                        </v-btn>
-
-                </div>                
-            </v-card>
-        </div>
-        
-        
-
+       
+    </div>
 </template>
 
 
 <style scoped>
+.video-player {
+    display: flex;
+    flex-flow: column;
+}
+.btns {
+    margin-top: 1%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1%;
+}
 
+.vid {
+    margin-left: auto;
+    margin-right: auto;
+}
 .canvas-configure-container-single {
     display: flex;
     justify-content: center;
@@ -97,7 +69,7 @@ onMounted(() => {
 
 .canvas-configure-btn-text {
     color: white;
-    font-size: xx-small;
+    font-size: small;
     margin-left: 5%;
     text-align: center;
 }
@@ -128,9 +100,9 @@ onMounted(() => {
     width: fit-content;
     height: fit-content;
     padding-top: 2%;
-    margin-right: auto;
-    margin-left: auto;
-    
+    display: flex;
+    flex-flow: column;
+
 }
 
 canvas {

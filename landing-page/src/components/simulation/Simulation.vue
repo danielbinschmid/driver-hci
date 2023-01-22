@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import Scene from './Scene.vue';
-import { reactive, onMounted, ref } from 'vue';
+import { reactive, onMounted, ref, defineAsyncComponent } from 'vue';
 import type { Ref } from "vue";
-import VideoPlayer from './VideoPlayer.vue';
+const props = defineProps<{
+    height: number
+}>()
 
 const sceneMetadata = reactive({ width: 0.5 * window.innerWidth });
 
@@ -10,6 +12,12 @@ const handgestVid: Ref<null | HTMLVideoElement> = ref(null);
 
 const handgestVidMetadata = reactive({ width: window.innerWidth / 4 })
 
+
+const DemoPlayer = defineAsyncComponent(
+    () => import('./VideoPlayer.vue') 
+)
+
+const ytVidData =reactive({width: window.innerWidth * (5 / 6)});
 onMounted(() => {
     sceneMetadata.width = 0.5 * window.innerWidth;
     handgest()
@@ -20,6 +28,9 @@ window.addEventListener(
     () => {
         sceneMetadata.width = 0.5 * window.innerWidth;
         handgestVidMetadata.width = window.innerWidth / 4;
+
+        ytVidData.width = window.innerWidth * (5 / 6);
+        console.log("resize");
     },
     false
 );
@@ -34,33 +45,26 @@ function handgest() {
     }
 }
 
+function onReady() {
+    console.log("pko")
+}
 </script>
 
 <template>
     <div id="simulation" class="simulation">
-        <div class="paragraphs">
+
+        <div class="paragraphs-no-padding">
             <div class="paragraph-1">
                 <h1>
-                    Live demo
+                    Demonstration
                 </h1>
                 <p>
-                    Below you can find a pre-recorded run of our prototype.
+                    Below you can find a demonstration of our prototype.
                 </p>
             </div>
         </div>
-        <div>
-
-            <video-player
-                id="a"
-                :is-shadow="false"
-                :is-vertical="false">
-                <video src="../../assets/demo_coop.mp4" width="100px"> </video>
-
-            </video-player>
-
-        </div>
-        
-
+     
+        <DemoPlayer class="youtube-wrapper" :height="props.height"/>
 
         <div class="paragraphs">
             <div class="paragraph-1">
@@ -84,6 +88,11 @@ function handgest() {
 
 
 <style scoped>
+.youtube-wrapper {
+
+    display: flex;
+    justify-content: center;
+}
 
 figure {
     margin-left: 5%;
@@ -105,6 +114,7 @@ h1 {
 
 p {
     text-align: center;
+    padding-bottom: 2%;
 }
 
 .controls-container {
@@ -136,9 +146,13 @@ p {
 
 .paragraphs {
     display: flex;
-
+    padding-top: 2%;
 }
 
+.paragraphs-no-padding {
+    display: flex;
+
+}
 .controls {
 
     margin-left: auto;
@@ -205,7 +219,8 @@ p {
     height: 100%;
     margin-left: 2%;
     margin-right: 2%;
-
+    padding-top: 2%;
+    padding-bottom: 5%;
 }
 
 .hand-gest-video {

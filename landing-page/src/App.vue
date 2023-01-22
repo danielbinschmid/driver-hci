@@ -103,7 +103,7 @@ window.addEventListener(
         </section>
 
         <section v-show="model_.val == 2" >
-            <Simulation /> 
+            <Simulation :height="sectionData.height"/> 
             
         </section>
 

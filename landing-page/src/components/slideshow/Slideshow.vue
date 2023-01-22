@@ -109,16 +109,16 @@ figcaption {
 .project {
     padding-left: 4%;
     padding-right: 4%;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 
 h1 {
     text-align: center;
-    padding-top: 3%;
+    padding-top: 2%;
 }
 
 .paragraphs {
-    padding-top: 2%;
+    
     display: flex;
     flex-flow: column;
 

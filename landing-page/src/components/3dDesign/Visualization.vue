@@ -243,7 +243,7 @@ figcaption {
     justify-content: center;
     flex-flow: column;
     height: 95%;
-    
+
 
 }
 
