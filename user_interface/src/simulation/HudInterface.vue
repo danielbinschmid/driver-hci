@@ -80,9 +80,9 @@ function startSimulation() {
     const START_REQUEST: EventJSON = {
         type: "request",
         request_text: "Car in front is slow. Overtake when ready?",
-        choices: ["no", "yes"],
-        default_choice: 0, 
-        time_remaining: 5,
+        choices: ["yes", "no"],
+        default_choice: 1, 
+        time_remaining: 4,
         decision: 0,
         text: ""
     }
@@ -90,8 +90,8 @@ function startSimulation() {
     const request_2: EventJSON = {
         type: "request",
         request_text: "I feel safe to take-over. Overtake now?",
-        choices: ["no", "yes"],
-        default_choice: 0, 
+        choices: ["yes", "no"],
+        default_choice: 1, 
         time_remaining: 3,
         decision: 0,
         text: ""
@@ -100,8 +100,8 @@ function startSimulation() {
     const request_3: EventJSON = {
         type: "request",
         request_text: "Overtake now?",
-        choices: ["no", "yes"],
-        default_choice: 0, 
+        choices: ["yes", "no"],
+        default_choice: 1, 
         time_remaining: 5,
         decision: 0,
         text: ""
@@ -109,7 +109,7 @@ function startSimulation() {
 
     const response_1: EventJSON = {
         type: "user_response",
-        decision: 1,
+        decision: 0,
         choices: [],
         default_choice: 0,
         time_remaining: 0,
@@ -121,7 +121,7 @@ function startSimulation() {
 
     const response_2: EventJSON = {
         type: "user_response",
-        decision: 0,
+        decision: 1,
         choices: [],
         default_choice: 0,
         time_remaining: 0,
@@ -157,11 +157,11 @@ function startSimulation() {
                         timeout = setTimeout(() => {
                             doEvent(clear_);
                         }, 1500);
-                    }, 3000)
-                }, 4500); // i feel safe to take over
+                    }, 2500)
+                }, 2600); // i feel safe to take over
             }, 1500)
-        }, 3000);
-    }, 2000);
+        }, 2500);
+    }, 3000);
 }
 
 

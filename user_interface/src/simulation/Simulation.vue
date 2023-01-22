@@ -10,6 +10,7 @@ const sceneMetadata = reactive({ width: LAYOUT_DATA.relSceneWidth * window.inner
 const handgestVid: Ref<null | HTMLVideoElement> = ref(null);
 const handgestVidMetadata = reactive({ width: window.innerWidth / 4, downloaded: false })
 const sceneData = reactive({playVid: false, animationState: MapAnimationState.RESET});
+const handgestData = reactive({detectedGest: "-", detected: false})
 const tabs = ["Simulation"]
 onMounted(() => {
     computeSizes()
@@ -33,15 +34,38 @@ function handgest() {
         handgestVid.value.pause();
     }
 }
+
+const timeouts: any[] = [];
 var timeout: any = undefined;
 function playAnimation() {
-    if (handgestVid.value !== null) {
+    setTimeout(() => {
+        if (handgestVid.value !== null) {
         handgestVid.value.play();
         sceneData.animationState = MapAnimationState.START;
         timeout = setTimeout(() => {
             pauseAnimation();
         }, 20000);
+
+        setTimeout(() => {
+            handgestData.detected = true;
+            handgestData.detectedGest = "OK";
+
+            setTimeout(() => {
+                handgestData.detected = false;
+            }, 500);
+        }, 5100);
+
+        setTimeout(() => {
+            handgestData.detected = true;
+            handgestData.detectedGest = "Swipe right";
+
+            setTimeout(() => {
+                handgestData.detected = false;
+            }, 500);
+        }, 11700);
     }
+    }, 1000);
+    
     
 
 } 
@@ -108,7 +132,7 @@ function resetAnimation() {
                             outlined 
                             rounded 
                             class="canvas-info-btn" 
-                            :color="'rgba(100, 100, 100, 0.2)'" 
+                            :color="handgestData.detected? 'rgb(10, 255, 10)' : 'rgba(100, 100, 100, 0.2)'" 
                             @click="pauseAnimation()"
                             :disabled="true"
                         >
@@ -118,11 +142,11 @@ function resetAnimation() {
                             outlined 
                             rounded 
                             class="canvas-info-btn" 
-                            :color="'rgb(118, 113, 113)'" 
+                            :color="handgestData.detected? 'rgb(10, 255, 10)' :'rgb(118, 113, 113)'" 
                             @click="pauseAnimation()"
                             :disabled="true"
                         >
-                            <div class="canvas-configure-btn-text"> {{ "Left " }} </div>
+                            <div class="canvas-configure-btn-text"> {{ handgestData.detectedGest }} </div>
                         </v-btn>
 
                     </div>
@@ -134,7 +158,7 @@ function resetAnimation() {
         
                             <video :width="handgestVidMetadata.width" muted ref="handgestVid"
                                 class="hand-gest-video">  
-                                <source src="../assets/handgesture.mp4" type="video/mp4">
+                                <source src="../assets/handgest.mp4" type="video/mp4">
                                 <!-- source src="movie.ogg" type="video/ogg">  @/assets/handgesture.mp4"-->
                                 Your browser does not support the video tag.
                             </video>
