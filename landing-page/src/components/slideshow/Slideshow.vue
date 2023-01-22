@@ -39,7 +39,7 @@
                     >
                         <figure>
                             <v-img src="../../assets/control_diagram.png" width='90vw'/>
-                            <figcaption>TODO Add caption here</figcaption>
+                            <figcaption>System diagram of concept</figcaption>
                         </figure>
                        
                     </v-card>

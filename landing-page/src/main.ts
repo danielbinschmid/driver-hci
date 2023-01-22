@@ -10,7 +10,7 @@ import App from './App.vue'
 // Composables
 import { createApp } from 'vue'
 
-import YouTube from 'vue3-youtube'
+
 
 
 // Plugins

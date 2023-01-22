@@ -95,7 +95,7 @@ const items: ParagraphItem[] = explanation
                        >
                            <figure>
                                <v-img src="../../assets/3DModelDescription.png" width='90vw'/>
-                               <figcaption>TODO Add caption here</figcaption>
+                               <figcaption>Camera placement on rearview mirror</figcaption>
                            </figure>
                        
                        </v-card>
@@ -128,7 +128,7 @@ const items: ParagraphItem[] = explanation
 
                             <figure>
                                <v-img src="../../assets/3DModelDescription.png" />
-                               <figcaption>TODO Add caption here</figcaption>
+                               <figcaption>Camera placement on rearview mirror</figcaption>
                            </figure>
 
                             
