@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <path class="st0" style="fill: none; stroke: rgb(0, 0, 0); stroke-miterlimit: 10; stroke-width: 4px;"/>
+  <path class="st0" style="fill: none; stroke: rgb(0, 0, 0); stroke-miterlimit: 10; stroke-width: 4px;"/>
+  <circle class="st1" cx="226.69" cy="393.585" r="13.03" style="fill: rgb(211, 50, 49);" transform="matrix(2.30418, 0, 0, 2.32926, -276.036743, -491.47757)"/>
+  <g transform="matrix(1.39457, 0, 0, 1.439073, -308.070648, -144.735596)" style="">
+    <path class="st2" d="M491.6,334.57H379.49c-27.62,0-50.02-22.39-50.02-50.02v-39.49c0-27.62,22.39-50.02,50.02-50.02H491.6 c27.62,0,50.02,22.39,50.02,50.02v39.49C541.62,312.17,519.23,334.57,491.6,334.57z" style="fill: none;"/>
+    <polygon class="st2" points="482.781 294.582 407.604 367.55 416.163 253.96 482.781 253.96" style="fill: none;"/>
+    <g transform="matrix(2.228778, 0, 0, 2.433897, -572.835999, -404.538757)" style="">
+      <path class="st3" d="M471.36,254.38c0-18.66-16.04-33.79-35.82-33.79c-19.78,0-35.82,15.13-35.82,33.79c0,0-2.04,27.9,31.01,53.06 c2.79,2.12,6.82,2.12,9.61,0C473.4,282.28,471.36,254.38,471.36,254.38z" style="fill: none; stroke: rgb(53, 99, 151); stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10; stroke-width: 3px;"/>
+      <ellipse class="st3" cx="435.54" cy="253.47" rx="17.32" ry="16.34" style="fill: none; stroke: rgb(53, 99, 151); stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10; stroke-width: 3px;"/>
+    </g>
+  </g>
+</svg>

@@ -1,30 +1,6 @@
 const axios = require("axios");
 
 /**
- * Dummy example http get request
- * 
- * Uses the axios http library. Documentation can be found here: https://axios-http.com/
- * 
- * @returns Information about a planet
- */
-async function dummyHTTPSGet() {
-
-    let response = await axios.get('http://localhost:40002/').catch(err => { 
-        console.error(err);
-        return undefined;
-    });
-
-    console.log(response.data);
-    // let planet = {
-    //     url: response.data.url,
-    //     explanation: response.data.explanation
-    // };
-    // 
-// 
-    // console.log(planet);
-    // return planet;
-}
-/**
  * const types_ = [
     {
         "type": "request",
@@ -59,8 +35,29 @@ async function dummyHTTPSGet() {
  * 
  * 
  */
-async function dummyPost() {
-    let payload = { type: 'request', request_text: "Attempt to take over in next possible situation?", choices: ["yes", "no"], time_remaining: 5, default_choice: 0 };
+
+async function startSimulation() {
+    let payload = { type: 'start_simulation' };
+    console.log("before");
+    let res = await axios.post('http://localhost:40002/login', payload, function(data){
+        if(data === 'yes') {
+            alert("login success");
+          }
+      });
+}
+
+async function resetSimulation() {
+    let payload = { type: 'reset_simulation' };
+    console.log("before");
+    let res = await axios.post('http://localhost:40002/login', payload, function(data){
+        if(data === 'yes') {
+            alert("login success");
+          }
+      });
+}
+
+async function request1() {
+    let payload = { type: 'request', request_text: "Car in front is slow. Overtake when ready?", choices: ["yes", "no"], time_remaining: 5, default_choice: 1 };
     console.log("before");
     let res = await axios.post('http://localhost:40002/login', payload, function(data){
         if(data === 'yes') {
@@ -69,13 +66,24 @@ async function dummyPost() {
       });
 
     console.log("after");
-
-    
-    // let data = res.data;
-    // console.log("yes");
 }
 
-async function dummyDecide() {
+
+
+async function request2() {
+    let payload = { type: 'request', request_text: "I feel safe to take-over. Overtake now?", choices: ["yes", "no"], time_remaining: 5, default_choice: 1 };
+    console.log("before");
+    let res = await axios.post('http://localhost:40002/login', payload, function(data){
+        if(data === 'yes') {
+            alert("login success");
+          }
+      });
+
+    console.log("after");
+}
+
+
+async function decisionA() {
     let payload = { type: 'user_response', decision: 0 };
     console.log("before");
     let res = await axios.post('http://localhost:40002/login', payload, function(data){
@@ -86,30 +94,8 @@ async function dummyDecide() {
     console.log("after");
 }
 
-async function dummyTimeExceeded() {
-    let payload = { type: 'time_exceeded'};
-    console.log("before");
-    let res = await axios.post('http://localhost:40002/login', payload, function(data){
-        if(data === 'yes') {
-            alert("login success");
-          }
-      });
-    console.log("after");
-}
-
-async function dummyClear() {
-    let payload = { type: 'clear'};
-    console.log("before");
-    let res = await axios.post('http://localhost:40002/login', payload, function(data){
-        if(data === 'yes') {
-            alert("login success");
-          }
-      });
-    console.log("after");
-}
-
-async function dummyInvalidAction() {
-    let payload = { type: 'invalid_action', text: "invalid action taken"};
+async function decisionB() {
+    let payload = { type: 'user_response', decision: 1 };
     console.log("before");
     let res = await axios.post('http://localhost:40002/login', payload, function(data){
         if(data === 'yes') {
@@ -121,16 +107,18 @@ async function dummyInvalidAction() {
 
 // dummyHTTPSGet();
 const mode = process.argv[2]; 
-if (mode == "question") {
-    dummyPost();
-} else if (mode == "decide"){
-    dummyDecide();
-} else if(mode == "idle"){
-    dummyTimeExceeded();
-} else if(mode == "clear"){
-    dummyClear();
-} else if(mode == "invalid"){
-    dummyInvalidAction()
+if (mode == "start") {
+    startSimulation();
+} else if (mode == "req1"){
+    request1();
+} else if (mode == "reset"){
+    resetSimulation();
+} else if(mode == "decA"){
+    decisionA();
+} else if(mode == "decB"){
+    decisionB();
+} else if(mode == "req2"){
+    request2()
 } else {
-    dummyPost();
+    console.log("mode not known");
 }

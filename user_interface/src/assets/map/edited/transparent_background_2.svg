@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Слой_1" x="0px" y="0px" viewBox="0 0 841.89 595.28" style="enable-background:new 0 0 841.89 595.28;" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="459.91" y1="383.29" x2="459.91" y2="449.34" id="gradient-0">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="453.83" y1="389.48" x2="453.83" y2="449.33" id="gradient-1">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="456.325" y1="410.25" x2="456.325" y2="415.88" id="gradient-2">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="447.855" y1="417.86" x2="447.855" y2="424.71" id="gradient-3">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="442.3" y1="429.16" x2="442.3" y2="436.43" id="gradient-4">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="468.705" y1="406.64" x2="468.705" y2="412.27" id="gradient-5">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="521.71" y1="383.2" x2="521.71" y2="674.85" id="gradient-6">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="518.23" y1="389.43" x2="518.23" y2="674.83" id="gradient-7">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="540.885" y1="500.35" x2="540.885" y2="507.19" id="gradient-8">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="540.915" y1="514.04" x2="540.915" y2="520.88" id="gradient-9">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="540.955" y1="527.73" x2="540.955" y2="534.57" id="gradient-10">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="540.955" y1="527.66" x2="540.955" y2="534.5" id="gradient-11">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="540.995" y1="541.35" x2="540.995" y2="548.19" id="gradient-12">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="540.995" y1="541.29" x2="540.995" y2="548.13" id="gradient-13">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.025" y1="554.98" x2="541.025" y2="561.82" id="gradient-14">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.025" y1="554.92" x2="541.025" y2="561.76" id="gradient-15">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.065" y1="568.6" x2="541.065" y2="575.44" id="gradient-16">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.065" y1="568.54" x2="541.065" y2="575.38" id="gradient-17">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.105" y1="582.23" x2="541.105" y2="589.07" id="gradient-18">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.105" y1="582.17" x2="541.105" y2="589.01" id="gradient-19">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.145" y1="595.85" x2="541.145" y2="602.69" id="gradient-20">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.145" y1="595.79" x2="541.145" y2="602.63" id="gradient-21">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.175" y1="609.48" x2="541.175" y2="616.32" id="gradient-22">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.175" y1="609.42" x2="541.175" y2="616.26" id="gradient-23">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.215" y1="623.11" x2="541.215" y2="629.95" id="gradient-24">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.215" y1="623.04" x2="541.215" y2="629.88" id="gradient-25">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.255" y1="636.73" x2="541.255" y2="643.57" id="gradient-26">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.255" y1="636.67" x2="541.255" y2="643.51" id="gradient-27">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.285" y1="650.36" x2="541.285" y2="657.2" id="gradient-28">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.285" y1="650.3" x2="541.285" y2="657.14" id="gradient-29">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="541.325" y1="663.98" x2="541.325" y2="670.82" id="gradient-30">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="524.635" y1="412.24" x2="524.635" y2="417.87" id="gradient-31">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="533.095" y1="420.41" x2="533.095" y2="427.26" id="gradient-32">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="514.21" y1="408.38" x2="514.21" y2="412.12" id="gradient-33">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="538.65" y1="431.94" x2="538.65" y2="439.21" id="gradient-34">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="540.765" y1="459.29" x2="540.765" y2="466.13" id="gradient-35">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="540.845" y1="486.67" x2="540.845" y2="493.51" id="gradient-36">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="540.805" y1="472.98" x2="540.805" y2="479.82" id="gradient-37">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="540.67" y1="445.5" x2="540.67" y2="452.45" id="gradient-38">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="491.875" y1="408.18" x2="491.875" y2="410.67" id="gradient-39">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="480.615" y1="408.21" x2="480.615" y2="410.7" id="gradient-40">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="502.855" y1="408.16" x2="502.855" y2="410.65" id="gradient-41">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="421.995" y1="448.89" x2="421.995" y2="535.12" id="gradient-42">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="428.025" y1="447.45" x2="428.025" y2="528.88" id="gradient-43">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="425.275" y1="502.39" x2="425.275" y2="508.04" id="gradient-44">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="433.715" y1="493.53" x2="433.715" y2="500.38" id="gradient-45">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="439.205" y1="481.79" x2="439.205" y2="489.07" id="gradient-46">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="441.175" y1="468.87" x2="441.175" y2="475.82" id="gradient-47">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="412.915" y1="507.62" x2="412.915" y2="510.11" id="gradient-48">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="358.905" y1="-51.88" x2="358.905" y2="535.271" id="gradient-49">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="362.01" y1="-51.98" x2="362.01" y2="529.041" id="gradient-50">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="340.31" y1="411.4" x2="340.31" y2="418.25" id="gradient-51">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="340.21" y1="397.71" x2="340.21" y2="404.57" id="gradient-52">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="340.11" y1="384.03" x2="340.11" y2="390.88" id="gradient-53">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="340.11" y1="384.09" x2="340.11" y2="390.94" id="gradient-54">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="340.01" y1="370.4" x2="340.01" y2="377.26" id="gradient-55">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="340.01" y1="370.46" x2="340.01" y2="377.32" id="gradient-56">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.91" y1="356.77" x2="339.91" y2="363.63" id="gradient-57">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.91" y1="356.84" x2="339.91" y2="363.69" id="gradient-58">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.81" y1="343.15" x2="339.81" y2="350.01" id="gradient-59">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.81" y1="343.21" x2="339.81" y2="350.07" id="gradient-60">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.71" y1="329.52" x2="339.71" y2="336.38" id="gradient-61">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.71" y1="329.58" x2="339.71" y2="336.44" id="gradient-62">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.61" y1="315.9" x2="339.61" y2="322.75" id="gradient-63">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.61" y1="315.96" x2="339.61" y2="322.82" id="gradient-64">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.515" y1="302.27" x2="339.515" y2="309.13" id="gradient-65">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.515" y1="302.33" x2="339.515" y2="309.19" id="gradient-66">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.415" y1="288.65" x2="339.415" y2="295.5" id="gradient-67">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.415" y1="288.71" x2="339.415" y2="295.56" id="gradient-68">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.32" y1="275.02" x2="339.32" y2="281.88" id="gradient-69">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.32" y1="275.08" x2="339.32" y2="281.94" id="gradient-70">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.22" y1="261.4" x2="339.22" y2="268.25" id="gradient-71">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.22" y1="261.46" x2="339.22" y2="268.31" id="gradient-72">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.12" y1="247.77" x2="339.12" y2="254.63" id="gradient-73">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="356.96" y1="500.68" x2="356.96" y2="506.29" id="gradient-74">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="348.44" y1="491.31" x2="348.44" y2="498.14" id="gradient-75">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="367.41" y1="506.39" x2="367.41" y2="510.11" id="gradient-76">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="342.84" y1="479.38" x2="342.84" y2="486.65" id="gradient-77">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="340.605" y1="452.46" x2="340.605" y2="459.31" id="gradient-78">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="340.41" y1="425.08" x2="340.41" y2="431.94" id="gradient-79">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="340.51" y1="438.77" x2="340.51" y2="445.63" id="gradient-80">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="340.775" y1="466.15" x2="340.775" y2="473.11" id="gradient-81">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="389.745" y1="507.72" x2="389.745" y2="510.25" id="gradient-82">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="401.005" y1="507.65" x2="401.005" y2="510.18" id="gradient-83">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="378.755" y1="507.79" x2="378.755" y2="510.31" id="gradient-84">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="440.81" y1="455.68" x2="440.81" y2="462.54" id="gradient-85">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="440.28" y1="442.39" x2="440.28" y2="449.34" id="gradient-86">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.91" y1="191.32" x2="338.91" y2="198.17" id="gradient-87">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.81" y1="177.63" x2="338.81" y2="184.49" id="gradient-88">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.71" y1="163.94" x2="338.71" y2="170.8" id="gradient-89">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.71" y1="164.01" x2="338.71" y2="170.86" id="gradient-90">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.61" y1="150.32" x2="338.61" y2="157.17" id="gradient-91">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.61" y1="150.38" x2="338.61" y2="157.24" id="gradient-92">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.51" y1="136.69" x2="338.51" y2="143.55" id="gradient-93">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.51" y1="136.75" x2="338.51" y2="143.61" id="gradient-94">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.41" y1="123.07" x2="338.41" y2="129.92" id="gradient-95">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.41" y1="123.13" x2="338.41" y2="129.98" id="gradient-96">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.31" y1="109.44" x2="338.31" y2="116.3" id="gradient-97">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.315" y1="109.5" x2="338.315" y2="116.36" id="gradient-98">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.215" y1="95.82" x2="338.215" y2="102.67" id="gradient-99">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.215" y1="95.88" x2="338.215" y2="102.73" id="gradient-100">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.115" y1="82.19" x2="338.115" y2="89.05" id="gradient-101">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.12" y1="82.25" x2="338.12" y2="89.11" id="gradient-102">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.02" y1="68.56" x2="338.02" y2="75.42" id="gradient-103">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="338.02" y1="68.63" x2="338.02" y2="75.48" id="gradient-104">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="337.92" y1="54.94" x2="337.92" y2="61.8" id="gradient-105">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="337.92" y1="55" x2="337.92" y2="61.86" id="gradient-106">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="337.82" y1="41.31" x2="337.82" y2="48.17" id="gradient-107">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="337.82" y1="41.38" x2="337.82" y2="48.23" id="gradient-108">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="337.72" y1="27.69" x2="337.72" y2="34.54" id="gradient-109">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.21" y1="232.38" x2="339.21" y2="239.23" id="gradient-110" spreadMethod="pad">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.01" y1="205" x2="339.01" y2="211.86" id="gradient-111">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="339.11" y1="218.69" x2="339.11" y2="225.55" id="gradient-112">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="337.115" y1="-26.69" x2="337.115" y2="-19.84" id="gradient-113">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="337.015" y1="-40.38" x2="337.015" y2="-33.52" id="gradient-114">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="336.925" y1="-51.98" x2="336.925" y2="-47.21" id="gradient-115">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="336.925" y1="-51.98" x2="336.925" y2="-47.15" id="gradient-116">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="337.41" y1="14.37" x2="337.41" y2="21.22" id="gradient-117">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="337.21" y1="-13.01" x2="337.21" y2="-6.15" id="gradient-118">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="337.31" y1="0.68" x2="337.31" y2="7.54" id="gradient-119">
+      <stop offset="0" style="stop-color: rgba(90, 88, 99, 1)"/>
+      <stop offset="1" style="stop-color: rgba(41, 40, 45, 1)"/>
+    </linearGradient>
+  </defs>
+  <style type="text/css">
+	.st0{fill:#E2CE8B;}
+	.st1{fill:none;stroke:#000000;stroke-width:4;stroke-miterlimit:10;}
+	.st2{fill:#C2D98E;}
+	.st3{fill:#D2E2A7;}
+	.st4{fill:#E9E9E9;}
+	.st5{fill:#9A9286;}
+</style>
+  <path class="st1" d="M543.21,581.04"/>
+  <path class="st1" d="M496.61,581.25"/>
+  <rect x="14.55" y="16.83" class="st2" width="303.07" height="124.535" style="fill: rgba(195, 217, 142, 0.19);"/>
+  <rect x="14.55" y="140.59" class="st3" width="303.07" height="249.117" style="fill: rgba(210, 226, 167, 0.28);"/>
+  <path class="st2" d="M804.78,578.04H14.55V389.43h813.98V554.3C828.53,567.41,817.9,578.04,804.78,578.04z" style="fill: rgba(195, 217, 142, 0.29);"/>
+  <path class="st3" d="M 443.14 493.12 L 335.03 493.12 L 335.03 388.934 L 450.11 388.934 L 450.11 486.81 C 450.11 490.295 446.99 493.12 443.14 493.12 Z" style="fill: rgba(210, 226, 167, 0.17);"/>
+  <rect x="351.04" y="16.83" class="st2" width="476.66" height="372.475" style="fill: rgba(195, 217, 142, 0.28);"/>
+  <rect x="359.212" y="291.97" class="st3" width="303.848" height="194.16" style="fill: rgba(210, 226, 167, 0.23);"/>
+  <path class="st3" d="M705.29,266.7H579.26V157.01h133.36v102.36C712.62,263.42,709.34,266.7,705.29,266.7z" style="fill: rgba(210, 226, 167, 0.25);"/>
+  <rect x="390.12" y="17.05" class="st3" width="151.54" height="144.12" style="fill: rgba(210, 226, 167, 0.13);"/>
+  <rect x="437.76" y="428.28" class="st2" width="95.09" height="95.09" style="fill: rgba(195, 217, 142, 0.24);"/>
+  <g>
+    <path class="st4" d="M419.42,449.34c0.1-36.46,23.83-66.12,53.81-66.05l4.6,0.01l22.57,0.08l-0.14,52.39l-22.57-0.08l-4.6-0.01 c-6.23-0.01-10.31,6.09-10.33,13.66" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-0);"/>
+    <path class="st5" d="M424.67,449.25c0.09-33.02,22.26-59.84,49.42-59.77l4.6,0.01l4.19,0.08l0.11,39.92l-4.41-0.08l-4.6-0.01 c-9.06-0.02-16.45,8.92-16.48,19.93" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-1);"/>
+    <path class="st4" d="M454.58,415.88l-1.19-2.03c1.57-1.37,3.25-2.58,4.98-3.6l0.89,2.25C457.63,413.45,456.05,414.59,454.58,415.88 z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-2);"/>
+    <path class="st4" d="M446.95,424.71l-1.68-1.43c1.1-1.92,2.35-3.74,3.71-5.42l1.46,1.75C449.16,421.19,447.98,422.9,446.95,424.71z " style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-3);"/>
+    <path class="st4" d="M442.35,436.43l-1.98-0.65c0.51-2.27,1.18-4.5,2-6.62l1.86,1.06C443.46,432.2,442.83,434.3,442.35,436.43z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-4);"/>
+    <g>
+      <g>
+        <rect x="467.46" y="406.64" transform="matrix(2.724119e-03 -1 1 2.724119e-03 57.9756 877.0437)" class="st4" width="2.49" height="5.63" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-5);"/>
+      </g>
+    </g>
+    <g>
+      <path class="st4" d="M480.68,435.68l22.57-0.08l4.6-0.01c6.23-0.01,11.31,6.14,11.33,13.71l0.04,14.54l0.14,52.39l0.43,158.62 l43.09-0.1l-0.61-225.55c-0.1-36.46-24.57-66.07-54.56-66l-4.6,0.01l-22.57,0.08L480.68,435.68z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-6);"/>
+      <path class="st5" d="M479.74,429.44l22.57-0.08l4.6-0.01c9.06-0.02,16.45,8.92,16.48,19.93l0.61,225.55l32.83-0.08l-0.61-225.55 c-0.09-33.02-22.26-59.84-49.42-59.77l-4.6,0.01l-22.57,0.08L479.74,429.44z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-7);"/>
+      <g>
+        <g>
+          <rect x="539.86" y="500.35" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.3703 1.4753)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-8);"/>
+          <rect x="539.89" y="514.04" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.4076 1.4754)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-9);"/>
+          <rect x="539.93" y="527.73" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.4449 1.4756)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-10);"/>
+          <rect x="539.93" y="527.66" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.4447 1.4756)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-11);"/>
+          <rect x="539.97" y="541.35" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.482 1.4758)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-12);"/>
+          <rect x="539.97" y="541.29" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.4819 1.4757)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-13);"/>
+          <rect x="540" y="554.98" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.5191 1.4759)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-14);"/>
+          <rect x="540" y="554.92" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.519 1.4759)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-15);"/>
+          <rect x="540.04" y="568.6" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.5563 1.4761)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-16);"/>
+          <rect x="540.04" y="568.54" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.5561 1.4761)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-17);"/>
+          <rect x="540.08" y="582.23" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.5934 1.4762)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-18);"/>
+          <rect x="540.08" y="582.17" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.5932 1.4762)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-19);"/>
+          <rect x="540.12" y="595.85" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.6305 1.4764)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-20);"/>
+          <rect x="540.12" y="595.79" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.6303 1.4764)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-21);"/>
+          <rect x="540.15" y="609.48" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.6676 1.4765)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-22);"/>
+          <rect x="540.15" y="609.42" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.6674 1.4765)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-23);"/>
+          <rect x="540.19" y="623.11" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.7047 1.4767)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-24);"/>
+          <rect x="540.19" y="623.04" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.7046 1.4767)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-25);"/>
+          <rect x="540.23" y="636.73" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.7418 1.4768)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-26);"/>
+          <rect x="540.23" y="636.67" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.7417 1.4768)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-27);"/>
+          <rect x="540.26" y="650.36" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.779 1.477)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-28);"/>
+          <rect x="540.26" y="650.3" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.7788 1.477)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-29);"/>
+          <rect x="540.3" y="663.98" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.8161 1.4771)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-30);"/>
+          <path class="st4" d="M526.38,417.87l1.19-2.03c-1.57-1.37-3.25-2.58-4.98-3.6l-0.89,2.25 C523.32,415.44,524.9,416.57,526.38,417.87z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-31);"/>
+          <path class="st4" d="M534,427.26l1.68-1.43c-1.1-1.92-2.35-3.74-3.71-5.42l-1.46,1.75C531.79,423.74,532.97,425.45,534,427.26z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-32);"/>
+          <path class="st4" d="M516.6,412.12l0.56-2.4c-1.85-0.64-3.76-1.09-5.69-1.34l-0.21,2.48 C513.06,411.09,514.86,411.52,516.6,412.12z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-33);"/>
+          <path class="st4" d="M538.6,439.21l1.98-0.65c-0.51-2.27-1.18-4.5-2-6.62l-1.86,1.06C537.49,434.99,538.12,437.08,538.6,439.21z " style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-34);"/>
+          <rect x="539.74" y="459.29" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.2585 1.4748)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-35);"/>
+          <rect x="539.82" y="486.67" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.3331 1.4751)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-36);"/>
+          <rect x="539.78" y="472.98" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.2958 1.475)" class="st4" width="2.05" height="6.84" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-37);"/>
+          <path class="st4" d="M539.71,449.25l0.01,3.2l2.05,0l-0.01-3.2c0-1.24-0.05-2.5-0.15-3.75l-2.04,0.23 C539.66,446.89,539.7,448.06,539.71,449.25z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-38);"/>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect x="489.06" y="408.18" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.1135 1.3414)" class="st4" width="5.63" height="2.49" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-39);"/>
+          <rect x="477.8" y="408.21" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.1136 1.3108)" class="st4" width="5.63" height="2.49" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-40);"/>
+        </g>
+        <g>
+          <rect x="500.41" y="408.16" transform="matrix(1 -2.724119e-03 2.724119e-03 1 -1.1134 1.3714)" class="st4" width="4.89" height="2.49" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-41);"/>
+        </g>
+      </g>
+    </g>
+    <path class="st4" d="M462.76,449.34c0,0.3,0,20.16,0,20.46c-0.34,36.04-24.52,65.25-54.26,65.3l-4.6,0.01l-22.57,0.01l-0.1-52.39 l22.57-0.01l4.6-0.01c5.96-0.01,10.85-5.66,11.24-12.79c0.02-0.32-0.23-20.71-0.23-21.03" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-42);"/>
+    <path class="st5" d="M457.51,448.66c0,0.3-0.75,20.84-0.75,21.14c-0.34,32.61-22.23,59.03-49.14,59.07l-4.6,0.01l-4.19-0.06 l-0.29-39.92l4.41,0.06l4.6-0.01c8.82-0.01,16.03-8.53,16.38-19.15c0.01-0.28,0.75-22.07,0.75-22.35" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-43);"/>
+    <path class="st4" d="M427.01,502.39l1.2,2.03c-1.57,1.38-3.24,2.59-4.97,3.62l-0.9-2.25C423.97,504.83,425.54,503.69,427.01,502.39 z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-44);"/>
+    <path class="st4" d="M434.6,493.53l1.69,1.42c-1.09,1.93-2.33,3.75-3.68,5.43l-1.47-1.75C432.41,497.06,433.57,495.34,434.6,493.53 z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-45);"/>
+    <path class="st4" d="M439.14,481.79l1.98,0.65c-0.5,2.27-1.16,4.5-1.97,6.63l-1.86-1.05C438.05,486.02,438.68,483.93,439.14,481.79 z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-46);"/>
+    <path class="st4" d="M442.25,468.87l0.01,3.2c0,1.24-0.04,2.5-0.13,3.75l-2.04-0.22c0.08-1.16,0.13-2.33,0.12-3.52l-0.01-3.2" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-47);"/>
+    <g>
+      <g>
+        <rect x="410.1" y="507.62" transform="matrix(1 -1.819289e-03 1.819289e-03 1 -0.9251 0.752)" class="st4" width="5.63" height="2.49" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-48);"/>
+      </g>
+    </g>
+    <g>
+      <path class="st4" d="M400.81,482.69l-22.57,0.16l-4.6,0.03c-6.23,0.04-11.34-6.09-11.39-13.66l-0.11-14.54l-0.38-52.39 l-2.05-454.17l-43.09,0.26l2.54,521.1c0.26,36.46,24.87,65.97,54.86,65.79l4.6-0.03l22.57-0.16L400.81,482.69z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-49);"/>
+      <path class="st5" d="M401.78,488.93l-22.57,0.16l-4.6,0.03c-9.06,0.06-16.49-8.86-16.57-19.87l-3.26-521.23l-32.83,0.2 l3.26,521.23c0.24,33.02,22.53,59.75,49.69,59.59l4.6-0.03l22.57-0.16L401.78,488.93z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-50);"/>
+      <g>
+        <g>
+          <polygon class="st4" points="339.26,411.41 339.31,418.25 341.36,418.24 341.31,411.4 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-51);"/>
+          <polygon class="st4" points="339.16,397.73 339.21,404.57 341.26,404.56 341.21,397.71 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-52);"/>
+          <polygon class="st4" points="339.06,384.04 339.11,390.88 341.16,390.87 341.11,384.03 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-53);"/>
+          <polygon class="st4" points="339.06,384.1 339.11,390.94 341.16,390.93 341.11,384.09 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-54);"/>
+          <polygon class="st4" points="338.96,370.41 339.01,377.26 341.06,377.24 341.01,370.4 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-55);"/>
+          <polygon class="st4" points="338.96,370.47 339.01,377.32 341.06,377.31 341.01,370.46 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-56);"/>
+          <polygon class="st4" points="338.86,356.79 338.91,363.63 340.96,363.62 340.91,356.77 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-57);"/>
+          <polygon class="st4" points="338.86,356.85 338.91,363.69 340.96,363.68 340.91,356.84 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-58);"/>
+          <polygon class="st4" points="338.76,343.16 338.81,350.01 340.86,349.99 340.81,343.15 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-59);"/>
+          <polygon class="st4" points="338.76,343.22 338.81,350.07 340.86,350.05 340.81,343.21 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-60);"/>
+          <polygon class="st4" points="338.66,329.54 338.71,336.38 340.76,336.37 340.71,329.52 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-61);"/>
+          <polygon class="st4" points="338.66,329.6 338.71,336.44 340.76,336.43 340.71,329.58 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-62);"/>
+          <polygon class="st4" points="338.56,315.91 338.61,322.75 340.66,322.74 340.61,315.9 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-63);"/>
+          <polygon class="st4" points="338.56,315.97 338.61,322.82 340.66,322.8 340.61,315.96 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-64);"/>
+          <polygon class="st4" points="338.46,302.28 338.51,309.13 340.57,309.12 340.52,302.27 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-65);"/>
+          <polygon class="st4" points="338.46,302.35 338.51,309.19 340.57,309.18 340.52,302.33 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-66);"/>
+          <polygon class="st4" points="338.36,288.66 338.41,295.5 340.47,295.49 340.42,288.65 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-67);"/>
+          <polygon class="st4" points="338.36,288.72 338.41,295.56 340.47,295.55 340.42,288.71 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-68);"/>
+          <polygon class="st4" points="338.27,275.03 338.32,281.88 340.37,281.86 340.32,275.02 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-69);"/>
+          <polygon class="st4" points="338.27,275.1 338.32,281.94 340.37,281.93 340.32,275.08 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-70);"/>
+          <polygon class="st4" points="338.17,261.41 338.22,268.25 340.27,268.24 340.22,261.4 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-71);"/>
+          <polygon class="st4" points="338.17,261.47 338.22,268.31 340.27,268.3 340.22,261.46 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-72);"/>
+          <polygon class="st4" points="338.07,247.78 338.12,254.63 340.17,254.61 340.12,247.77 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-73);"/>
+          <path class="st4" d="M355.2,500.68l-1.18,2.03c1.58,1.36,3.26,2.57,5,3.58l0.88-2.25C358.27,503.09,356.69,501.96,355.2,500.68z " style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-74);"/>
+          <path class="st4" d="M347.53,491.31l-1.68,1.43c1.11,1.92,2.37,3.74,3.73,5.4l1.45-1.76 C349.76,494.83,348.58,493.12,347.53,491.31z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-75);"/>
+          <path class="st4" d="M365.01,506.39l-0.55,2.4c1.85,0.64,3.77,1.08,5.7,1.32l0.2-2.48C368.55,507.4,366.74,506.98,365.01,506.39 z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-76);"/>
+          <path class="st4" d="M342.88,479.38l-1.98,0.66c0.52,2.27,1.2,4.49,2.03,6.61l1.85-1.06 C344.01,483.6,343.37,481.51,342.88,479.38z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-77);"/>
+          <polygon class="st4" points="339.55,452.47 339.6,459.31 341.66,459.3 341.61,452.46 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-78);"/>
+          <polygon class="st4" points="339.36,425.1 339.41,431.94 341.46,431.93 341.41,425.08 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-79);"/>
+          <polygon class="st4" points="339.46,438.78 339.51,445.63 341.56,445.61 341.51,438.77 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-80);"/>
+          <path class="st4" d="M341.73,469.35l-0.02-3.2l-2.05,0.01l0.02,3.2c0.01,1.24,0.06,2.5,0.17,3.75l2.04-0.24 C341.79,471.71,341.74,470.54,341.73,469.35z" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-81);"/>
+        </g>
+      </g>
+      <g>
+        <g>
+          <polygon class="st4" points="386.92,507.75 386.94,510.25 392.57,510.21 392.55,507.72 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-82);"/>
+          <polygon class="st4" points="398.18,507.68 398.2,510.18 403.83,510.14 403.81,507.65 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-83);"/>
+        </g>
+        <g>
+          <polygon class="st4" points="376.3,507.82 376.32,510.31 381.21,510.28 381.2,507.79 &#9;&#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-84);"/>
+        </g>
+      </g>
+    </g>
+    <polygon class="st4" points="439.76,455.69 439.81,462.54 441.86,462.52 441.81,455.68 &#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-85);"/>
+    <path class="st4" d="M439.18,449.34l0.01-3.2c0-1.24,0.05-2.5,0.15-3.75l2.04,0.23c-0.09,1.16-0.14,2.33-0.14,3.52l-0.01,3.2" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-86);"/>
+    <g>
+      <g>
+        <polygon class="st4" points="337.86,191.33 337.91,198.17 339.96,198.16 339.91,191.32 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-87);"/>
+        <polygon class="st4" points="337.76,177.64 337.81,184.49 339.86,184.47 339.81,177.63 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-88);"/>
+        <polygon class="st4" points="337.66,163.96 337.71,170.8 339.76,170.79 339.71,163.94 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-89);"/>
+        <polygon class="st4" points="337.66,164.02 337.71,170.86 339.76,170.85 339.71,164.01 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-90);"/>
+        <polygon class="st4" points="337.56,150.33 337.61,157.17 339.66,157.16 339.61,150.32 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-91);"/>
+        <polygon class="st4" points="337.56,150.39 337.61,157.24 339.66,157.22 339.61,150.38 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-92);"/>
+        <polygon class="st4" points="337.46,136.71 337.51,143.55 339.56,143.54 339.51,136.69 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-93);"/>
+        <polygon class="st4" points="337.46,136.77 337.51,143.61 339.56,143.6 339.51,136.75 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-94);"/>
+        <polygon class="st4" points="337.36,123.08 337.41,129.92 339.46,129.91 339.41,123.07 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-95);"/>
+        <polygon class="st4" points="337.36,123.14 337.41,129.98 339.46,129.97 339.41,123.13 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-96);"/>
+        <polygon class="st4" points="337.26,109.45 337.31,116.3 339.36,116.29 339.31,109.44 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-97);"/>
+        <polygon class="st4" points="337.26,109.52 337.31,116.36 339.37,116.35 339.32,109.5 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-98);"/>
+        <polygon class="st4" points="337.16,95.83 337.21,102.67 339.27,102.66 339.22,95.82 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-99);"/>
+        <polygon class="st4" points="337.16,95.89 337.21,102.73 339.27,102.72 339.22,95.88 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-100);"/>
+        <polygon class="st4" points="337.06,82.2 337.11,89.05 339.17,89.03 339.12,82.19 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-101);"/>
+        <polygon class="st4" points="337.07,82.26 337.12,89.11 339.17,89.1 339.12,82.25 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-102);"/>
+        <polygon class="st4" points="336.97,68.58 337.02,75.42 339.07,75.41 339.02,68.56 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-103);"/>
+        <polygon class="st4" points="336.97,68.64 337.02,75.48 339.07,75.47 339.02,68.63 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-104);"/>
+        <polygon class="st4" points="336.87,54.95 336.92,61.8 338.97,61.78 338.92,54.94 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-105);"/>
+        <polygon class="st4" points="336.87,55.01 336.92,61.86 338.97,61.84 338.92,55 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-106);"/>
+        <polygon class="st4" points="336.77,41.33 336.82,48.17 338.87,48.16 338.82,41.31 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-107);"/>
+        <polygon class="st4" points="336.77,41.39 336.82,48.23 338.87,48.22 338.82,41.38 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-108);"/>
+        <polygon class="st4" points="336.67,27.7 336.72,34.54 338.77,34.53 338.72,27.69 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-109);"/>
+        <polygon class="st4" points="338.16,232.39 338.21,239.23 340.26,239.22 340.21,232.38 &#9;&#9;&#9;" style="fill-rule: nonzero; fill: url(#gradient-110); paint-order: fill;"/>
+        <polygon class="st4" points="337.96,205.01 338.01,211.86 340.06,211.85 340.01,205 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-111);"/>
+        <polygon class="st4" points="338.06,218.7 338.11,225.55 340.16,225.53 340.11,218.69 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-112);"/>
+      </g>
+    </g>
+    <g>
+      <g>
+        <polygon class="st4" points="336.06,-26.68 336.11,-19.84 338.17,-19.85 338.12,-26.69 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-113);"/>
+        <polygon class="st4" points="335.96,-40.36 336.01,-33.52 338.07,-33.53 338.02,-40.38 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-114);"/>
+        <rect x="335.9" y="-51.98" transform="matrix(1 -5.215823e-03 5.215823e-03 1 0.2633 1.7567)" class="st4" width="2.05" height="4.77" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-115);"/>
+        <rect x="335.9" y="-51.98" transform="matrix(1 -5.241894e-03 5.241894e-03 1 0.2645 1.7655)" class="st4" width="2.05" height="4.83" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-116);"/>
+        <polygon class="st4" points="336.36,14.38 336.41,21.22 338.46,21.21 338.41,14.37 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-117);"/>
+        <polygon class="st4" points="336.16,-12.99 336.21,-6.15 338.26,-6.16 338.21,-13.01 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-118);"/>
+        <polygon class="st4" points="336.26,0.69 336.31,7.54 338.36,7.53 338.31,0.68 &#9;&#9;&#9;" style="paint-order: fill; fill-rule: nonzero; fill: url(#gradient-119);"/>
+      </g>
+    </g>
+  </g>
+</svg>
