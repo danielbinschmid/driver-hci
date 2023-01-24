@@ -30,10 +30,11 @@ function computeSizes() {
 }
 function handgest() {
     if (handgestVid.value !== null) {
-        console.log("pause video")
         handgestVid.value.pause();
     }
 }
+
+
 
 const timeouts: any[] = [];
 var timeout: any = undefined;
@@ -65,10 +66,39 @@ function playAnimation() {
         }, 11700);
     }
     }, 1000);
-    
-    
-
 } 
+
+const shouldPauseAnimation = reactive({value: false, isOvertakeRequest: false});
+
+window.electronAPI.handleEvent((event, value) => {
+    if (value.type == "reset_simulation") {
+        shouldPauseAnimation.value = false;
+        shouldPauseAnimation.isOvertakeRequest = false;
+        resetAnimation();
+    } else if (value.type == "user_response") {
+        if (value.decision == 0) {
+            if (!shouldPauseAnimation.isOvertakeRequest) {
+                shouldPauseAnimation.isOvertakeRequest = true;
+            } else {
+                shouldPauseAnimation.value = true;
+            }
+        }
+        
+    }
+});
+
+function startSimulation() {
+    if (handgestVid.value !== null) {
+        handgestVid.value.play();
+        sceneData.animationState = MapAnimationState.START;
+        timeout = setTimeout(() => {
+            if (shouldPauseAnimation.value) {
+                pauseAnimation();
+            }
+            
+        }, 20000);
+    }
+}
 
 function pauseAnimation() {
     handgestVid.value?.pause();
@@ -91,7 +121,9 @@ function resetAnimation() {
         
         <div class="videos">
             <div class="scene">
-                <scene :width="sceneMetadata.width" :play-video-scene="sceneData.playVid" :animation-state="sceneData.animationState"/>
+                <scene :width="sceneMetadata.width" :play-video-scene="sceneData.playVid" :animation-state="sceneData.animationState"
+                    @start-simulation="startSimulation()"
+                />
                 <!--
                     <div class="canvas-configure-container">
                         mdiMovieOpenPlayOutline
@@ -157,7 +189,9 @@ function resetAnimation() {
                         <v-card elevation="0" class="canvas-card-video" shaped outlined color="rgba(118, 113, 113, 0)">
         
                             <video :width="handgestVidMetadata.width" muted ref="handgestVid"
-                                class="hand-gest-video">  
+                                class="hand-gest-video"
+                                v-show="false"    
+                            >  
                                 <source src="../assets/handgest.mp4" type="video/mp4">
                                 <!-- source src="movie.ogg" type="video/ogg">  @/assets/handgesture.mp4"-->
                                 Your browser does not support the video tag.

@@ -55,7 +55,6 @@ export class SceneRenderer {
         )
         const canvas: HTMLCanvasElement = <HTMLCanvasElement> document.getElementById(options.canvasID);
         this._canvas = canvas;
-        console.log(canvas);
         
          
         const webglParams: WebGLRendererParameters = {

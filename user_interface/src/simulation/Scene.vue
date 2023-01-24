@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref, watch } from "vue";
+import { onMounted, reactive, ref, watch, defineEmits } from "vue";
 import type { Ref } from 'vue'
 import HudInterface from "./HudInterface.vue"
 import { MapAnimationState } from "./map/MapAnimationStates";
@@ -9,6 +9,7 @@ const props = defineProps<{
     animationState: MapAnimationState
 }>();
 
+const emit = defineEmits(['startSimulation'])
 
 
 
@@ -77,6 +78,10 @@ watch(() => props.animationState, (_new, _old) => {
         
     } 
 });
+
+function startSimulation() {
+    emit("startSimulation");
+}
 </script>
 
 <template>
@@ -91,7 +96,9 @@ watch(() => props.animationState, (_new, _old) => {
                         :style="{height: sceneSizes.height}" 
                         :width="sceneSizes.width" 
                         :height="sceneSizes.height"
-                        :animation-state="animationData.state"> 
+                        :animation-state="animationData.state"
+                        @start-simulation="startSimulation()"
+                > 
                 </hud-interface>
             </div>
             

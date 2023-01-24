@@ -41,7 +41,6 @@ export class SvgDot extends MeshBase {
             options.src,
             (data) => {
                 const paths = data.paths;
-                console.log(data);
                 const group = new THREE.Group();
 
                 for ( let i = 0; i < paths.length; i ++ ) {

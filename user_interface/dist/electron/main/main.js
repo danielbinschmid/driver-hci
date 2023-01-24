@@ -36,6 +36,14 @@ const types_ = [
         "fields": [
             "text"
         ]
+    },
+    {
+        "type": "start_simulation",
+        "fields": []
+    },
+    {
+        "type": "reset_simulation",
+        "fields": []
     }
 ];
 function checkIncomingJson(incoming) {

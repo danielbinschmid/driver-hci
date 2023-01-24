@@ -20,7 +20,6 @@ onMounted(() => {
     var height = 100;
  
 
-    console.log(mapWrapper.value?.clientHeight);
     setTimeout(() => {
         var width = 100;
         var height = 100;
@@ -30,7 +29,6 @@ onMounted(() => {
             height = mapWrapper.value.clientHeight;
         }
 
-        console.log(width, height);
 
         const rendererOptions: SceneOptions3D = {
             canvasID: "mapCanvas",
@@ -62,7 +60,6 @@ watch(() => props.animationState, (_new, _old) => {
             break;
         case MapAnimationState.START:
             if (renderer) {
-                console.log("start");
                 renderer.startAnimation();
                 currentState.state = props.animationState;
             }
