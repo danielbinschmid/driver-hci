@@ -76,14 +76,20 @@ window.electronAPI.handleEvent((event, value) => {
         shouldPauseAnimation.isOvertakeRequest = false;
         resetAnimation();
     } else if (value.type == "user_response") {
-        if (value.decision == 0) {
+        if (value.decision == 1) {
+            // shouldPauseAnimation.value = true;
             if (!shouldPauseAnimation.isOvertakeRequest) {
                 shouldPauseAnimation.isOvertakeRequest = true;
-            } else {
+            } 
+        } else {
+            if (shouldPauseAnimation.isOvertakeRequest) {
                 shouldPauseAnimation.value = true;
             }
         }
-        
+    } else if (value.type == "time_exceeded") {
+        if (shouldPauseAnimation.isOvertakeRequest) {
+                shouldPauseAnimation.value = true;
+        }
     }
 });
 
