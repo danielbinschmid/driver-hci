@@ -150,11 +150,12 @@ def handle_decision_request(name, sock):
 
             # timer starts here, and gets cancelled by response thread
             # open_request gets reset if timer_exceeded is called
-            global TIMER
-            TIMER = threading.Timer(time_remaining, timer_exceeded)
-            TIMER.start()
+            if open_request:
+                global TIMER
+                TIMER = threading.Timer(time_remaining, timer_exceeded)
+                TIMER.start()
 
-            logging.info('Started Timer: {}sec'.format(time_remaining))
+                logging.info('Started Timer: {}sec'.format(time_remaining))
 
 """
 this function receives data from the hand-gesture and takes action accordingly
