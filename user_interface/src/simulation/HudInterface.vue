@@ -61,6 +61,31 @@ watch(() => props.animationState, (_new, _old) => {
     }
 });
 
+const shouldPauseAnimation = reactive({value: false, isOvertakeRequest: false});
+
+window.electronAPI.handleEvent((event, value) => {
+    if (value.type == "reset_simulation") {
+        shouldPauseAnimation.value = false;
+        shouldPauseAnimation.isOvertakeRequest = false;
+    } else if (value.type == "user_response") {
+        if (value.decision == 1) {
+            // shouldPauseAnimation.value = true;
+            if (!shouldPauseAnimation.isOvertakeRequest) {
+                shouldPauseAnimation.isOvertakeRequest = true;
+            } 
+        } else {
+            shouldPauseAnimation.value = true;
+  
+        }
+    } else if (value.type == "time_exceeded") {
+        if (shouldPauseAnimation.isOvertakeRequest) {
+            shouldPauseAnimation.value = true;
+        } else {
+            shouldPauseAnimation.value = true;
+        }
+    }
+});
+
 // { type: 'request', choices: [ 'left', 'right' ], time_remaining: 10 }
 window.electronAPI.handleEvent((event, value) => {
 
@@ -69,10 +94,13 @@ window.electronAPI.handleEvent((event, value) => {
 
     switch(value.type) {
         case "request":
-            showQuestion.val = true;
-            request_data.event = value;
-            request_data.questionPending = true;
-            switch_.val = !switch_.val;
+            if (!shouldPauseAnimation.value) {
+                showQuestion.val = true;
+                request_data.event = value;
+                request_data.questionPending = true;
+                switch_.val = !switch_.val;
+            }
+            
             break;
         case "user_response":
             request_data.decision = request_data.event.choices[value.decision];
